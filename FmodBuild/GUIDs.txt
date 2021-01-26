@@ -1,0 +1,13 @@
+{942a26e2-06d7-41e0-91d2-22826a93b911} bank:/Master
+{0c370636-77ac-0da2-179b-a87c9b60bf89} bank:/Master.strings
+{8bb15005-f45b-49b1-b026-30022a4f5dd5} bus:/
+{f07f5205-c5cd-4996-ac00-7da416af2b6e} bus:/Reverb
+{e7e07cec-3b25-4d03-a2d4-afa8261ad39d} event:/PLACEHOLDER
+{b7eb1918-db0c-411c-b732-fac840d517c9} event:/PLACEHOLDER_tonal
+{49106dfe-2a3f-4d11-8c49-f82378d67c18} event:/music/placeholder_music/placeholder_music
+{046a451d-14d2-4a58-a57d-1a706c832420} parameter:/global_area_phase
+{c7199c63-eb99-4e36-b980-9c61ba760fef} parameter:/global_combat_proximity
+{92d581dc-a19f-4e1b-a74a-de3b99114715} parameter:/global_event_end
+{20c3466d-2405-4843-9380-11e1c51f76cb} parameter:/global_octave
+{cf169790-44bf-473c-9fae-e8ac4fdfe9f1} parameter:/global_pitch
+{298e6ade-38ee-44a7-9ef1-ad645ec2576b} parameter:/global_puzzle_proximity
