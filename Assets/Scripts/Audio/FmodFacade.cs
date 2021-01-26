@@ -1,4 +1,4 @@
-﻿namespace HarmonyQuest.Audio
+﻿namespace Audio
 {
     using System;
     using System.Collections.Generic;

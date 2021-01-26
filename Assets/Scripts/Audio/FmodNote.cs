@@ -1,4 +1,4 @@
-﻿namespace HarmonyQuest.Audio
+﻿namespace Audio
 {
     public class FmodNote
     {
