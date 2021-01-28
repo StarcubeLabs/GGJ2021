@@ -33,3 +33,6 @@ fmod_editor.log
 # Articy Plugin
 # =====================================
 Assets/ArticyImporter/Content/Generated/
+=======
+/Assets/Scenes/Sandboxes.meta
+/Assets/Scenes/Sandboxes
