@@ -15,7 +15,8 @@
         public PlayerPhysics(PlayerController controller)
         {
             this.controller = controller;
-            physicsEntity = new PhysicsEntity(controller.gameObject, controller.rigidBody, controller.transform.position, controller.capsuleCollider.size.y, controller.capsuleCollider.size.x / 2.0f);
+            physicsEntity = new PhysicsEntity(controller.gameObject, controller.rigidBody, controller.transform.position,
+                controller.capsuleCollider.size.y * controller.transform.localScale.y, (controller.capsuleCollider.size.x / 2.0f) * controller.transform.localScale.x);
         }
 
         public void ResetDesiredVelocity()

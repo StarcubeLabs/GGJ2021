@@ -174,9 +174,9 @@
             SetRaycastOriginPoints();
 
             //Check if the body's current velocity will result in a collision
-            if (Physics.Raycast(colliderCenterPosition, velocity.normalized, predictedMovementDistance, layerMask) ||
-                Physics.Raycast(colliderUpperPosition, velocity.normalized, predictedMovementDistance, layerMask) ||
-                (Physics.Raycast(colliderLowerPosition, velocity.normalized, predictedMovementDistance, layerMask) && !isDash))
+            if (Physics2D.Raycast(colliderCenterPosition, velocity.normalized, predictedMovementDistance * 1.01f, layerMask) ||
+                Physics2D.Raycast(colliderUpperPosition, velocity.normalized, predictedMovementDistance * 1.01f, layerMask) ||
+                (Physics2D.Raycast(colliderLowerPosition, velocity.normalized, predictedMovementDistance * 1.01f, layerMask) && !isDash))
             {
                 if (isDash == true)
                 {
