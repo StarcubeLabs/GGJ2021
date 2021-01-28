@@ -424,18 +424,6 @@ CompositeCollider2D:
       - X: 10000000
         Y: -10000000
       - X: 10000000
-        Y: -100
-      - X: 9999959
-        Y: -100
-      - X: 9999900
-        Y: -41
-      - X: 9999900
-        Y: 20000041
-      - X: 9999959
-        Y: 20000100
-      - X: 10000000
-        Y: 20000100
-      - X: 10000000
         Y: 30000000
       - X: 0
         Y: 30000000
@@ -515,8 +503,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritesToPrefabs:
-    m_keys: []
-    m_values: []
+    m_keys:
+    - {fileID: 21300000, guid: bfd2f88e578644601a6c7ef326b11a65, type: 3}
+    - {fileID: 21300000, guid: c0ca927b53d7b4822a6bec0a260ba395, type: 3}
+    m_values:
+    - {fileID: 919132149155446097, guid: e474c93f04849524fad4817504af6618, type: 3}
+    - {fileID: 919132149155446097, guid: 68771484aef31094dbf9d10d6a40f5db, type: 3}
 --- !u!1 &5957064100281629261
 GameObject:
   m_ObjectHideFlags: 0
