@@ -31,3 +31,5 @@ Assets/FMODStudioCache.asset.meta
 Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
+/Assets/Scenes/Sandboxes.meta
+/Assets/Scenes/Sandboxes
