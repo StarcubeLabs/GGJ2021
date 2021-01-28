@@ -1,4 +1,4 @@
-﻿namespace Input
+﻿namespace Starjam
 {
     using UnityEngine;
     using Rewired;
