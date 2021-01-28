@@ -9,25 +9,23 @@
         private int curHamsterMax = 5;
         private int trueHamsterMax = 5;
 
-        private float blasterCooldown, maxBlasterCooldown = 0.25f;
+        private float blasterCooldown = 0f;
+        private float maxBlasterCooldown = 0.25f;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
         void Update()
         {
-
+            if (blasterCooldown > 0f)
+            {
+                blasterCooldown -= Time.deltaTime;
+            }
         }
 
-        public void ShootProjectile(Vector2 origin, Vector2 velocity)
+        public void ShootProjectile(Vector2 origin, Vector2 direction)
         {
             if (blasterCooldown <= 0f && GetAvailableHamsters() > 0)
             {
-                hamsterPool.SpawnHamster(origin, velocity);
+                blasterCooldown = maxBlasterCooldown;
+                hamsterPool.SpawnHamster(origin, direction + PlayerController.instance.playerPhysics.GetVelocity());
             }
         }
 

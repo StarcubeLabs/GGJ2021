@@ -47,7 +47,15 @@
 
         void FixedUpdate()
         {
-            //TODO apply gravity
+            ApplyGravity();
+        }
+
+        private void ApplyGravity()
+        {
+            if (collisionWrapper.isActive)
+            {
+                rb.AddForce(PlayerController.instance.config.ProjectileGravity, ForceMode2D.Force);
+            }
         }
 
         public void Launch(Vector2 origin, Vector2 velocity)
@@ -78,6 +86,7 @@
         private void Explode()
         {
             rb.velocity = Vector2.zero;
+            //rb.angularVelocity = 0f;
             collisionWrapper.SetActive(false);
             hamster.enabled = false;
             explosion.enabled = true;

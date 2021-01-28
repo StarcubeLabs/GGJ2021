@@ -560,7 +560,7 @@ MonoBehaviour:
     ProjectileSpeed: 15
     ProjectileRotationSpeedLowerBound: 240
     ProjectileRotationSpeedUpperBound: 360
-    ProjectileGravity: {x: 0, y: -40, z: 0}
+    ProjectileGravity: {x: 0, y: -15, z: 0}
     DashLength: 7
     DashIntroTime: 0
     DashOutroTime: 0.35

@@ -20,7 +20,7 @@
         public string[] namesToIgnore;
 
         private bool isTrigger;
-        private bool isActive = true;
+        public bool isActive = true;
 
         public delegate void OnTriggerEnterDelegate(Collider2D other);
         OnTriggerEnterDelegate onTriggerEnterDelegate;
