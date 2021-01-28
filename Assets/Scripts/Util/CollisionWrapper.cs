@@ -11,7 +11,7 @@
     /// </summary>
     public class CollisionWrapper : MonoBehaviour
     {
-        public Collider col;
+        public Collider2D col;
         public bool ignoreCollisionsWithOtherTriggers = true;
         public bool useLayerMask = true;
         public LayerMask mask;
@@ -41,7 +41,7 @@
         {
             if (col == null)
             {
-                col = GetComponent<Collider>();
+                col = GetComponent<Collider2D>();
             }
             isTrigger = col.isTrigger;
         }

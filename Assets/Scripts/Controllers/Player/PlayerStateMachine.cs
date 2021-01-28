@@ -10,7 +10,7 @@
         {
             this.Controller = Controller;
 
-            //CurrentState = new IdleState(Controller);
+            CurrentState = new PlayerStateIdle(Controller);
         }
 
         public void OnUpdate(float time)

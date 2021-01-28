@@ -254,8 +254,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2986026205746470649}
   - component: {fileID: 1484205070}
-  - component: {fileID: 1484205071}
   - component: {fileID: 1484205069}
+  - component: {fileID: 4261038853186471243}
+  - component: {fileID: 6915558564546512031}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -300,32 +301,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &1484205071
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7906207497983023092}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4675729d3e7955c4ca2739e4648f3c90, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!114 &1484205069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +313,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f623b874d159a0b45bba7c0eb9ca6425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 1
+  config:
+    MaxSpeed: 8
+    MaxAcceleration: 80
+    Gravity: {x: 0, y: -40, z: 0}
+    GroundedDashGravity: {x: 0, y: -40, z: 0}
+    AttackMaxSpeed: 5
+    AttackMaxAcceleration: 80
+    AttackGravity: {x: 0, y: -20, z: 0}
+    DashLength: 7
+    DashIntroTime: 0
+    DashOutroTime: 0.35
+    DashTime: 0.25
+    DashOutroMaxSpeed: 6
+    DashOutroGravity: {x: 0, y: -20, z: 0}
+    snapToGroundRaycastDistance: 0.4
+    snapToGroundRaycastDistanceDash: 0.1
+    groundLayerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    groundCheckRaycastDistance: 0.15
+    groundCheckRaycastYOffset: 0.1
+    groundCheckRaycastSpread: 0.25
+    groundCheckCenterWeight: 1
+    groundedYAngleCutoff: 45
+    slidingYAngleCutoff: 89
+    prohibitMovementIntoWallsLayerMask:
+      serializedVersion: 2
+      m_Bits: 513
+    prohibitDashIntoWallsLayerMask:
+      serializedVersion: 2
+      m_Bits: 513
+  playerColliderWrapper: {fileID: 0}
+  capsuleCollider: {fileID: 4261038853186471243}
   movementSpeed: 10
+  move: {x: 0, y: 0}
   playerSprites: {fileID: 353910847}
   reticule: {fileID: 1437417883}
+  rigidBody: {fileID: 0}
+  defaultConstraints: 0
+  currentStateName: 
+--- !u!70 &4261038853186471243
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906207497983023092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.15, y: 0.2}
+  m_Direction: 0
+--- !u!114 &6915558564546512031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906207497983023092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9ee5187e2c12841a47e34b4c0cc7e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 4261038853186471243}
+  ignoreCollisionsWithOtherTriggers: 1
+  useLayerMask: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  objectsToIgnore: []
+  namesToIgnore: []

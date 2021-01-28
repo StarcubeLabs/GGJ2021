@@ -4,25 +4,25 @@
 
     public class PhysicsEntity
     {
-        public Vector3 velocity = Vector3.zero;
-        public Vector3 desiredVelocity = Vector3.zero;
-        public Vector3 acceleration = Vector3.zero;
+        public Vector2 velocity = Vector2.zero;
+        public Vector2 desiredVelocity = Vector2.zero;
+        public Vector2 acceleration = Vector2.zero;
         public float maxSpeedChange;
 
         public GameObject gameObject;
-        public Rigidbody rb;
+        public Rigidbody2D rb;
 
         private float colliderHeight;
 
         //Create three offsets from the entity's pivot point for generating an upper, central, and lower point to raycast from when checking for wall collisions.
-        public Vector3 colliderOffset;
-        public Vector3 upperColliderOffset;
-        public Vector3 lowerColliderOffset;
+        public Vector2 colliderOffset;
+        public Vector2 upperColliderOffset;
+        public Vector2 lowerColliderOffset;
 
         //Raycast origin points for preventing movement into walls.
-        public Vector3 colliderCenterPosition;
-        public Vector3 colliderUpperPosition;
-        public Vector3 colliderLowerPosition;
+        public Vector2 colliderCenterPosition;
+        public Vector2 colliderUpperPosition;
+        public Vector2 colliderLowerPosition;
 
         //The radius of the entity's collider, added to her velocity when determing the distance to check for wall collisions.
         private float colliderRadius;
@@ -39,7 +39,7 @@
         //The how far above the ground to check for steep slopes when using the ProhibitMovementOntoSteepSlope function.
         private float steepSlopeCheckRaycastDistance;
 
-        public PhysicsEntity(GameObject gameObject, Rigidbody rb, Vector3 colliderOffset, float colliderHeight, float colliderRadius, float upperLowerYHeightScale = 0.5f)
+        public PhysicsEntity(GameObject gameObject, Rigidbody2D rb, Vector2 colliderOffset, float colliderHeight, float colliderRadius, float upperLowerYHeightScale = 0.5f)
         {
             this.gameObject = gameObject;
             this.rb = rb;
@@ -56,21 +56,20 @@
 
         public void ResetDesiredVelocity()
         {
-            desiredVelocity = Vector3.zero;
+            desiredVelocity = Vector2.zero;
         }
 
-        public void OverrideVelocity(Vector3 newVelocity)
+        public void OverrideVelocity(Vector2 newVelocity)
         {
             velocity = newVelocity;
             desiredVelocity = newVelocity;
         }
 
-        public void CalculateVelocity(Vector3 direction, float maxSpeed, float maxAcceleration, bool ignoreYValue = true)
+        public void CalculateVelocity(Vector2 direction, float maxSpeed, float maxAcceleration, bool ignoreYValue = true)
         {
-            desiredVelocity = new Vector3(direction.x, 0, direction.z) * maxSpeed;
+            desiredVelocity = new Vector2(direction.x, 0) * maxSpeed;
             maxSpeedChange = maxAcceleration * Time.deltaTime;
             velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
-            velocity.z = Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
             if (ignoreYValue)
             {
                 //Keep whatever our rigidbody y velocity was on the last frame to ensure that gravity works properly.
@@ -82,7 +81,7 @@
             }
         }
 
-        public void AddForceToVelocity(Vector3 force, bool ignoreYValue = true)
+        public void AddForceToVelocity(Vector2 force, bool ignoreYValue = true)
         {
             if (ignoreYValue)
             {
@@ -110,27 +109,27 @@
         /// <param name="yForce"> How high up the entity gets launched. </param>
         /// <param name="launchSpeed"> How quickly the entity is launched. </param>
         /// <param name="rotationSpeed"> How quickly the entity spins around in the air. </param>
-        public void LaunchEntity(Vector3 direction, float yForce, float launchSpeed, float rotationSpeed)
+        public void LaunchEntity(Vector2 direction, float yForce, float launchSpeed, float rotationSpeed)
         {
             desiredVelocity = direction.normalized;
-            desiredVelocity = new Vector3(desiredVelocity.x, yForce, desiredVelocity.z);
+            desiredVelocity = new Vector2(desiredVelocity.x, yForce);
 
-            rb.angularVelocity = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized * rotationSpeed;
+            rb.angularVelocity = Random.Range(-1.0f, 1.0f) * rotationSpeed;
 
             velocity = desiredVelocity * launchSpeed;
         }
 
-        public void ApplyGravity(Vector3 gravity, float maxSpeed, bool isGrounded, float slopeNormalDotProduct, bool isIdle = false)
+        public void ApplyGravity(Vector2 gravity, float maxSpeed, bool isGrounded, float slopeNormalDotProduct, bool isIdle = false)
         {
             if (isGrounded == false || (isIdle == false && slopeNormalDotProduct > 0.1f))
             {
                 //Apply gravity if agent is in the air or sliding, or if they are moving downhill.
-                rb.AddForce(gravity, ForceMode.Acceleration);
+                rb.AddForce(gravity, ForceMode2D.Force);
             }
             else
             {
                 //Don't apply gravity if we are grounded, as this can sometimes lead to sliding when the agent stands on slight slopes.
-                rb.velocity = new Vector3(rb.velocity.x, 0.0f, rb.velocity.z);
+                rb.velocity = new Vector2(rb.velocity.x, 0.0f);
             }
 
             //Cap speed after applying gravity when grounded to prevent the entity from moving too quickly downhill.
@@ -140,36 +139,10 @@
             }
         }
 
-        public void RotateEntity(float turningSpeed, bool stationaryTurn = false, Vector3? directionOverride = null)
-        {
-            if (desiredVelocity.magnitude > 0.0f || stationaryTurn == true)
-            {
-                Vector3 targetDir = desiredVelocity;
-
-                if (directionOverride != null)
-                {
-                    targetDir = directionOverride.Value;
-                }
-
-                float step = turningSpeed * Time.deltaTime;
-
-                Vector3 newDir = Vector3.RotateTowards(gameObject.transform.forward, targetDir, step, 0.0f);
-                if (debug)
-                {
-                    Debug.DrawRay(gameObject.transform.position, newDir, Color.red);
-                }
-
-                // Move our position a step closer to the target.
-                gameObject.transform.rotation = Quaternion.LookRotation(newDir);
-            }
-            //Failsafe to ensure that x and z are always zero.
-            gameObject.transform.eulerAngles = new Vector3(0.0f, gameObject.transform.eulerAngles.y, 0.0f);
-        }
-
-        public void InstantFaceDirection(Vector3 direction)
+        public void InstantFaceDirection(Vector2 direction)
         {
             direction.y = 0f;
-            gameObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            gameObject.transform.rotation = Quaternion.LookRotation(direction, Vector2.up);
         }
 
         public void CapSpeed(float maxSpeed)
@@ -186,9 +159,9 @@
             predictedMovementDistance = velocity.magnitude * Time.deltaTime + colliderRadius;
 
             //Raycast from the top, center, and bottom of the entity's collider to check for potential collisions.
-            colliderCenterPosition = gameObject.transform.position + colliderOffset;
-            colliderUpperPosition = gameObject.transform.position + upperColliderOffset;
-            colliderLowerPosition = gameObject.transform.position + lowerColliderOffset;
+            colliderCenterPosition = (Vector2) gameObject.transform.position + colliderOffset;
+            colliderUpperPosition = (Vector2) gameObject.transform.position + upperColliderOffset;
+            colliderLowerPosition = (Vector2) gameObject.transform.position + lowerColliderOffset;
         }
 
         /// <summary>
@@ -208,7 +181,7 @@
                 if (isDash == true)
                 {
                     //If the entity dashes into a wall, cancel their movement for the remainder of the dash.
-                    velocity = Vector3.zero;
+                    velocity = Vector2.zero;
                 }
                 else
                 {
@@ -237,11 +210,11 @@
                 SetRaycastOriginPoints();
 
                 //The position of the bottom of the player.
-                Vector3 playerPos = rb.position;
+                Vector2 playerPos = rb.position;
                 //The vector of movement that will be applied to the player, assuming their movement is valid.
-                Vector3 movementDisplacement = velocity.normalized * predictedMovementDistance;
+                Vector2 movementDisplacement = velocity.normalized * predictedMovementDistance;
                 //Start our raycast from where the player will be if their movement continues.
-                Vector3 raycastPos = playerPos + movementDisplacement;
+                Vector2 raycastPos = playerPos + movementDisplacement;
                 //Add an offset to the y value so that we hit the ground when we raycast down.
                 raycastPos.y += steepSlopeCheckRaycastDistance;
 
@@ -250,12 +223,12 @@
                     if (isDash == true)
                     {
                         //If the entity dashes into a steep slope, cancel their movement for the remainder of the dash.
-                        velocity = Vector3.zero;
+                        velocity = Vector2.zero;
                     }
                     else
                     {
                         //If the entity walks into a steep slope, stop the horizontal movement
-                        AddForceToVelocity(preemptiveSurfaceCollisionEntity.slopeNormal2D * velocity.magnitude);
+                        AddForceToVelocity(preemptiveSurfaceCollisionEntity.steepestSlopeNormal * velocity.magnitude);
                     }
                 }
             }
@@ -263,22 +236,22 @@
 
         public void ApplyStationaryVelocity()
         {
-            velocity = Vector3.zero;
-            desiredVelocity = Vector3.zero;
+            velocity = Vector2.zero;
+            desiredVelocity = Vector2.zero;
             rb.velocity = velocity;
         }
 
         public void IgnoreHorizontalMovementInput()
         {
-            velocity = new Vector3(0.0f, velocity.y, 0.0f);
+            velocity = new Vector2(0.0f, velocity.y);
         }
 
         public void ClampUpwardsVelocity()
         {
-            velocity = new Vector3(velocity.x, Mathf.Min(velocity.x, 0f), velocity.z);
+            velocity = new Vector2(velocity.x, Mathf.Min(velocity.x, 0f));
         }
 
-        public void AddForceToVelocity(Vector3 newForce)
+        public void AddForceToVelocity(Vector2 newForce)
         {
             velocity = velocity + newForce;
         }
@@ -287,14 +260,14 @@
         {
             if (!isGrounded)
             {
-                if (Physics.Raycast(gameObject.transform.position, Vector3.down, out hit, snapToGroundRaycastDistance, layerMask))
+                if (Physics.Raycast(gameObject.transform.position, Vector2.down, out hit, snapToGroundRaycastDistance, layerMask))
                 {
                     rb.MovePosition(hit.point);
                 }
             }
         }
 
-        public void SetPosition(Vector3 position)
+        public void SetPosition(Vector2 position)
         {
             rb.MovePosition(position);
         }

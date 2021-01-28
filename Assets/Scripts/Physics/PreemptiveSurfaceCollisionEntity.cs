@@ -5,11 +5,11 @@
     public class PreemptiveSurfaceCollisionEntity : SurfaceCollisionEntity
     {
         public PreemptiveSurfaceCollisionEntity(GameObject gameObject, PhysicsEntity physicsEntity, CollisionWrapper collisionWrapper, float groundCheckRaycastDistance, float groundCheckRaycastSpread,
-             float groundCheckCenterWeight, float groundCheckRaycastYOffset, LayerMask groundLayerMask, float slidingYAngleCutoff, float groundedYAngleCutoff,
+             float groundCheckCenterWeight, float groundCheckRaycastYOffset, LayerMask groundLayerMask, float slidingYAngleCutoff, float groundedYAngleCutoff, FlippableCharacter flippableCharacter,
              bool canSlide = true, bool useGroupRaycastNormals = true, bool useCollisionNormals = false) :
 
              base(gameObject, physicsEntity, collisionWrapper, groundCheckRaycastDistance, groundCheckRaycastSpread,
-             groundCheckCenterWeight, groundCheckRaycastYOffset, groundLayerMask, slidingYAngleCutoff, groundedYAngleCutoff,
+             groundCheckCenterWeight, groundCheckRaycastYOffset, groundLayerMask, slidingYAngleCutoff, groundedYAngleCutoff, flippableCharacter,
              canSlide = true, useGroupRaycastNormals = true, useCollisionNormals = false)
         { }
 

@@ -429,6 +429,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1484205068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7906207497983023092, guid: 42e4b74c2a3bce043b769db09e649e33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812483265661272721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1484205069
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484205068}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.15, y: 0.2}
+  m_Direction: 0
 --- !u!1 &1757107392
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +722,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1484205071, guid: 42e4b74c2a3bce043b769db09e649e33, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 42e4b74c2a3bce043b769db09e649e33, type: 3}
 --- !u!1001 &5156923648032390335
 PrefabInstance:

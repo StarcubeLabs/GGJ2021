@@ -10,11 +10,11 @@
 
         protected bool ableToExit;
         protected PlayerState nextState;
-        protected readonly PlayerController melodyController;
+        protected readonly PlayerController playerController;
 
         public PlayerState(PlayerController controller)
         {
-            melodyController = controller;
+            playerController = controller;
             isEntering = true;
             ableToExit = false;
         }

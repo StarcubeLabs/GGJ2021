@@ -1,24 +1,31 @@
 ﻿namespace GGJ2021
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : FlippableCharacter
     {
         public static PlayerController instance;
 
-        public float movementSpeed = 5f;
-        private Vector2 move = new Vector2();
+        public PlayerPhysics playerPhysics;
+        public PlayerSurfaceCollision playerCollision;
+        public PlayerConfig config;
+
+        public CollisionWrapper playerColliderWrapper;
+        public CapsuleCollider2D capsuleCollider;
+
+        [HideInInspector]
+        public Vector2 move = new Vector2();
         private Vector2 lookDirection = new Vector2();
         private float reticuleDistance = 0.3f;
-        private bool facingRight = true;
 
         public GameObject playerSprites;
         private Vector3 originalSpritesScale;
         public GameObject reticule;
 
-        private Rigidbody2D rb;
+        [HideInInspector]
+        public Rigidbody2D rigidBody;
+        [HideInInspector]
+        public RigidbodyConstraints2D defaultConstraints;
 
         PlayerStateMachine StateMachine;
         public string currentStateName;
@@ -38,18 +45,32 @@
         // Start is called before the first frame update
         void Start()
         {
-            rb = GetComponentInChildren<Rigidbody2D>();
+            rigidBody = GetComponentInChildren<Rigidbody2D>();
+            defaultConstraints = rigidBody.constraints;
             originalSpritesScale = playerSprites.transform.localScale;
+
+            StateMachine = new PlayerStateMachine(this);
+            playerPhysics = new PlayerPhysics(this);
+            playerCollision = new PlayerSurfaceCollision(this);
         }
 
         // Update is called once per frame
         void Update()
         {
-            Move();
+            playerPhysics.ResetDesiredVelocity();
+            CheckInputs();
             AimReticule();
+            StateMachine.OnUpdate(Time.deltaTime);
+            currentStateName = StateMachine.GetCurrentStateName();
         }
 
-        private void Move()
+        void FixedUpdate()
+        {
+            StateMachine.OnFixedUpdate();
+            playerCollision.OnFixedUpdate();
+        }
+
+        private void CheckInputs()
         {
             move.x = RewiredPlayerInputManager.instance.GetHorizontalMovement();
             if (move.x != 0)
@@ -64,7 +85,6 @@
                     playerSprites.transform.localScale = new Vector3(-originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
                     facingRight = false;
                 }
-                rb.velocity = new Vector2(move.x * movementSpeed, rb.velocity.y);
             }
         }
 
