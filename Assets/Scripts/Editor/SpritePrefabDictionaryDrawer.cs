@@ -1,6 +1,9 @@
-﻿using UnityEditor;
+using UnityEditor;
 
-[CustomPropertyDrawer(typeof(SpritePrefabDictionary))]
-public class SpritePrefabDictionaryDrawer : SerializableDictionaryPropertyDrawer
+namespace GGJ2021
 {
+    [CustomPropertyDrawer(typeof(SpritePrefabDictionary))]
+    public class SpritePrefabDictionaryDrawer : SerializableDictionaryPropertyDrawer
+    {
+    }
 }

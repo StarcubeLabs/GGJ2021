@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-[Serializable]
-public class SpritePrefabDictionary : SerializableDictionary<Sprite, GameObject>
+namespace GGJ2021
 {
+    [Serializable]
+    public class SpritePrefabDictionary : SerializableDictionary<Sprite, GameObject>
+    {
+    }
 }

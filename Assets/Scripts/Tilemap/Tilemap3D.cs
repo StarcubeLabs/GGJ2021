@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Starjam
+namespace GGJ2021
 {
     /// <summary>
     /// Maps a tilemap to model prefabs.
@@ -12,15 +12,21 @@ namespace Starjam
 
         [SerializeField]
         private SpritePrefabDictionary spritesToPrefabs;
-        private List<GameObject> instantiatedPrefabs = new List<GameObject>();
 
-        void Start()
+        private bool objectsEnabled
         {
-            createPrefabs();
-            GetComponent<TilemapRenderer>().enabled = false;
+            get { return transform.childCount > 0; }
         }
 
-        private void createPrefabs()
+        private void Start()
+        {
+            if (Application.isPlaying && !objectsEnabled)
+            {
+                CreateObjects();
+            }
+        }
+
+        private void CreateObjects()
         {
             Tilemap tileMap = GetComponent<Tilemap>();
             BoundsInt cellBounds = tileMap.cellBounds;
@@ -37,13 +43,38 @@ namespace Starjam
                         {
                             Debug.LogError("Missing prefab for tile " + sprite);
                         }
-                        GameObject prefabInstance = Instantiate(prefab, tileMap.GetCellCenterWorld(cellPos),
-                            prefab.transform.rotation * tileMap.GetTransformMatrix(cellPos).rotation);
-                        instantiatedPrefabs.Add(prefabInstance);
+                        Instantiate(prefab, tileMap.GetCellCenterLocal(cellPos),
+                            prefab.transform.rotation * tileMap.GetTransformMatrix(cellPos).rotation, transform);
                     }
                 }
             }
+            GetComponent<TilemapRenderer>().enabled = false;
+        }
+
+        private void DestroyObjects()
+        {
+            List<GameObject> tileObjects = new List<GameObject>();
+            foreach (Transform tileTransform in transform)
+            {
+                tileObjects.Add(tileTransform.gameObject);
+            }
+            foreach (GameObject tileObject in tileObjects)
+            {
+                DestroyImmediate(tileObject);
+            }
+            GetComponent<TilemapRenderer>().enabled = true;
+        }
+
+        public void ToggleObjects()
+        {
+            if (objectsEnabled)
+            {
+                DestroyObjects();
+            }
+            else
+            {
+                CreateObjects();
+            }
         }
     }
-
 }
