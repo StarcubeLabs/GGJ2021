@@ -1,4 +1,4 @@
-﻿namespace Starjam
+﻿namespace GGJ2021
 {
     using UnityEngine;
     using Rewired;

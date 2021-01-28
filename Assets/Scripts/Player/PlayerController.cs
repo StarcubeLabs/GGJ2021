@@ -1,4 +1,4 @@
-﻿namespace Starjam
+﻿namespace GGJ2021
 {
     using System.Collections;
     using System.Collections.Generic;
@@ -19,6 +19,9 @@
         public GameObject reticule;
 
         private Rigidbody2D rb;
+
+        PlayerStateMachine StateMachine;
+        public string currentStateName;
 
         private void Awake()
         {

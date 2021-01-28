@@ -1,4 +1,4 @@
-﻿namespace Starjam
+﻿namespace GGJ2021
 {
     using System.Collections;
     using System.Collections.Generic;
