@@ -1,4 +1,4 @@
-﻿namespace Input
+﻿namespace GGJ2021
 {
     using UnityEngine;
     using Rewired;
