@@ -121,10 +121,15 @@
 
         public void ApplyGravity(Vector2 gravity, float maxSpeed, bool isGrounded, float slopeNormalDotProduct, bool isIdle = false)
         {
-            if (isGrounded == false || (isIdle == false && slopeNormalDotProduct > 0.1f))
+            if (isGrounded == false)
             {
-                //Apply gravity if agent is in the air or sliding, or if they are moving downhill.
+                //Apply gravity if agent is in the air or sliding.
                 rb.AddForce(gravity, ForceMode2D.Force);
+            }
+            else if (isIdle == false && slopeNormalDotProduct > 0.1f)
+            {
+                //Apply extra gravity if agent is moving downhill to prevent bouncing.
+                rb.AddForce(gravity * 1.5f, ForceMode2D.Force);
             }
             else
             {
