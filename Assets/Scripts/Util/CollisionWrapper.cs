@@ -1,4 +1,4 @@
-﻿namespace GGJ2021.Util
+﻿namespace GGJ2021
 {
     using UnityEngine;
 
@@ -11,7 +11,7 @@
     /// </summary>
     public class CollisionWrapper : MonoBehaviour
     {
-        public Collider col;
+        public Collider2D col;
         public bool ignoreCollisionsWithOtherTriggers = true;
         public bool useLayerMask = true;
         public LayerMask mask;
@@ -29,19 +29,19 @@
         public delegate void OnTriggerExitDelegate(Collider other);
         OnTriggerExitDelegate onTriggerExitDelegate;
 
-        public delegate void OnCollisionEnterDelegate(Collider other);
+        public delegate void OnCollisionEnterDelegate(Collision other);
         OnCollisionEnterDelegate onCollisionEnterDelegate;
-        public delegate void OnCollisionStayDelegate(Collider other);
+        public delegate void OnCollisionStayDelegate(Collision other);
         OnCollisionStayDelegate onCollisionStayDelegate;
-        public delegate void OnCollisionExitDelegate(Collider other);
+        public delegate void OnCollisionExitDelegate(Collision other);
         OnCollisionExitDelegate onCollisionExitDelegate;
 
         // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             if (col == null)
             {
-                col = GetComponent<Collider>();
+                col = GetComponent<Collider2D>();
             }
             isTrigger = col.isTrigger;
         }
@@ -136,7 +136,7 @@
                 {
                     if (onCollisionEnterDelegate != null)
                     {
-                        onCollisionEnterDelegate(other.collider);
+                        onCollisionEnterDelegate(other);
                     }
                 }
             }
@@ -154,7 +154,7 @@
                 {
                     if (onCollisionStayDelegate != null)
                     {
-                        onCollisionStayDelegate(other.collider);
+                        onCollisionStayDelegate(other);
                     }
                 }
             }
@@ -172,7 +172,7 @@
                 {
                     if (onCollisionExitDelegate != null)
                     {
-                        onCollisionExitDelegate(other.collider);
+                        onCollisionExitDelegate(other);
                     }
                 }
             }
