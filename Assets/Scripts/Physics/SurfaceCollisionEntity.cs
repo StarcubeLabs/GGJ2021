@@ -119,7 +119,7 @@
             return Vector2.zero;
         }
 
-        protected void SetGroundedFromCollision(Collision collision)
+        protected void SetGroundedFromCollision(Collision2D collision)
         {
             for (int i = 0; i < collision.contactCount; i++)
             {
