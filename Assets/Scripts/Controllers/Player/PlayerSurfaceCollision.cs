@@ -12,11 +12,11 @@
 
         public PlayerSurfaceCollision(PlayerController controller)
         {
-            surfaceCollisionEntity = new SurfaceCollisionEntity(controller.gameObject, controller.playerPhysics.GetPhysicsEntity(), controller.playerColliderWrapper, controller.config.groundCheckRaycastDistance,
+            surfaceCollisionEntity = new SurfaceCollisionEntity(controller.bottom, controller.playerPhysics.GetPhysicsEntity(), controller.playerColliderWrapper, controller.config.groundCheckRaycastDistance,
                 controller.config.groundCheckRaycastSpread, controller.config.groundCheckCenterWeight, controller.config.groundCheckRaycastYOffset, controller.config.groundLayerMask,
                 controller.config.slidingYAngleCutoff, controller.config.groundedYAngleCutoff, controller, true, true, false);
 
-            preemptiveSurfaceCollisionEntity = new PreemptiveSurfaceCollisionEntity(controller.gameObject, controller.playerPhysics.GetPhysicsEntity(), controller.playerColliderWrapper, controller.config.groundCheckRaycastDistance,
+            preemptiveSurfaceCollisionEntity = new PreemptiveSurfaceCollisionEntity(controller.bottom, controller.playerPhysics.GetPhysicsEntity(), controller.playerColliderWrapper, controller.config.groundCheckRaycastDistance,
                 controller.config.groundCheckRaycastSpread, controller.config.groundCheckCenterWeight, controller.config.groundCheckRaycastYOffset, controller.config.groundLayerMask,
                 controller.config.slidingYAngleCutoff, controller.config.groundedYAngleCutoff, controller, true, true, false);
         }

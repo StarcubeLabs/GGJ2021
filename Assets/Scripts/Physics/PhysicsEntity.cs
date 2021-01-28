@@ -32,9 +32,9 @@
         //How far the entity is about to travel based on velocity
         public float predictedMovementDistance;
 
-        private RaycastHit hit;
+        private RaycastHit2D hit;
 
-        private bool debug = false;
+        private bool debug = true;
 
         //The how far above the ground to check for steep slopes when using the ProhibitMovementOntoSteepSlope function.
         private float steepSlopeCheckRaycastDistance;
@@ -174,9 +174,9 @@
             SetRaycastOriginPoints();
 
             //Check if the body's current velocity will result in a collision
-            if (Physics.Raycast(colliderCenterPosition, velocity.normalized, out hit, predictedMovementDistance, layerMask) ||
-                Physics.Raycast(colliderUpperPosition, velocity.normalized, out hit, predictedMovementDistance, layerMask) ||
-                (Physics.Raycast(colliderLowerPosition, velocity.normalized, out hit, predictedMovementDistance, layerMask) && !isDash))
+            if (Physics.Raycast(colliderCenterPosition, velocity.normalized, predictedMovementDistance, layerMask) ||
+                Physics.Raycast(colliderUpperPosition, velocity.normalized, predictedMovementDistance, layerMask) ||
+                (Physics.Raycast(colliderLowerPosition, velocity.normalized, predictedMovementDistance, layerMask) && !isDash))
             {
                 if (isDash == true)
                 {
@@ -260,7 +260,8 @@
         {
             if (!isGrounded)
             {
-                if (Physics.Raycast(gameObject.transform.position, Vector2.down, out hit, snapToGroundRaycastDistance, layerMask))
+                hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, snapToGroundRaycastDistance, layerMask);
+                if (hit.collider != null)
                 {
                     rb.MovePosition(hit.point);
                 }

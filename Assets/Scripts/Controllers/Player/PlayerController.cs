@@ -21,6 +21,7 @@
         public GameObject playerSprites;
         private Vector3 originalSpritesScale;
         public GameObject reticule;
+        public GameObject bottom;
 
         [HideInInspector]
         public Rigidbody2D rigidBody;

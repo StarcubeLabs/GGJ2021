@@ -30,7 +30,7 @@
 
         //Variables used to calculate floor normals.
         protected Vector2 raycastOrigin;
-        protected RaycastHit hit;
+        protected RaycastHit2D hit;
         protected Vector2 hitNormal;
         protected Vector2 averagedHitNormal;
 
@@ -105,7 +105,8 @@
         {
             raycastOrigin = new Vector2(origin.x + xOffset, origin.y + groundCheckRaycastYOffset);
             Debug.DrawRay(raycastOrigin, Vector2.down * (distance + groundCheckRaycastYOffset), Color.magenta);
-            if (Physics.Raycast(raycastOrigin, -Vector2.up, out hit, distance + groundCheckRaycastYOffset, groundLayerMask))
+            hit = Physics2D.Raycast(raycastOrigin, -Vector2.up, distance + groundCheckRaycastYOffset, groundLayerMask);
+            if (hit.collider != null)
             {
                 hitNormal = hit.normal;
                 //Only pay attention to collisions that 
