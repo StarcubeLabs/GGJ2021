@@ -134,6 +134,11 @@
             physicsEntity.IgnoreHorizontalMovementInput();
         }
 
+        public void ApplyJump(float jumpVelocity)
+        {
+            physicsEntity.ApplyJump(jumpVelocity);
+        }
+
         public void ClampUpwardsVelocity()
         {
             physicsEntity.ClampUpwardsVelocity();

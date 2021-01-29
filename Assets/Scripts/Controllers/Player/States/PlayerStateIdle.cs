@@ -20,6 +20,11 @@
             {
                 playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
             }
+            if ((RewiredPlayerInputManager.instance.L1Down() || RewiredPlayerInputManager.instance.ADown()) && playerController.playerCollision.IsGrounded() == true)
+            {
+                ableToExit = true;
+                nextState = new PlayerStateJump(playerController);
+            }
         }
 
         public override void OnFixedUpdate()
