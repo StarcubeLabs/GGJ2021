@@ -29,6 +29,7 @@ ProjectSettings/ProjectVersion.txt
 Assets/FMODStudioCache.asset
 Assets/FMODStudioCache.asset.meta
 Assets/Plugins/FMOD/Cache
+Assets/Plugins/FMOD/Cache/Editor/
 Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
