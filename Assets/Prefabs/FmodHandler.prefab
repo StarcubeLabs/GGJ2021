@@ -63,7 +63,7 @@ MonoBehaviour:
   memoryDebug: 0
   isMusicPlaying: 0
   playOnAwake: 1
-  awakeSongName: placeholder
+  awakeSongName: level1
   awakeSongVolume: 1
 --- !u!114 &8240301726776153555
 MonoBehaviour:
