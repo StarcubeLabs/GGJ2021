@@ -8,30 +8,29 @@
   public class HealthBarHandler : MonoBehaviour
   {
 
-      public int healthMax;
-      private int healthCurr;
+      public int statMax;
+      private int statCurr;
 
-      public GameObject healthIcon;
+      public GameObject iconObject;
+      private List<GameObject> icons;
       private float iconWidth = 25;
 
-      // Start is called before the first frame update
       void Start()
       {
-        // init values
-        healthCurr = healthMax;
+        statCurr = statMax;
+        icons = new List<GameObject>();
 
-        InstantiateIcons();
+        InitIcons();
       }
 
-      public void InstantiateIcons() {
-        for (int ii=0; ii<healthMax; ii++) {
-          // InstantiateIcon(ii);
+      public void InitIcons() {
+        for (int ii=0; ii<statMax; ii++) {
           StartCoroutine(InstantiateIcon(ii));
         }
       }
 
       IEnumerator InstantiateIcon(int idx) {
-        GameObject newIcon = Instantiate(healthIcon, transform);
+        GameObject newIcon = Instantiate(iconObject, transform);
 
         Vector3 newPosition = transform.position;
         newPosition.x += idx * (iconWidth + 10);
@@ -39,24 +38,23 @@
 
         // trying to stagger the animation but it's stupid
         float timeOffset = (float)(idx * 0.5);
-        GameObject healthFull = newIcon.transform.Find("Health_Full").gameObject;
-        Animator iconAnim = healthFull.GetComponent<Animator>();
+        Animator iconAnim = newIcon.GetComponent<Animator>();
         iconAnim.enabled = false;
         yield return new WaitForSeconds(timeOffset);
         iconAnim.enabled = true;
       }
 
-      public void IncrementMaxHealth(int amount) {
-        int newMax = healthMax + amount;
+      public void AddMax(int amount) {
+        int newMax = statMax + amount;
 
         // first create additional icons
-        for (int ii=healthMax; ii<newMax; ii++) {
+        for (int ii=statMax; ii<newMax; ii++) {
           StartCoroutine(InstantiateIcon(ii));
         }
 
         // then we can add health, can do curr=max another time
-        healthMax = newMax;
-        healthCurr = healthCurr + amount;
+        statMax = newMax;
+        statCurr = statCurr + amount;
       }
   }
 }
