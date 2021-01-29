@@ -27,12 +27,10 @@ ProjectSettings/ProjectVersion.txt
 # FMOD files
 Assets/FMODStudioCache.asset
 Assets/FMODStudioCache.asset.meta
+Assets/Plugins/FMOD/Cache
+Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
 
-# Articy Plugin
-# =====================================
-Assets/ArticyImporter/Content/Generated/
-=======
 /Assets/Scenes/Sandboxes.meta
 /Assets/Scenes/Sandboxes
