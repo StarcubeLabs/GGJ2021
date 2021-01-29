@@ -3,7 +3,7 @@
 namespace GGJ2021.Enemy
 {
 
-    public enum Hosility
+    public enum Hostility
     {
         ENEMY,
         FRIENDLY,
