@@ -9,8 +9,7 @@
   {
 
       public int healthMax;
-
-      public int healthCurr;
+      private int healthCurr;
 
       public GameObject healthIcon;
       private float iconWidth = 25;
@@ -21,22 +20,30 @@
         // init values
         healthCurr = healthMax;
 
-        this.InstantiateIcons();
+        InstantiateIcons();
       }
 
       public void InstantiateIcons() {
         for (int ii=0; ii<healthMax; ii++) {
-          InstantiateIcon(ii);
+          // InstantiateIcon(ii);
+          StartCoroutine(InstantiateIcon(ii));
         }
       }
 
-      public void InstantiateIcon(int idx) {
-        GameObject icon = Instantiate(healthIcon, transform);
+      IEnumerator InstantiateIcon(int idx) {
+        GameObject newIcon = Instantiate(healthIcon, transform);
 
         Vector3 newPosition = transform.position;
         newPosition.x += idx * (iconWidth + 10);
+        newIcon.transform.position = newPosition;
 
-        icon.transform.position = newPosition;
+        // trying to stagger the animation but it's stupid
+        float timeOffset = (float)(idx * 0.5);
+        GameObject healthFull = newIcon.transform.Find("Health_Full").gameObject;
+        Animator iconAnim = healthFull.GetComponent<Animator>();
+        iconAnim.enabled = false;
+        yield return new WaitForSeconds(timeOffset);
+        iconAnim.enabled = true;
       }
 
       public void IncrementMaxHealth(int amount) {
@@ -44,7 +51,7 @@
 
         // first create additional icons
         for (int ii=healthMax; ii<newMax; ii++) {
-          InstantiateIcon(ii);
+          StartCoroutine(InstantiateIcon(ii));
         }
 
         // then we can add health, can do curr=max another time
