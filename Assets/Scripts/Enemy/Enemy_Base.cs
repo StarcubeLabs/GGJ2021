@@ -10,10 +10,11 @@ using UnityEngine;
 
 public class Enemy_Base : MonoBehaviour
 {
-    public float health;
-    public float damage;
-    public float moveSpeed;
-    public float jellyLevel;
+    public float maxhealth; // maxhealth is a float in case of peeshooter dmg
+    public float health;    //current health of enemy
+    public float damage;    //damage dealt to player
+    public float moveSpeed; //move speed for mobile characters
+    public float jellyLevel; 
     public float coolDown;
     public GameObject projectile;
     public List<GameObject> positions;
@@ -26,27 +27,31 @@ public class Enemy_Base : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(positions.Count == 0) // init to static lerping position
+        {
+            positions[0].transform.position = this.gameObject.transform.position;
+            positions[1].transform.position = this.gameObject.transform.position;
+        }      
     }
 
     // Update is called once per frame
     void Update()
     {
+
         this.gameObject.transform.position = Vector3.Lerp(positions[0].transform.position,   
             positions[1].transform.position, Mathf.PingPong(Time.time * moveSpeed, 1.0f)); // Lerp between points
+
+        if(health == 0)
+        {
+            Destroy(this.gameObject, 0.1f);
+        }
+       
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))  //If the player collies with this object a cooldown happens
-        {
-            coolDown = 5;
-        }
-        else
-        {
-          coolDown--;
-        }
+       //add damage method on collision
     }
 
     public virtual void Move()
@@ -59,8 +64,8 @@ public class Enemy_Base : MonoBehaviour
 
     }
 
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(float damage)
     {
-
+        health -= damage;
     }
 }
