@@ -44,7 +44,7 @@
 
         protected FlippableCharacter flippableCharacter;
 
-        protected readonly bool debug = true;
+        protected readonly bool debug = false;
 
         public SurfaceCollisionEntity(GameObject gameObject, PhysicsEntity physicsEntity, CollisionWrapper collisionWrapper, float groundCheckRaycastDistance, float groundCheckRaycastSpread,
              float groundCheckCenterWeight, float groundCheckRaycastYOffset, LayerMask groundLayerMask, float slidingYAngleCutoff, float groundedYAngleCutoff, FlippableCharacter flippableCharacter,

@@ -25,8 +25,6 @@
 
         [Header("Dash Settings")]
         public float DashLength;
-        public float DashIntroTime;
-        public float DashOutroTime;
         public float DashTime;
 
         public float DashOutroMaxSpeed;
