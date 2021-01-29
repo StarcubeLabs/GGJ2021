@@ -37,6 +37,7 @@
             timer = 0;
 
             playerController.playerPhysics.isDashing = true;
+            playerController.playerPhysics.canDash = false;
             playerController.playerPhysics.dashDirection = dodge;
         }
 

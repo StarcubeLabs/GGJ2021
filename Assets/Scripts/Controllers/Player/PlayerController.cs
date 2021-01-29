@@ -60,7 +60,7 @@
         // Update is called once per frame
         void Update()
         {
-            playerPhysics.ResetDesiredVelocity();
+            playerPhysics.OnUpdate();
             CheckInputs();
             AimReticule();
             StateMachine.OnUpdate(Time.deltaTime);

@@ -1077,6 +1077,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!212 &1354002966 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 171684065, guid: 42e4b74c2a3bce043b769db09e649e33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812483265661272721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1373003477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,6 +1515,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1963814569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 353910847, guid: 42e4b74c2a3bce043b769db09e649e33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812483265661272721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1963814570 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 353910849, guid: 42e4b74c2a3bce043b769db09e649e33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812483265661272721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1963814572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963814569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c0475a82bd16e4cbd9808ece13a06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 1963814570}
+  - {fileID: 1354002966}
+  defaultColor: {r: 1, g: 0.4, b: 0, a: 1}
+  dimColor: {r: 0.4627451, g: 0.3254902, b: 0, a: 1}
 --- !u!1001 &1812483265661272721
 PrefabInstance:
   m_ObjectHideFlags: 0
