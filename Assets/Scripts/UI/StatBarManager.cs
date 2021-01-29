@@ -1,11 +1,11 @@
-﻿namespace GGJ2021.UserInterface
+﻿namespace GGJ2021.UI
 {
 
   using System.Collections;
   using System.Collections.Generic;
   using UnityEngine;
 
-  public class HealthBarHandler : MonoBehaviour
+  public class StatBarManager : MonoBehaviour
   {
 
       public int statMax;
@@ -31,17 +31,33 @@
 
       IEnumerator InstantiateIcon(int idx) {
         GameObject newIcon = Instantiate(iconObject, transform);
+        icons.Add(newIcon);
 
         Vector3 newPosition = transform.position;
         newPosition.x += idx * (iconWidth + 10);
         newIcon.transform.position = newPosition;
 
         // trying to stagger the animation but it's stupid
-        float timeOffset = (float)(idx * 0.5);
+        float timeOffset = (float)(idx * 0.2);
         Animator iconAnim = newIcon.GetComponent<Animator>();
         iconAnim.enabled = false;
         yield return new WaitForSeconds(timeOffset);
         iconAnim.enabled = true;
+
+        ToggleIconState(newIcon, true);
+      }
+
+      void ToggleIconState(GameObject icon, bool isEnabled) {
+        GameObject activeIcon = icon.transform.GetChild(1).gameObject;
+        activeIcon.SetActive(isEnabled);
+
+        Animator iconAnim = icon.GetComponent<Animator>();
+        iconAnim.enabled = isEnabled;
+      }
+
+      void ToggleIconState(int idx, bool isEnabled) {
+        GameObject icon = icons[idx];
+        ToggleIconState(icon, isEnabled);
       }
 
       public void AddMax(int amount) {
@@ -55,6 +71,16 @@
         // then we can add health, can do curr=max another time
         statMax = newMax;
         statCurr = statCurr + amount;
+      }
+
+      public void SubtractCurr(int amount) {
+        int newCurr = statCurr -= amount;
+
+        // for (int ii=statCurr; ii>0; ii--) {
+        for(int ii=newCurr; ii<statMax; ii++) {
+          print("ii " + ii);
+          ToggleIconState(ii, false);
+        }
       }
   }
 }
