@@ -558,6 +558,8 @@ MonoBehaviour:
     MaxAcceleration: 80
     Gravity: {x: 0, y: -40, z: 0}
     GroundedDashGravity: {x: 0, y: -40, z: 0}
+    jumpSpeed: 12
+    jumpTime: 0.2
     ProjectileSpeed: 15
     ProjectileRotationSpeedLowerBound: 240
     ProjectileRotationSpeedUpperBound: 360
@@ -574,8 +576,8 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 1
     groundCheckRaycastDistance: 0.5
-    groundCheckRaycastYOffset: 0.1
-    groundCheckRaycastSpread: 0.25
+    groundCheckRaycastYOffset: 0.5
+    groundCheckRaycastSpread: 0.5
     groundCheckCenterWeight: 1
     groundedYAngleCutoff: 45
     slidingYAngleCutoff: 89

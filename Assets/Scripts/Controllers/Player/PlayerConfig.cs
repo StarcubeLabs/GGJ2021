@@ -12,6 +12,11 @@
 
         public Vector3 GroundedDashGravity;
 
+        [Header("Jump Settings")]
+        public float jumpSpeed;
+        public float jumpTime;
+
+
         [Header("Projectile Settings")]
         public float ProjectileSpeed;
         public float ProjectileRotationSpeedLowerBound;

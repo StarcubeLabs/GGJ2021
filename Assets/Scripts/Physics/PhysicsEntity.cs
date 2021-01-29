@@ -210,7 +210,7 @@
         /// <param name="isDash"> Whether or not the player is dashing. This will effect HOW we stop their movement up the slope. </param>
         public void ProhibitMovementOntoSteepSlope(PreemptiveSurfaceCollisionEntity preemptiveSurfaceCollisionEntity, bool isGrounded, bool isInAir, bool isDash = false)
         {
-            if (isGrounded || isInAir)
+            if (isGrounded)
             {
                 SetRaycastOriginPoints();
 
@@ -249,6 +249,11 @@
         public void IgnoreHorizontalMovementInput()
         {
             velocity = new Vector2(0.0f, velocity.y);
+        }
+
+        public void ApplyJump(float jumpVelocity)
+        {
+            velocity = new Vector2(velocity.x, jumpVelocity);
         }
 
         public void ClampUpwardsVelocity()
