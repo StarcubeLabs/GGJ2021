@@ -16,11 +16,16 @@
                 nextState = new PlayerStateMoving(playerController);
             }
 
-            if (RewiredPlayerInputManager.instance.R1Down())
+            if (RewiredPlayerInputManager.instance.IsFiring())
             {
                 playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
             }
-            if ((RewiredPlayerInputManager.instance.L1Down() || RewiredPlayerInputManager.instance.ADown()) && playerController.playerCollision.IsGrounded() == true)
+            if (RewiredPlayerInputManager.instance.IsDashing())
+            {
+                ableToExit = true;
+                nextState = new PlayerStateDash(playerController);
+            }
+            else if (RewiredPlayerInputManager.instance.IsJumping() && playerController.playerCollision.IsGrounded() == true)
             {
                 ableToExit = true;
                 nextState = new PlayerStateJump(playerController);

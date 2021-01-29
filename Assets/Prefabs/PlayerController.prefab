@@ -565,13 +565,11 @@ MonoBehaviour:
     ProjectileRotationSpeedUpperBound: 360
     ProjectileGravity: {x: 0, y: -15, z: 0}
     DashLength: 7
-    DashIntroTime: 0
-    DashOutroTime: 0.35
     DashTime: 0.25
     DashOutroMaxSpeed: 6
     DashOutroGravity: {x: 0, y: -20, z: 0}
     snapToGroundRaycastDistance: 0.4
-    snapToGroundRaycastDistanceDash: 0.1
+    snapToGroundRaycastDistanceDash: 1
     groundLayerMask:
       serializedVersion: 2
       m_Bits: 1

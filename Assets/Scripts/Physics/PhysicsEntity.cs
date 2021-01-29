@@ -34,7 +34,7 @@
 
         private RaycastHit2D hit;
 
-        private bool debug = true;
+        private bool debug = false;
 
         //The how far above the ground to check for steep slopes when using the ProhibitMovementOntoSteepSlope function.
         private float steepSlopeCheckRaycastDistance;
@@ -270,9 +270,13 @@
         {
             if (!isGrounded)
             {
-                hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, snapToGroundRaycastDistance, layerMask);
+                float offset = 0.1f;
+                Vector3 offsetVec = new Vector3(offset, 0f);
+                Debug.DrawRay(PlayerController.instance.bottom.transform.position, Vector2.down, Color.blue);
+                hit = Physics2D.Raycast(PlayerController.instance.bottom.transform.position + offsetVec, Vector2.down, snapToGroundRaycastDistance + offset, layerMask);
                 if (hit.collider != null)
                 {
+                    Debug.Log("Snap to ground");
                     rb.MovePosition(hit.point);
                 }
             }

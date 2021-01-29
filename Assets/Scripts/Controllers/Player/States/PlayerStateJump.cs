@@ -23,9 +23,14 @@
                 nextState = new PlayerStateIdle(playerController);
             }
 
-            if (RewiredPlayerInputManager.instance.R1Down())
+            if (RewiredPlayerInputManager.instance.IsFiring())
             {
                 playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
+            }
+            if (RewiredPlayerInputManager.instance.IsDashing())
+            {
+                ableToExit = true;
+                nextState = new PlayerStateDash(playerController);
             }
 
             playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);

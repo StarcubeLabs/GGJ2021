@@ -110,5 +110,20 @@
         {
             return player.GetButtonDown("StartDown");
         }
+
+        public bool IsFiring()
+        {
+            return R1Down();
+        }
+
+        public bool IsDashing()
+        {
+            return L2Down() || BDown();
+        }
+
+        public bool IsJumping()
+        {
+            return L1Down() || ADown();
+        }
     }
 }

@@ -75,7 +75,7 @@
             //Apply gravity if Melody is moving downhill.
             if (controller.playerCollision.GetSlopeNormalDotProduct() > 0.1f)
             {
-                controller.rigidBody.AddForce(gravity, ForceMode2D.Force);
+                controller.rigidBody.AddForce(gravity, ForceMode2D.Impulse);
             }
 
             //Cap speed after applying gravity when grounded to prevent Melody from moving too quickly downhill.

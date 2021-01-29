@@ -1,0 +1,79 @@
+﻿namespace GGJ2021
+{
+    using UnityEngine;
+
+    public class PlayerStateDash : PlayerState
+    {
+        protected Vector2 dodge;
+        protected float timer, maxTimer;
+        private float dodgeMultiplier;
+
+        private Vector2 normalizedVelocity;
+        private float velocityMagnitude;
+
+        public PlayerStateDash(PlayerController controller) : base(controller)
+        {
+            stateName = "PlayerStateDash";
+            timer = 0.0f;
+            maxTimer = playerController.config.DashTime;
+        }
+
+        protected override void Enter()
+        {
+            dodgeMultiplier = (playerController.config.DashLength / playerController.config.DashTime);
+
+            if (playerController.facingRight)
+            {
+                dodge = Vector2.right * dodgeMultiplier;
+            }
+            else
+            {
+                dodge = Vector2.left * dodgeMultiplier;
+            }
+
+            nextState = new PlayerStateIdle(playerController);
+            playerController.playerPhysics.ApplyStationaryVelocity();
+
+            timer = 0;
+
+            playerController.playerPhysics.isDashing = true;
+            playerController.playerPhysics.dashDirection = dodge;
+        }
+
+        public override void OnUpdate(float time)
+        {
+            base.OnUpdate(time);
+
+            timer += time;
+            if (timer >= maxTimer)
+            {
+                ableToExit = true;
+            }
+
+            //Restrict the Y axis range of Melody's dash once she leaves the ground.
+            if (playerController.playerCollision.IsInAir())
+            {
+                normalizedVelocity = playerController.playerPhysics.GetRigidbodyVelocity().normalized;
+                velocityMagnitude = playerController.playerPhysics.GetRigidbodyVelocity().magnitude;
+                normalizedVelocity.y = 0f;
+                dodge.y = Mathf.Max(normalizedVelocity.y * velocityMagnitude, 0f);
+            }
+            playerController.playerPhysics.dashDirection = dodge;
+        }
+
+        public override void OnFixedUpdate()
+        {
+            playerController.playerPhysics.ApplyDashVelocity(dodge);
+            playerController.playerPhysics.ApplyDashGravity(playerController.config.GroundedDashGravity);
+            playerController.playerPhysics.SnapToGround();
+
+            base.OnFixedUpdate();
+        }
+
+        public override void OnExit()
+        {
+            playerController.playerPhysics.isDashing = false;
+            playerController.playerPhysics.ApplyStationaryVelocity();
+        }
+    }
+}
