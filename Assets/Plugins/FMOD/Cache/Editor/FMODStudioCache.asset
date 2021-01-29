@@ -1,214 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8823308041083994826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
-  m_EditorClassIdentifier: 
-  Name: global_event_end
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &-8685229296979920093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
-  m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
---- !u!114 &-8644017179936010890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_area_phase
-  m_EditorClassIdentifier: 
-  Name: global_area_phase
-  Min: 0
-  Max: 5
-  Default: 1
-  Exists: 1
---- !u!114 &-7837187731665645422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
-  m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 1
---- !u!114 &-6846118261245651349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
-  m_EditorClassIdentifier: 
-  Name: global_pitch
-  Min: 0
-  Max: 12
-  Default: 0
-  Exists: 0
---- !u!114 &-6421903692954325019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodPlaceholder/Desktop/Master.strings.bank
-  Name: Master.strings
-  lastModified: 637472128377605239
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 688
-  Exists: 1
---- !u!114 &-6351955321328309319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_combat_proximity
-  m_EditorClassIdentifier: 
-  Name: global_combat_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
---- !u!114 &-6114373897652635803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_area_phase
-  m_EditorClassIdentifier: 
-  Name: global_area_phase
-  Min: 0
-  Max: 5
-  Default: 1
-  Exists: 1
---- !u!114 &-5394455797197795865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodPlaceholder/Desktop/Master.bank
-  Name: Master
-  lastModified: 637472128377545390
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &-4365829990580729076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_combat_proximity
-  m_EditorClassIdentifier: 
-  Name: global_combat_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
---- !u!114 &-3339732695456171338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_area_phase
-  m_EditorClassIdentifier: 
-  Name: global_area_phase
-  Min: 0
-  Max: 5
-  Default: 1
-  Exists: 0
---- !u!114 &-3291416856891121553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
-  m_EditorClassIdentifier: 
-  Name: global_event_end
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
---- !u!114 &-3044013433247314514
+--- !u!114 &-8663640451861197315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,58 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PLACEHOLDER
+  m_Name: event:/ui/title_menu_button
   m_EditorClassIdentifier: 
-  Path: event:/PLACEHOLDER
-  guid: ec7ce0e7253b034da2d4afa8261ad39d
+  Path: event:/ui/title_menu_button
+  guid: 477fd033d19596429b755f8971878ea7
   Banks:
-  - {fileID: 8308423445491334717}
+  - {fileID: 7803006625312020422}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 10000
-  MaxDistance: 10000
-  Length: 0
---- !u!114 &-2183319674899693026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FmodBuild/Desktop/Master.bank
-  Name: Master
-  lastModified: 637472128377545390
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &-2017541329774630682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FmodBuild/Desktop/Master.strings.bank
-  Name: Master.strings
-  lastModified: 637472239154480944
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1158
-  Exists: 1
---- !u!114 &-1820553798749252775
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &-7910838029124777779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,14 +33,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
+  m_Name: parameter:/final_cutscene/outro
   m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
+  Name: outro
   Min: 0
-  Max: 100
+  Max: 2
   Default: 0
   Exists: 0
---- !u!114 &-1449225549434078743
+--- !u!114 &-7898207444901318621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_grapple_shoot
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_grapple_shoot
+  guid: 1e277c3c4c58654a80da9bada9ba0d6c
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3750
+--- !u!114 &-7584496880491061972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,14 +73,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
+  m_Name: parameter:/level1/battle
   m_EditorClassIdentifier: 
-  Name: global_octave
+  Name: battle
   Min: 0
-  Max: 7
+  Max: 1
   Default: 0
   Exists: 0
---- !u!114 &-898415647099118100
+--- !u!114 &-6714735495200985381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,14 +90,79 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
+  m_Name: parameter:/level1/atmo_acid
   m_EditorClassIdentifier: 
-  Name: global_event_end
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-6569839175325256541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/level1 (old)
+  m_EditorClassIdentifier: 
+  Path: event:/music/level1 (old)
+  guid: 4d2bc8d4c6a00146af901410f065c5c4
+  Banks:
+  - {fileID: 3386141058009058716}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1899837135017829464}
+  - {fileID: 9220731941970377321}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 216000
+--- !u!114 &-5602007138382030538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_explosion_wet
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_explosion_wet
+  guid: e3b743bff823b84cad969e39fcac2f9a
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3000
+--- !u!114 &-5519301789058568219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1 (old)/battle
+  m_EditorClassIdentifier: 
+  Name: battle
   Min: 0
   Max: 1
   Default: 0
   Exists: 1
---- !u!114 &-569109955304497643
+--- !u!114 &-5257957992255211873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,41 +171,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/enemies/enemy_shoot
   m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -2017541329774630682}
-  - {fileID: 8308423445491334717}
-  EditorEvents:
-  - {fileID: 9145042251410117906}
-  - {fileID: -3044013433247314514}
-  - {fileID: 132699885676634328}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 8308423445491334717}
-  StringsBanks:
-  - {fileID: -2017541329774630682}
-  stringsBankWriteTime: 637472239154480944
-  cacheVersion: 4
---- !u!114 &132699885676634328
+  Path: event:/sfx/enemies/enemy_shoot
+  guid: b34ef36bc702194abbe339abef2d752b
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &-5056556161832913207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,275 +199,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/music/placeholder_music/placeholder_music
   guid: fe6d10493f2a114d8c49f82378d67c18
-  Banks:
-  - {fileID: 8308423445491334717}
+  Banks: []
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7837187731665645422}
-  - {fileID: -898415647099118100}
-  - {fileID: 3345014546312495109}
-  - {fileID: -6114373897652635803}
+  - {fileID: -1912601134881012041}
+  - {fileID: -2509031980433633636}
+  - {fileID: -2513378576122698959}
+  - {fileID: -3981378727436435210}
   MinDistance: 0
   MaxDistance: 0
   Length: 139636
---- !u!114 &553731051754619069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
-  m_EditorClassIdentifier: 
-  Name: global_octave
-  Min: 0
-  Max: 7
-  Default: 0
-  Exists: 0
---- !u!114 &671046617520479653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
-  m_EditorClassIdentifier: 
-  Name: global_event_end
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &964848488582223140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
-  m_EditorClassIdentifier: 
-  Name: global_event_end
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &1126124629254875826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_combat_proximity
-  m_EditorClassIdentifier: 
-  Name: global_combat_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 1
---- !u!114 &1193337112065443984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_area_phase
-  m_EditorClassIdentifier: 
-  Name: global_area_phase
-  Min: 0
-  Max: 5
-  Default: 1
-  Exists: 0
---- !u!114 &1388518194053384112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
-  m_EditorClassIdentifier: 
-  Name: global_pitch
-  Min: 0
-  Max: 12
-  Default: 0
-  Exists: 0
---- !u!114 &2119018051107870488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
-  m_EditorClassIdentifier: 
-  Name: global_octave
-  Min: 0
-  Max: 7
-  Default: 0
-  Exists: 0
---- !u!114 &2412229764048909099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_combat_proximity
-  m_EditorClassIdentifier: 
-  Name: global_combat_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
---- !u!114 &3123708818306044106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
-  m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 1
---- !u!114 &3155505533487653188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
-  m_EditorClassIdentifier: 
-  Name: global_pitch
-  Min: 0
-  Max: 12
-  Default: 0
-  Exists: 0
---- !u!114 &3281026105743396593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_area_phase
-  m_EditorClassIdentifier: 
-  Name: global_area_phase
-  Min: 0
-  Max: 5
-  Default: 1
-  Exists: 0
---- !u!114 &3345014546312495109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_combat_proximity
-  m_EditorClassIdentifier: 
-  Name: global_combat_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 1
---- !u!114 &3785106946536140087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
-  m_EditorClassIdentifier: 
-  Name: global_octave
-  Min: 0
-  Max: 7
-  Default: 0
-  Exists: 1
---- !u!114 &4240838276623349851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
-  m_EditorClassIdentifier: 
-  Name: global_octave
-  Min: 0
-  Max: 7
-  Default: 0
-  Exists: 0
---- !u!114 &4508879155381529032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
-  m_EditorClassIdentifier: 
-  Name: global_event_end
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 0
---- !u!114 &4652509908560206275
+--- !u!114 &-4940503524501059195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -655,17 +221,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/sfx.bank
   m_EditorClassIdentifier: 
-  Path: FmodBuild/Desktop/Master.strings.bank
-  Name: Master.strings
-  lastModified: 637472128377605239
+  Path: FmodBuild/Desktop/sfx.bank
+  Name: sfx
+  lastModified: 637476717187832728
   LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 688
+  FileSizes: []
   Exists: 1
---- !u!114 &5298877824046577087
+--- !u!114 &-4077813363490768072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -675,14 +239,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
+  m_Name: parameter:/level1/atmo_acid
   m_EditorClassIdentifier: 
-  Name: global_pitch
+  Name: atmo_acid
   Min: 0
-  Max: 12
+  Max: 1
   Default: 0
   Exists: 0
---- !u!114 &5551690785348873400
+--- !u!114 &-3981378727436435210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -698,8 +262,71 @@ MonoBehaviour:
   Min: 0
   Max: 5
   Default: 1
+  Exists: 1
+--- !u!114 &-3895887245014676990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_explosion_fire
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_explosion_fire
+  guid: 5f36027df667f44eb82c72a1d50e375b
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3000
+--- !u!114 &-3616769908451101609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_hit
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_hit
+  guid: e3b743bff823b84cad969e39fcac2f9a
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-3493499819326642819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1 (old)/atmo_acid
+  m_EditorClassIdentifier: 
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
   Exists: 0
---- !u!114 &5616317604838982375
+--- !u!114 &-3326877952080388515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -709,14 +336,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
+  m_Name: parameter:/final_cutscene/outro
   m_EditorClassIdentifier: 
-  Name: global_pitch
+  Name: outro
   Min: 0
-  Max: 12
+  Max: 2
   Default: 0
-  Exists: 1
---- !u!114 &6067358328119940173
+  Exists: 0
+--- !u!114 &-3179089067354890694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -725,15 +352,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_grapple_hit
   m_EditorClassIdentifier: 
-  Name: global_octave
-  Min: 0
-  Max: 7
-  Default: 0
-  Exists: 1
---- !u!114 &6413844240308332591
+  Path: event:/sfx/abilities/hamster_grapple_hit
+  guid: 664484c57253f44aabcb3478d7229ebc
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &-2609952516666372264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PLACEHOLDER
+  m_EditorClassIdentifier: 
+  Path: event:/PLACEHOLDER
+  guid: ec7ce0e7253b034da2d4afa8261ad39d
+  Banks: []
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 10000
+  MaxDistance: 10000
+  Length: 0
+--- !u!114 &-2513378576122698959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -749,8 +404,8 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
-  Exists: 0
---- !u!114 &6994342096698262311
+  Exists: 1
+--- !u!114 &-2509031980433633636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -760,31 +415,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
+  m_Name: parameter:/placeholder_music/global_event_end
   m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
+  Name: global_event_end
   Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
---- !u!114 &7102093431980437471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
-  m_EditorClassIdentifier: 
-  Name: global_pitch
-  Min: 0
-  Max: 12
+  Max: 1
   Default: 0
   Exists: 1
---- !u!114 &8308423445491334717
+--- !u!114 &-2147073745651911088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/misc/collect_hamster
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/misc/collect_hamster
+  guid: b05bab9e4d973042b76eddb9ee39a587
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &-2116625640969518191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -798,11 +459,340 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FmodBuild/Desktop/Master.bank
   Name: Master
-  lastModified: 637472239154470973
+  lastModified: 637476717184541210
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &9145042251410117906
+--- !u!114 &-2045424142621999930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/player_death
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/player_death
+  guid: cc6ad48c0a71854f9fda9e5588fbf21b
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3000
+--- !u!114 &-2028028571348486358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/misc/heal
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/misc/heal
+  guid: 9173a993fbbea441a02ee33c12a1400e
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &-1912601134881012041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/placeholder_music/global_puzzle_proximity
+  m_EditorClassIdentifier: 
+  Name: global_puzzle_proximity
+  Min: 0
+  Max: 100
+  Default: 0
+  Exists: 1
+--- !u!114 &-1838883092845200003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1 (old)/atmo_acid
+  m_EditorClassIdentifier: 
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-1686574475695159692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-1568196753639560596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_dash_tube_rolling
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_dash_tube_rolling
+  guid: f58eb609351b724a8e190063c1f138d5
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3624
+--- !u!114 &-806575747589746234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/atmo_acid
+  m_EditorClassIdentifier: 
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-565118943945803694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_dash
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_dash
+  guid: 7886ff1457914b4884f69d7897617ce6
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &-417920971506352849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/final_cutscene
+  m_EditorClassIdentifier: 
+  Path: event:/music/final_cutscene
+  guid: 4acb88f34e808f4c9f0d9e0271443068
+  Banks:
+  - {fileID: 3386141058009058716}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 454237352924099114}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 108000
+--- !u!114 &-83579221419413594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 5149031733306178282}
+  - {fileID: -2116625640969518191}
+  - {fileID: 3386141058009058716}
+  - {fileID: -4940503524501059195}
+  - {fileID: 7803006625312020422}
+  EditorEvents:
+  - {fileID: 1449019559213917828}
+  - {fileID: 1643143331775972935}
+  - {fileID: 6227957148315211057}
+  - {fileID: -417920971506352849}
+  - {fileID: 4247835645822670283}
+  - {fileID: 4317929776850610395}
+  - {fileID: -7898207444901318621}
+  - {fileID: 6349746587433942262}
+  - {fileID: 2004098603243651388}
+  - {fileID: -3895887245014676990}
+  - {fileID: 1182927788829417215}
+  - {fileID: -3179089067354890694}
+  - {fileID: 8239287709805193944}
+  - {fileID: 6253458703797998214}
+  - {fileID: -565118943945803694}
+  - {fileID: -2028028571348486358}
+  - {fileID: 1894765080427929640}
+  - {fileID: -2147073745651911088}
+  - {fileID: -5257957992255211873}
+  - {fileID: 3759158512637504072}
+  - {fileID: -2045424142621999930}
+  - {fileID: -5602007138382030538}
+  - {fileID: 7200114922084541952}
+  - {fileID: -1568196753639560596}
+  - {fileID: -8663640451861197315}
+  - {fileID: -6569839175325256541}
+  - {fileID: 3038605809687631063}
+  - {fileID: 4006832728108529982}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -2116625640969518191}
+  StringsBanks:
+  - {fileID: 5149031733306178282}
+  stringsBankWriteTime: 637476717184562280
+  cacheVersion: 4
+--- !u!114 &363058440481368112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/atmo_acid
+  m_EditorClassIdentifier: 
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &454237352924099114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/final_cutscene/outro
+  m_EditorClassIdentifier: 
+  Name: outro
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
+--- !u!114 &1182927788829417215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/player_jump
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/player_jump
+  guid: 5fd016c465ba3a44864dd8da90cdef93
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &1260552340070481982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/final_cutscene/outro
+  m_EditorClassIdentifier: 
+  Name: outro
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &1333445816893750760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -816,14 +806,604 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/PLACEHOLDER_tonal
   guid: 1819ebb70cdb1c41b732fac840d517c9
-  Banks:
-  - {fileID: 8308423445491334717}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 6067358328119940173}
-  - {fileID: 7102093431980437471}
+  - {fileID: 3234837458119775033}
+  - {fileID: 2820179436959335093}
   MinDistance: 10000
   MaxDistance: 10000
   Length: 50000
+--- !u!114 &1449019559213917828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/title_screen
+  m_EditorClassIdentifier: 
+  Path: event:/music/title_screen
+  guid: 25fc5840dddf6b419a4782530df98cee
+  Banks:
+  - {fileID: 3386141058009058716}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 43200
+--- !u!114 &1643143331775972935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/level1
+  m_EditorClassIdentifier: 
+  Path: event:/music/level1
+  guid: 756acfa37868294390a9bf2749b2981a
+  Banks:
+  - {fileID: 3386141058009058716}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 363058440481368112}
+  - {fileID: 4583216757868712232}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 192018
+--- !u!114 &1894765080427929640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_dash_tube_exit
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_dash_tube_exit
+  guid: 930eec379d1d6444beed6250c04754e4
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &1899837135017829464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1 (old)/atmo_acid
+  m_EditorClassIdentifier: 
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &2004098603243651388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/enemies/enemy_death
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/enemies/enemy_death
+  guid: 55208dcbd0193745878ec9db5a264321
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1500
+--- !u!114 &2820179436959335093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
+  m_EditorClassIdentifier: 
+  Name: global_pitch
+  Min: 0
+  Max: 12
+  Default: 0
+  Exists: 1
+--- !u!114 &3006344822675942597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &3038605809687631063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/misc/rock_breaking
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/misc/rock_breaking
+  guid: 2a2b5f6d5f37644dabe20ff898ab8dc6
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &3234837458119775033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
+  m_EditorClassIdentifier: 
+  Name: global_octave
+  Min: 0
+  Max: 7
+  Default: 0
+  Exists: 1
+--- !u!114 &3386141058009058716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/music.bank
+  m_EditorClassIdentifier: 
+  Path: FmodBuild/Desktop/music.bank
+  Name: music
+  lastModified: 637476717187504673
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &3435986986575497764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1 (old)/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &3759158512637504072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/player_damage_acid
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/player_damage_acid
+  guid: bf1f18d54aa5ec47bfffbe687fa748a1
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &4006832728108529982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/misc/door_open
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/misc/door_open
+  guid: 89a55221fd585747963fef90f80296de
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4374
+--- !u!114 &4247835645822670283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_dash_tube_enter
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_dash_tube_enter
+  guid: 0db5d3d13e639e49ba928215d7836336
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &4317929776850610395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/misc/hamster_respawn
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/misc/hamster_respawn
+  guid: 1116be15298d104899ae6ec5108e7ff3
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &4498712003055308422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &4583216757868712232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &5056055045390642033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/final_cutscene/outro
+  m_EditorClassIdentifier: 
+  Name: outro
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &5149031733306178282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FmodBuild/Desktop/Master.strings.bank
+  Name: Master.strings
+  lastModified: 637476717184562280
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 2350
+  Exists: 1
+--- !u!114 &6227957148315211057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_shoot
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_shoot
+  guid: f2f8e3a33ff8ec429185ed3acae6e553
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &6253458703797998214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/hamster_grapple_zip
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/hamster_grapple_zip
+  guid: 73bcb67353c78844836abb729dc9dc16
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
+--- !u!114 &6349746587433942262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/player_footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/player_footsteps
+  guid: 328ff0a2f355f44eb59abb55fdb0e115
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 958
+--- !u!114 &6955301000681495932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/level1 (old)
+  m_EditorClassIdentifier: 
+  Path: event:/music/level1 (old)
+  guid: 4d2bc8d4c6a00146af901410f065c5c4
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1838883092845200003}
+  - {fileID: -5519301789058568219}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 216000
+--- !u!114 &7147878449732112284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &7200114922084541952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/abilities/player_damage
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/abilities/player_damage
+  guid: ebfbd5b8d788744b92dcf8429a5f4505
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &7747157922761418885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1/atmo_acid
+  m_EditorClassIdentifier: 
+  Name: atmo_acid
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &7803006625312020422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/ui.bank
+  m_EditorClassIdentifier: 
+  Path: FmodBuild/Desktop/ui.bank
+  Name: ui
+  lastModified: 637476717187868531
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8239287709805193944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/misc/heal_power_up
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/misc/heal_power_up
+  guid: 7282cea9ae2331438433843afeea591f
+  Banks:
+  - {fileID: -4940503524501059195}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &9220731941970377321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/level1 (old)/battle
+  m_EditorClassIdentifier: 
+  Name: battle
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
