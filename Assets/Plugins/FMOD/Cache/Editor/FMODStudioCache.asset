@@ -67,23 +67,6 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
-  Exists: 0
---- !u!114 &-7221380623993617874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_puzzle_proximity
-  m_EditorClassIdentifier: 
-  Name: global_puzzle_proximity
-  Min: 0
-  Max: 100
-  Default: 0
   Exists: 1
 --- !u!114 &-6846118261245651349
 MonoBehaviour:
@@ -155,23 +138,6 @@ MonoBehaviour:
   Min: 0
   Max: 5
   Default: 1
-  Exists: 0
---- !u!114 &-5455054025076653355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_pitch
-  m_EditorClassIdentifier: 
-  Name: global_pitch
-  Min: 0
-  Max: 12
-  Default: 0
   Exists: 1
 --- !u!114 &-5394455797197795865
 MonoBehaviour:
@@ -297,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FmodBuild/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637473691602514751
+  lastModified: 637472239154480944
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -337,23 +303,6 @@ MonoBehaviour:
   Max: 7
   Default: 0
   Exists: 0
---- !u!114 &-1208849865404371845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_event_end
-  m_EditorClassIdentifier: 
-  Name: global_event_end
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
 --- !u!114 &-898415647099118100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +319,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &-569109955304497643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +361,7 @@ MonoBehaviour:
   - {fileID: 8308423445491334717}
   StringsBanks:
   - {fileID: -2017541329774630682}
-  stringsBankWriteTime: 637473691602514751
+  stringsBankWriteTime: 637472239154480944
   cacheVersion: 4
 --- !u!114 &132699885676634328
 MonoBehaviour:
@@ -434,10 +383,10 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7221380623993617874}
-  - {fileID: -1208849865404371845}
-  - {fileID: 2643352381320868582}
-  - {fileID: 6445336369040866747}
+  - {fileID: -7837187731665645422}
+  - {fileID: -898415647099118100}
+  - {fileID: 3345014546312495109}
+  - {fileID: -6114373897652635803}
   MinDistance: 0
   MaxDistance: 0
   Length: 139636
@@ -577,23 +526,6 @@ MonoBehaviour:
   Max: 100
   Default: 0
   Exists: 0
---- !u!114 &2643352381320868582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_combat_proximity
-  m_EditorClassIdentifier: 
-  Name: global_combat_proximity
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 1
 --- !u!114 &3123708818306044106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +593,7 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &3785106946536140087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,23 +699,6 @@ MonoBehaviour:
   Max: 5
   Default: 1
   Exists: 0
---- !u!114 &5579340135846823800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/PLACEHOLDER_tonal/global_octave
-  m_EditorClassIdentifier: 
-  Name: global_octave
-  Min: 0
-  Max: 7
-  Default: 0
-  Exists: 1
 --- !u!114 &5616317604838982375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +732,7 @@ MonoBehaviour:
   Min: 0
   Max: 7
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &6413844240308332591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,23 +750,6 @@ MonoBehaviour:
   Max: 100
   Default: 0
   Exists: 0
---- !u!114 &6445336369040866747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/placeholder_music/global_area_phase
-  m_EditorClassIdentifier: 
-  Name: global_area_phase
-  Min: 0
-  Max: 5
-  Default: 1
-  Exists: 1
 --- !u!114 &6994342096698262311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,7 +783,7 @@ MonoBehaviour:
   Min: 0
   Max: 12
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &8308423445491334717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FmodBuild/Desktop/Master.bank
   Name: Master
-  lastModified: 637473691602494768
+  lastModified: 637472239154470973
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -924,8 +822,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 5579340135846823800}
-  - {fileID: -5455054025076653355}
+  - {fileID: 6067358328119940173}
+  - {fileID: 7102093431980437471}
   MinDistance: 10000
   MaxDistance: 10000
   Length: 50000
