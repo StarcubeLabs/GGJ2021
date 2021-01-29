@@ -22,14 +22,18 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+ProjectSettings/ProjectSettings.asset
 ProjectSettings/ProjectVersion.txt
 
 # FMOD files
 Assets/FMODStudioCache.asset
 Assets/FMODStudioCache.asset.meta
+Assets/Plugins/FMOD/Cache
+Assets/Plugins/FMOD/Cache/Editor/
+Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
 
-# Articy Plugin
-# =====================================
-Assets/ArticyImporter/Content/Generated/
+
+/Assets/Scenes/Sandboxes.meta
+/Assets/Scenes/Sandboxes

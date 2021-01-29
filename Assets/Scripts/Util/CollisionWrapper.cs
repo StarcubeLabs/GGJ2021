@@ -1,4 +1,4 @@
-﻿namespace GGJ2021.Util
+﻿namespace GGJ2021
 {
     using UnityEngine;
 
@@ -11,7 +11,7 @@
     /// </summary>
     public class CollisionWrapper : MonoBehaviour
     {
-        public Collider col;
+        public Collider2D col;
         public bool ignoreCollisionsWithOtherTriggers = true;
         public bool useLayerMask = true;
         public LayerMask mask;
@@ -20,28 +20,28 @@
         public string[] namesToIgnore;
 
         private bool isTrigger;
-        private bool isActive = true;
+        public bool isActive = true;
 
-        public delegate void OnTriggerEnterDelegate(Collider other);
+        public delegate void OnTriggerEnterDelegate(Collider2D other);
         OnTriggerEnterDelegate onTriggerEnterDelegate;
-        public delegate void OnTriggerStayDelegate(Collider other);
+        public delegate void OnTriggerStayDelegate(Collider2D other);
         OnTriggerStayDelegate onTriggerStayDelegate;
-        public delegate void OnTriggerExitDelegate(Collider other);
+        public delegate void OnTriggerExitDelegate(Collider2D other);
         OnTriggerExitDelegate onTriggerExitDelegate;
 
-        public delegate void OnCollisionEnterDelegate(Collider other);
+        public delegate void OnCollisionEnterDelegate(Collision2D other);
         OnCollisionEnterDelegate onCollisionEnterDelegate;
-        public delegate void OnCollisionStayDelegate(Collider other);
+        public delegate void OnCollisionStayDelegate(Collision2D other);
         OnCollisionStayDelegate onCollisionStayDelegate;
-        public delegate void OnCollisionExitDelegate(Collider other);
+        public delegate void OnCollisionExitDelegate(Collision2D other);
         OnCollisionExitDelegate onCollisionExitDelegate;
 
         // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             if (col == null)
             {
-                col = GetComponent<Collider>();
+                col = GetComponent<Collider2D>();
             }
             isTrigger = col.isTrigger;
         }
@@ -70,7 +70,7 @@
             return false;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (isActive && isTrigger && ShouldIgnoreObject(other.gameObject) == false)
             {
@@ -88,7 +88,7 @@
             }
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerStay2D(Collider2D other)
         {
             if (isActive && isTrigger && ShouldIgnoreObject(other.gameObject) == false)
             {
@@ -106,7 +106,7 @@
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit2D(Collider2D other)
         {
             if (isActive && isTrigger && ShouldIgnoreObject(other.gameObject) == false)
             {
@@ -124,7 +124,7 @@
             }
         }
 
-        void OnCollisionEnter(Collision other)
+        void OnCollisionEnter2D(Collision2D other)
         {
             if (isActive && isTrigger == false && ShouldIgnoreObject(other.gameObject) == false)
             {
@@ -136,13 +136,13 @@
                 {
                     if (onCollisionEnterDelegate != null)
                     {
-                        onCollisionEnterDelegate(other.collider);
+                        onCollisionEnterDelegate(other);
                     }
                 }
             }
         }
 
-        void OnCollisionStay(Collision other)
+        void OnCollisionStay2D(Collision2D other)
         {
             if (isActive && isTrigger == false && ShouldIgnoreObject(other.gameObject) == false)
             {
@@ -154,13 +154,13 @@
                 {
                     if (onCollisionStayDelegate != null)
                     {
-                        onCollisionStayDelegate(other.collider);
+                        onCollisionStayDelegate(other);
                     }
                 }
             }
         }
 
-        void OnCollisionExit(Collision other)
+        void OnCollisionExit2D(Collision2D other)
         {
             if (isActive && isTrigger == false && ShouldIgnoreObject(other.gameObject) == false)
             {
@@ -172,7 +172,7 @@
                 {
                     if (onCollisionExitDelegate != null)
                     {
-                        onCollisionExitDelegate(other.collider);
+                        onCollisionExitDelegate(other);
                     }
                 }
             }
