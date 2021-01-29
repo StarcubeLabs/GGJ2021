@@ -276,7 +276,6 @@
                 hit = Physics2D.Raycast(PlayerController.instance.bottom.transform.position + offsetVec, Vector2.down, snapToGroundRaycastDistance + offset, layerMask);
                 if (hit.collider != null)
                 {
-                    Debug.Log("Snap to ground");
                     rb.MovePosition(hit.point);
                 }
             }
