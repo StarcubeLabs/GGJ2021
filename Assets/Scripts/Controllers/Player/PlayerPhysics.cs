@@ -10,7 +10,7 @@
         private RaycastHit hit;
 
         public bool isDashing;
-        public Vector3 dashDirection;
+        public Vector2 dashDirection;
 
         public PlayerPhysics(PlayerController controller)
         {
@@ -45,7 +45,7 @@
             //controller.melodyAnimator.SetStrafeInfo(controller.transform.forward, physicsEntity.velocity);
         }
 
-        public void ApplyDashVelocity(Vector3 dashVelocity)
+        public void ApplyDashVelocity(Vector2 dashVelocity)
         {
             if (controller.playerCollision.IsSliding())
             {
@@ -60,17 +60,17 @@
             }
         }
 
-        public void SetPosition(Vector3 position)
+        public void SetPosition(Vector2 position)
         {
             physicsEntity.SetPosition(position);
         }
 
-        public void ApplyGravity(Vector3 gravity, bool isIdle = false)
+        public void ApplyGravity(Vector2 gravity, bool isIdle = false)
         {
             physicsEntity.ApplyGravity(gravity, controller.config.MaxSpeed, controller.playerCollision.IsGrounded(), controller.playerCollision.GetSlopeNormalDotProduct(), isIdle);
         }
 
-        public void ApplyDashGravity(Vector3 gravity)
+        public void ApplyDashGravity(Vector2 gravity)
         {
             //Apply gravity if Melody is moving downhill.
             if (controller.playerCollision.GetSlopeNormalDotProduct() > 0.1f)
@@ -85,7 +85,7 @@
             }
         }
 
-        public void ApplyRampGravity(Vector3 gravity)
+        public void ApplyRampGravity(Vector2 gravity)
         {
             //Apply gravity if Melody is in the air after a ramp jump.
             if (controller.playerCollision.IsInAir() == true)
@@ -94,17 +94,17 @@
             }
         }
 
-        public Vector3 GetVelocity()
+        public Vector2 GetVelocity()
         {
             return physicsEntity.velocity;
         }
 
-        public Vector3 GetRigidbodyVelocity()
+        public Vector2 GetRigidbodyVelocity()
         {
             return physicsEntity.rb.velocity;
         }
 
-        public void InstantFaceDirection(Vector3 direction)
+        public void InstantFaceDirection(Vector2 direction)
         {
             physicsEntity.InstantFaceDirection(direction);
         }
@@ -114,7 +114,7 @@
             physicsEntity.SnapToGround(controller.playerCollision.IsGrounded(), controller.config.snapToGroundRaycastDistance, controller.config.groundLayerMask);
         }
 
-        public void OverrideVelocity(Vector3 newVelocity)
+        public void OverrideVelocity(Vector2 newVelocity)
         {
             physicsEntity.OverrideVelocity(newVelocity);
         }
