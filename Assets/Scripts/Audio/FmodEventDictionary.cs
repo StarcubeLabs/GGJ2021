@@ -13,7 +13,8 @@
             //{ "", "" },
 
             #region Placeholder
-            { "placeholder", "event:/music/placeholder_music/placeholder_music" },
+            { "title_screen", "event:/music/title_screen" },
+            { "level1", "event:/music/level1" },
             #endregion
         };
 
@@ -23,8 +24,8 @@
             //{ "", "" },
 
             #region Global
-            { "PLACEHOLDER", "event:/PLACEHOLDER" },
-            { "PLACEHOLDER_tonal", "event:/PLACEHOLDER_tonal" },
+            { "hamster_shoot", "event:/sfx/abilities/hamster_shoot" },
+            { "hamster_hit", "event:/sfx/abilities/hamster_hit" },
             #endregion
         };
 
@@ -34,8 +35,7 @@
             //{ "", "" },
 
             #region Global
-            {"global_pitch_param", "global_pitch" },
-            {"global_octave_param", "global_octave" },
+            {"battle", "battle" },
             #endregion
         };
     }
