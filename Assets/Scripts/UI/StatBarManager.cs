@@ -27,6 +27,8 @@
         for (int ii=0; ii<statMax; ii++) {
           StartCoroutine(InstantiateIcon(ii));
         }
+
+        RedrawIcons();
       }
 
       IEnumerator InstantiateIcon(int idx) {
@@ -43,8 +45,6 @@
         iconAnim.enabled = false;
         yield return new WaitForSeconds(timeOffset);
         iconAnim.enabled = true;
-
-        ToggleIconState(newIcon, true);
       }
 
       void ToggleIconState(GameObject icon, bool isEnabled) {
@@ -60,6 +60,13 @@
         ToggleIconState(icon, isEnabled);
       }
 
+      void RedrawIcons() {
+        for(int ii=0; ii<statMax; ii++) {
+          bool newIconState = ii < statCurr;
+          ToggleIconState(ii, newIconState);
+        }
+      }
+
       public void AddMax(int amount) {
         int newMax = statMax + amount;
 
@@ -68,19 +75,22 @@
           StartCoroutine(InstantiateIcon(ii));
         }
 
-        // then we can add health, can do curr=max another time
+        // then we can add health, can do curr=max if we wanna
         statMax = newMax;
         statCurr = statCurr + amount;
+        RedrawIcons();
+      }
+
+      public void AddCurr(int amount) {
+        int newCurr = Mathf.Min(statMax, statCurr + amount);
+        statCurr = newCurr;
+        RedrawIcons();
       }
 
       public void SubtractCurr(int amount) {
-        int newCurr = statCurr -= amount;
-
-        // for (int ii=statCurr; ii>0; ii--) {
-        for(int ii=newCurr; ii<statMax; ii++) {
-          print("ii " + ii);
-          ToggleIconState(ii, false);
-        }
+        int newCurr = Mathf.Max(0, statCurr - amount);
+        statCurr = newCurr;
+        RedrawIcons();
       }
   }
 }
