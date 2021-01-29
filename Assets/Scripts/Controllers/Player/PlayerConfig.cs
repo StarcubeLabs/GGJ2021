@@ -16,6 +16,12 @@
         public float jumpSpeed;
         public float jumpTime;
 
+        [Header("Grapple Settings")]
+        public float grappleRange;
+        public float grappleSuccessPauseTime;
+        public float grappleFailRetractTime;
+        public float grappleTransitionTime;
+        public LayerMask grappleLayerMask;
 
         [Header("Projectile Settings")]
         public float ProjectileSpeed;

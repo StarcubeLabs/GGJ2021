@@ -30,6 +30,11 @@
                 ableToExit = true;
                 nextState = new PlayerStateJump(playerController);
             }
+
+            if (RewiredPlayerInputManager.instance.IsGrappling() && playerController.playerGrappleManager.CanGrapple())
+            {
+                playerController.playerGrappleManager.Grapple();
+            }
         }
 
         public override void OnFixedUpdate()

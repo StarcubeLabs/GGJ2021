@@ -116,6 +116,11 @@
             return R1Down();
         }
 
+        public bool IsGrappling()
+        {
+            return R2Down();
+        }
+
         public bool IsDashing()
         {
             return L2Down() || BDown();

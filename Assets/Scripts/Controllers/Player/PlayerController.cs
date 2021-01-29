@@ -8,6 +8,7 @@
 
         public PlayerPhysics playerPhysics;
         public PlayerSurfaceCollision playerCollision;
+        public PlayerGrappleManager playerGrappleManager;
         public PlayerConfig config;
 
         public HamsterManager hamsterManager;
@@ -24,6 +25,8 @@
         private Vector3 originalSpritesScale;
         public GameObject reticule;
         public GameObject bottom;
+
+        public LineRenderer grapple;
 
         [HideInInspector]
         public Rigidbody2D rigidBody;
@@ -55,12 +58,14 @@
             StateMachine = new PlayerStateMachine(this);
             playerPhysics = new PlayerPhysics(this);
             playerCollision = new PlayerSurfaceCollision(this);
+            playerGrappleManager = new PlayerGrappleManager(this, grapple);
         }
 
         // Update is called once per frame
         void Update()
         {
             playerPhysics.OnUpdate();
+            playerGrappleManager.OnUpdate(Time.deltaTime);
             CheckInputs();
             AimReticule();
             StateMachine.OnUpdate(Time.deltaTime);
