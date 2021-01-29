@@ -10,13 +10,15 @@
         public PlayerSurfaceCollision playerCollision;
         public PlayerConfig config;
 
+        public HamsterManager hamsterManager;
+
         public CollisionWrapper playerColliderWrapper;
         public CapsuleCollider2D capsuleCollider;
 
         [HideInInspector]
         public Vector2 move = new Vector2();
-        private Vector2 lookDirection = new Vector2();
-        private float reticuleDistance = 0.3f;
+        public Vector2 lookDirection = new Vector2();
+        private float reticuleDistance = 2.0f;
 
         public GameObject playerSprites;
         private Vector3 originalSpritesScale;

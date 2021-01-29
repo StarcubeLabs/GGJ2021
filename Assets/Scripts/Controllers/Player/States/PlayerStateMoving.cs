@@ -19,6 +19,11 @@
                 nextState = new PlayerStateIdle(playerController);
             }
 
+            if (RewiredPlayerInputManager.instance.R1Down())
+            {
+                playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
+            }
+
             playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);
         }
 

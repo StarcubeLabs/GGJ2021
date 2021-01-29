@@ -179,9 +179,9 @@
             SetRaycastOriginPoints();
 
             //Check if the body's current velocity will result in a collision
-            if (Physics2D.Raycast(colliderCenterPosition, velocity.normalized, predictedMovementDistance * 1.01f, layerMask) ||
-                Physics2D.Raycast(colliderUpperPosition, velocity.normalized, predictedMovementDistance * 1.01f, layerMask) ||
-                (Physics2D.Raycast(colliderLowerPosition, velocity.normalized, predictedMovementDistance * 1.01f, layerMask) && !isDash))
+            if (Physics2D.Raycast(colliderCenterPosition, velocity.normalized, predictedMovementDistance * 1.0f, layerMask) ||
+                Physics2D.Raycast(colliderUpperPosition, velocity.normalized, predictedMovementDistance * 1.0f, layerMask) ||
+                (Physics2D.Raycast(colliderLowerPosition, velocity.normalized, predictedMovementDistance * 0.9f, layerMask) && !isDash))
             {
                 if (isDash == true)
                 {
@@ -196,9 +196,9 @@
             }
             if (debug)
             {
-                Debug.DrawRay(colliderCenterPosition, velocity.normalized * predictedMovementDistance, Color.yellow);
-                Debug.DrawRay(colliderUpperPosition, velocity.normalized * predictedMovementDistance, Color.blue);
-                Debug.DrawRay(colliderLowerPosition, velocity.normalized * predictedMovementDistance, Color.green);
+                Debug.DrawRay(colliderCenterPosition, velocity.normalized * predictedMovementDistance * 1.0f, Color.yellow);
+                Debug.DrawRay(colliderUpperPosition, velocity.normalized * predictedMovementDistance * 1.0f, Color.blue);
+                Debug.DrawRay(colliderLowerPosition, velocity.normalized * predictedMovementDistance * 0.9f, Color.green);
             }
         }
 
@@ -215,7 +215,7 @@
                 SetRaycastOriginPoints();
 
                 //The position of the bottom of the player.
-                Vector2 playerPos = rb.position;
+                Vector2 playerPos = PlayerController.instance.bottom.transform.position;
                 //The vector of movement that will be applied to the player, assuming their movement is valid.
                 Vector2 movementDisplacement = velocity.normalized * predictedMovementDistance;
                 //Start our raycast from where the player will be if their movement continues.

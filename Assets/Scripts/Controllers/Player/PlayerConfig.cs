@@ -12,10 +12,11 @@
 
         public Vector3 GroundedDashGravity;
 
-        [Header("Attack Settings")]
-        public float AttackMaxSpeed;         //Unity Units Per Second
-        public float AttackMaxAcceleration;  //Unity Units Per Second
-        public Vector3 AttackGravity;
+        [Header("Projectile Settings")]
+        public float ProjectileSpeed;
+        public float ProjectileRotationSpeedLowerBound;
+        public float ProjectileRotationSpeedUpperBound;
+        public Vector3 ProjectileGravity;
 
         [Header("Dash Settings")]
         public float DashLength;

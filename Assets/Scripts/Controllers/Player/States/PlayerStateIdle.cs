@@ -15,6 +15,11 @@
                 ableToExit = true;
                 nextState = new PlayerStateMoving(playerController);
             }
+
+            if (RewiredPlayerInputManager.instance.R1Down())
+            {
+                playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
+            }
         }
 
         public override void OnFixedUpdate()
