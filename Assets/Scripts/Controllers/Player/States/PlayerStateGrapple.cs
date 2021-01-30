@@ -16,6 +16,7 @@ namespace GGJ2021
             exitTimer = controller.config.grappleSuccessPostPauseTime;
             moveTimer = controller.config.grappleTransitionTime;
             initMoveTimer = controller.config.grappleTransitionTime;
+            controller.playerPhysics.isGrappling = true;
         }
 
         protected override void Enter(){ }
@@ -76,6 +77,7 @@ namespace GGJ2021
 
         public override void OnExit()
         {
+            playerController.playerPhysics.isGrappling = false;
             playerController.playerGrappleManager.ResetGrapple();
             playerController.playerPhysics.ApplyStationaryVelocity();
         }
