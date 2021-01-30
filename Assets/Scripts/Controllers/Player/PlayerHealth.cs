@@ -9,10 +9,14 @@
         private CollisionWrapper playerHurtboxColliderWrapper;
 
         private float invulnerabilityTimer, invulnerabilityTimerMax = 1f;
+        private PlayerController controller;
+
+        public bool dead = false;
 
         public PlayerHealth(PlayerController controller, CollisionWrapper playerHurtboxColliderWrapper)
         {
             curHealth = maxHealth;
+            this.controller = controller;
             this.playerHurtboxColliderWrapper = playerHurtboxColliderWrapper;
             this.playerHurtboxColliderWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);
         }
@@ -40,6 +44,7 @@
             }
             else
             {
+                controller.playerAnimationController.HurtTrigger();
                 invulnerabilityTimer = invulnerabilityTimerMax;
             }
         }
@@ -59,7 +64,9 @@
 
         private void Die()
         {
-            //TODO: Die.
+            controller.playerAnimationController.DeathTrigger();
+            controller.StateMachine.ForceNextState(new PlayerStateDead(controller));
+            dead = true;
         }
 
         public void OnCollision(Collider2D col)

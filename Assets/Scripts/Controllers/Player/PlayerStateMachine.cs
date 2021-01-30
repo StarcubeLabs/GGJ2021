@@ -24,6 +24,13 @@
             }
         }
 
+        public void ForceNextState(PlayerState NewNextState)
+        {
+            NextState = NewNextState;
+            CurrentState = NextState;
+            NextState = null;
+        }
+
         public void OnFixedUpdate()
         {
             CurrentState.OnFixedUpdate();
