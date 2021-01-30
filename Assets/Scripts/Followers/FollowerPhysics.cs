@@ -131,7 +131,7 @@ namespace GGJ2021
         Vector3 ChooseTarget() {
             print("ChooseTarget()");
             if (!IsNearPlayer()) {
-                return playerObj.transform.position;
+                return PlayerPosition();
             }
 
             if (IsThinking() && !IsFalling()) {
@@ -142,7 +142,7 @@ namespace GGJ2021
             return Vector3.zero;
         }
         Vector3 FindHangoutPosition() {
-            Vector3 pPos = playerObj.transform.position;
+            Vector3 pPos = PlayerPosition();
             float xOffset = Random.Range(-2.0f, 2.0f);
 
             Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
@@ -180,10 +180,13 @@ namespace GGJ2021
             return Vector3.Distance(transform.position, targetPos) < config.targetMinDistance;
         }
         public bool IsNearPlayer() {
-            return Vector3.Distance(transform.position, playerObj.transform.position) < config.followMinDistance;
+            return Vector3.Distance(transform.position, PlayerPosition()) < config.followMinDistance;
         }
         public bool IsTouchingGround() {
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
+        }
+        public Vector3 PlayerPosition() {
+            return playerObj.transform.position + config.targetOffset;
         }
     }
 }

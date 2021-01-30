@@ -19,10 +19,10 @@
         public float targetMinDistance = 0.9f;
         [Tooltip("How far from player before starting to chase after it.")]
         public float followMinDistance = 1.5f;
+        [Tooltip("Amount to offset from the player when tracking it")]
+        public Vector3 targetOffset = new Vector3(0, -0.6f, 0);
 
         [Header("Ground")]
-        // [Tooltip("Amount to offset when we are on the ground")]
-        // public float groundOffset;
         [Tooltip("The distance threshold within which Player will snap to the ground if she is close enough.")]
         public float snapToGroundRaycastDistance;
         [Tooltip("How far to check below Player for the ground.")]
