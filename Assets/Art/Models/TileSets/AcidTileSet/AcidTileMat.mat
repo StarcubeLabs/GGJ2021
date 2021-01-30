@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AcidTemp
+  m_Name: AcidTileMat
   m_Shader: {fileID: 4800000, guid: d4f8a124f758f334fae8552e87d47905, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
