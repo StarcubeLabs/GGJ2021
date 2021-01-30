@@ -13,7 +13,7 @@ namespace GGJ2021.Enemy
 
         NPCPool_Base()
         {
-            npcPausePool = new NPCPool_Base[100];
+            npcPausePool = new NPC_Base[100];
             aggroPool = new Enemy_NPC[100];
             enemyPrefabLibrary = FindObjectOfType<EnemySpriteHolder_Base>();
 
@@ -28,8 +28,10 @@ namespace GGJ2021.Enemy
             get { lock (padlock) { if (instance == null) { instance = new NPCPool_Base(); } return instance; } }
         }
 
-        private NPCPool_Base[] npcPausePool;
+        private NPC_Base[] npcPausePool;
+        private int npcPausePoolCount;
         private Enemy_NPC[] aggroPool;
+        private int aggroPoolCount;
 
         // BulletPool[]
 
@@ -85,13 +87,86 @@ namespace GGJ2021.Enemy
             }
         }
 
+        public void PauseAll()
+        {
+            int total = 0;
+            for (int i = 0; i < npcPausePool.Length; i++)
+            {
+                if (npcPausePool[i] != null)
+                {
+                    total++;
+
+                    npcPausePool[i].pause();
+                }
+
+                if (total >= npcPausePoolCount)
+                    break;
+            }
+
+            // TO DO: Pause Bullets 
+        }
+
         private int AddToNPCPool()
         {
-            int ret = 0;
-            // TO DO: Search pool for a free space and then assign that value to the NPC
+            int i = 0;
+            bool emptyspotNotFound = true;
+            while (emptyspotNotFound && i < 100)
+            {
+                if (npcPausePool[i] == null)
+                {
+                    npcPausePoolCount++;
 
-           
-            return ret;
+                    emptyspotNotFound = false;
+                }
+                else i++;
+            }
+
+            if (i >= 100)
+                return -1;
+            else return i;
+        }
+
+        public int AddToAggroPool(Enemy_NPC eNPC)
+        {
+            int i = 0;
+            bool emptyspotNotFound = true;
+            while (emptyspotNotFound && i < 100)
+            {
+                if (aggroPool[i] == null)
+                {
+                    aggroPool[i] = eNPC;
+                    aggroPoolCount++;
+
+                    emptyspotNotFound = false;
+                }
+                else i++;
+            }
+
+            if (i >= 100)
+                return -1;
+            else return i;
+        }
+
+        private void RemoveFromPool<T>(T[] pool, int flockNum, int poolSize)
+        {
+            int j = 0;
+            int j_countingValidUnits = 0;
+            while (j_countingValidUnits < poolSize && j < 100)
+            {
+                if (pool[j] != null)
+                {
+                    j_countingValidUnits++;
+                }
+                j++;
+                //if (j == 100) Debug.LogError("couldn't find an enemy using aggropoolcount: jCount"+ j_countingValidUnits+" Count of enemies: "+ AggroPoolCount+" flockID: "+flockNum);
+            }
+            pool[flockNum] = default(T);
+            poolSize--;
+        }
+
+        private void AddToPool<T>(T[] pool, T member, int index)
+        {
+            pool[index] = member;
         }
     }
 }
