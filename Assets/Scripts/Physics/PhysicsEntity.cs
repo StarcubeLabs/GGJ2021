@@ -68,7 +68,7 @@
         public void CalculateVelocity(Vector2 direction, float maxSpeed, float maxAcceleration, bool ignoreYValue = true)
         {
             desiredVelocity = new Vector2(direction.x, 0) * maxSpeed;
-            maxSpeedChange = maxAcceleration * Time.deltaTime;
+            maxSpeedChange = maxAcceleration * Time.fixedDeltaTime;
             velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
             if (ignoreYValue)
             {
@@ -161,7 +161,7 @@
         private void SetRaycastOriginPoints()
         {
             //Calculate the approximate distance that will be traversed, accounting for the radius of our collider.
-            predictedMovementDistance = velocity.magnitude * Time.deltaTime + colliderRadius;
+            predictedMovementDistance = velocity.magnitude * Time.fixedDeltaTime + colliderRadius;
 
             //Raycast from the top, center, and bottom of the entity's collider to check for potential collisions.
             colliderCenterPosition = (Vector2) gameObject.transform.position + colliderOffset;
