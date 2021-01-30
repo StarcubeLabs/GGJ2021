@@ -19,8 +19,8 @@
         public Vector3 nearbyDistance = new Vector3(0.5f, 0.2f, 0);
         [Tooltip("Amount to offset from the player when tracking it")]
         public Vector3 targetOffset = new Vector3(0, -0.6f, 0);
-        [Tooltip("How close to target before we stop following")]
-        public float targetMinDistance = 0.9f;
+        [Tooltip("How far vertically before it becomes flying")]
+        public float flyingDistance = 2.0f;
         [Tooltip("How far from player before starting to chase after it.")]
         public float followMinDistance = 1.5f;
 
