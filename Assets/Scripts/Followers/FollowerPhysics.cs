@@ -20,7 +20,15 @@ namespace GGJ2021
         private FollowerStates stateCurr;
         private FollowerStates statePrev;
 
-        public Vector3 targetPos = Vector3.zero;
+        private Vector3 _targetPos;
+        public Vector3 targetPos {
+            get { 
+                if (_targetPos == Vector3.zero) return Vector3.zero;
+
+                return _targetPos + config.targetOffset; 
+            }
+            set { _targetPos = value; }
+        }
 
         private PositionRecorder positionRecorderScript;
 
@@ -184,7 +192,16 @@ namespace GGJ2021
                 return true;
             }
 
-            return Vector3.Distance(transform.position, targetPos) < config.targetMinDistance;
+            if (Mathf.Abs(transform.position.x - targetPos.x) > config.nearbyDistance.x) {
+                return false;
+            }
+
+            if (Mathf.Abs(transform.position.y - targetPos.y) > config.nearbyDistance.y) {
+                return false;
+            }
+
+            // return Vector3.Distance(transform.position, targetPos) < config.targetMinDistance;
+            return true;
         }
         public bool IsNearPlayer() {
             return Vector3.Distance(transform.position, PlayerPosition()) < config.followMinDistance;
@@ -193,7 +210,7 @@ namespace GGJ2021
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
         }
         public Vector3 PlayerPosition() {
-            return playerObj.transform.position + config.targetOffset;
+            return playerObj.transform.position;
         }
     }
 }
