@@ -9,7 +9,7 @@ namespace GGJ2021.Enemy
         /// <summary>
         /// Required 
         /// </summary>
-        public Collider2D HurtBox;
+        public Collider2D myHurtBox;
 
         public virtual void hit()
         {
@@ -22,11 +22,16 @@ namespace GGJ2021.Enemy
         }
 
 
-        public override void spawn()
+        protected virtual void Init(Vector2 v)
         {
+            mySpriteRenderer = myGraphicalParent.AddComponent<SpriteRenderer>();
+
+            if(myHurtBox != null)
+                myHurtBox.gameObject.layer = (int)collisionLayerIDs.ENEMY;
+
 #if UNITY_EDITOR
-            if (HurtBox == null)
-                Debug.LogError("Hurtbox not assigned to: " + this.gameObject);
+            if (myHurtBox == null)
+                Debug.LogError("Hurtbox not assigned to: " + enemyName);
 #endif
         }
     }

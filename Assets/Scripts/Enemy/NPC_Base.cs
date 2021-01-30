@@ -19,6 +19,7 @@ namespace GGJ2021.Enemy
         RETURNTOPOST
     }
 
+
     /// <summary>
     /// specifies the derived class must define hit
     /// </summary>
@@ -31,9 +32,18 @@ namespace GGJ2021.Enemy
 
     public class NPC_Base :  FlippableCharacter
     {
+        protected int NPCPoolID;
         protected int maxhealth;     //maxhealth is a float in case of peeshooter dmg
         protected int health;        //current health of enemy
         protected ActorState EnemyState;    // controls the enemey state
+
+        protected enum collisionLayerIDs{ PLAYER, ENEMY, PLAYERHITBOX, ENEMYHITBOX, PLAYERPROJECTILE, ENEMYPROJECTILE};
+
+        protected SpriteRenderer mySpriteRenderer;
+        protected GameObject myGraphicalParent;
+
+
+
 
         /// <summary>
         /// Called by the NPC_Pool Singleton Class when NPC_Pool is asked to pause all NPCs & bullets
@@ -63,10 +73,21 @@ namespace GGJ2021.Enemy
         {
 
         }
-        public virtual void spawn()
+
+        /// <summary>
+        /// Init calls this to handle set up that can happen at any time during runtime
+        /// </summary>
+        /// <param name="pos"></param>
+        public virtual void Spawn(Vector3 v, int npcID)
         {
             // NPC_Pool.addToNPCPausePool();
         }
+
+        protected virtual void Init(Vector2 v)
+        {
+
+        }
+
         /// <summary>
         /// Reinitialize location and default constructor values
         /// </summary>
