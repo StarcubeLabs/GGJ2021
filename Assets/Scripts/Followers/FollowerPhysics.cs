@@ -24,17 +24,20 @@ namespace GGJ2021
         }
 
         void FixedUpdate() {
-            bool isTouchingGround = IsTouchingGround();
+            if (IsNearTarget() && !IsNearSourceTarget() && !IsFalling()) {
+                RefreshTargetPosition();
+            }
+
             if (!IsNearTarget()) {
                 stateCurr = FollowerStates.Chasing;
-            } else if (!isTouchingGround) {
+            } else if (!IsTouchingGround()) {
                 stateCurr = FollowerStates.Falling;
             } else {
                 stateCurr = FollowerStates.Idling;
             }
 
             // toggle recording state based on how close we are
-            positionRecorderScript.isRecording = !IsNearTarget();
+            positionRecorderScript.isRecording = !IsNearSourceTarget();
         }
 
         void Update() {
@@ -53,21 +56,27 @@ namespace GGJ2021
         }
 
         void ChaseTarget() {
-            if (IsNearTarget()) {   
-                return;
-            }
+            bool wasClose = IsNearSourceTarget();
 
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, targetPos, step);
+
+            bool isClose = IsNearSourceTarget();
+
+            // check if newly close to the player
+            if (!wasClose && isClose) {
+                SetHangoutPosition();
+            }
+        }
+        void RefreshTargetPosition() {
             int firstIdx = positionRecorderScript.historyIdx;
             int nextIdx = firstIdx + 1;
             if (nextIdx >= positionRecorderScript.historySize) {
                 nextIdx = 0;
             }
 
-            float step = speed * Time.deltaTime;
-            // transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
-            transform.position = Vector3.Lerp(transform.position, positionRecorderScript.history[nextIdx], step);
+            targetPos = positionRecorderScript.history[nextIdx];
         }
-
         void ApplyGravity() {
             bool isTouchingGround = IsTouchingGround();
             if (!isTouchingGround) {
@@ -82,6 +91,11 @@ namespace GGJ2021
 
                 transform.position = nextPosition;
             }
+        }
+        void SetHangoutPosition() {
+            Vector3 sourceTargetPos = positionRecorderScript.target.transform.position;
+            float xOffset = Random.Range(-1.5f, 1.5f);
+            targetPos = new Vector3(sourceTargetPos.x + xOffset, sourceTargetPos.y, sourceTargetPos.z);
         }
 
         public RaycastHit2D RaycastGround(float distance) {
@@ -103,6 +117,9 @@ namespace GGJ2021
             return stateCurr == FollowerStates.Idling;
         }
         public bool IsNearTarget() {
+            return Vector3.Distance(targetPos, transform.position) < 0.5f;
+        }
+        public bool IsNearSourceTarget() {
             return positionRecorderScript.IsNearTarget(0.9f);
         }
         public bool IsTouchingGround() {
