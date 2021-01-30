@@ -33,7 +33,11 @@
 
             if (RewiredPlayerInputManager.instance.IsGrappling() && playerController.playerGrappleManager.CanGrapple())
             {
-                playerController.playerGrappleManager.Grapple();
+                if (playerController.playerGrappleManager.TryGrapple())
+                {
+                    ableToExit = true;
+                    nextState = new PlayerStateGrapple(playerController);
+                }
             }
         }
 
