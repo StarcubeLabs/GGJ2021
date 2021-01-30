@@ -7,6 +7,7 @@
     public class PlayerAnimationController : MonoBehaviour
     {
         public Animator playerAnim;
+        public List<SpriteRenderer> sprites;
 
         private string deathTrigger = "Death";
         private string jumpTrigger = "Jump";
@@ -43,6 +44,16 @@
         public void HurtAcidTrigger()
         {
             playerAnim.SetTrigger(hurtAcidTrigger);
+        }
+
+        public void EnableSprites()
+        {
+            sprites.ForEach(p => p.enabled = true);
+        }
+
+        public void DisableSprites()
+        {
+            sprites.ForEach(p => p.enabled = false);
         }
     }
 }

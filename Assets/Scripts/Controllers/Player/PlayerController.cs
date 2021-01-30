@@ -12,6 +12,7 @@
         public PlayerGrappleManager playerGrappleManager;
         public PlayerHealth playerHealth;
         public PlayerAnimationController playerAnimationController;
+        public GooBallHandler GooBallHandler;
         public PlayerConfig config;
 
         public HamsterManager hamsterManager;
@@ -25,9 +26,12 @@
         public Vector2 lookDirection = new Vector2();
         public List<AimingReticule> reticules;
 
-        public GameObject playerSprites;
-        public GameObject cannonSprite;
-        private Vector3 originalSpritesScale;
+        public GameObject astronaut;
+        public List<SpriteRenderer> astronautSprites;
+        public GameObject cannon;
+        public GameObject gooball;
+        private Vector3 originalAstronautScale;
+        private Vector3 originalGooballScale;
         public GameObject bottom;
 
         public LineRenderer grapple;
@@ -57,7 +61,8 @@
         {
             rigidBody = GetComponentInChildren<Rigidbody2D>();
             defaultConstraints = rigidBody.constraints;
-            originalSpritesScale = playerSprites.transform.localScale;
+            originalAstronautScale = astronaut.transform.localScale;
+            originalGooballScale = gooball.transform.localScale;
 
             StateMachine = new PlayerStateMachine(this);
             playerPhysics = new PlayerPhysics(this);
@@ -96,12 +101,14 @@
             {
                 if (move.x > 0)
                 {
-                    playerSprites.transform.localScale = new Vector3(-originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
+                    astronaut.transform.localScale = new Vector3(-originalAstronautScale.x, originalAstronautScale.y, originalAstronautScale.z);
+                    gooball.transform.localScale = new Vector3(-originalGooballScale.x, originalGooballScale.y, originalGooballScale.z);
                     facingRight = true;
                 }
                 else
                 {
-                    playerSprites.transform.localScale = new Vector3(originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
+                    astronaut.transform.localScale = new Vector3(originalAstronautScale.x, originalAstronautScale.y, originalAstronautScale.z);
+                    gooball.transform.localScale = new Vector3(originalGooballScale.x, originalGooballScale.y, originalGooballScale.z);
                     facingRight = false;
                 }
             }
@@ -133,7 +140,7 @@
             lookDirection = lookDirection.normalized;
             Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * -lookDirection;
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, rotatedVectorToTarget);
-            cannonSprite.transform.rotation = targetRotation;
+            cannon.transform.rotation = targetRotation;
         }
     }
 }

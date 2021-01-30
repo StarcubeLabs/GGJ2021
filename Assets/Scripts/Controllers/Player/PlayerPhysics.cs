@@ -10,6 +10,7 @@
         private RaycastHit hit;
 
         public bool isDashing;
+        public bool isGrappling;
         public Vector2 dashDirection;
         public float dashCooldown;
 

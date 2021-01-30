@@ -16,6 +16,7 @@
             stateName = "PlayerStateDash";
             timer = 0.0f;
             maxTimer = playerController.config.DashTime;
+            controller.GooBallHandler.StartDash();
         }
 
         protected override void Enter()
@@ -75,6 +76,7 @@
         {
             playerController.playerPhysics.isDashing = false;
             playerController.playerPhysics.ApplyStationaryVelocity();
+            playerController.GooBallHandler.StopDash();
         }
     }
 }
