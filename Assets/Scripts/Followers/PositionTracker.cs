@@ -4,19 +4,32 @@
 
     public class PositionTracker : MonoBehaviour
     {
+        [Tooltip("list of objects that want to be in this party")]
+        public GameObject[] WantsToKnow; 
+        private FollowerPhysics[] followerPhysicsScript; 
+
+        [Tooltip("how many seconds between when it updates this position")]
+        public float interval = 0.2f;
+
         private Vector3[] positionHistory;
         private int positionIdx;
 
         private float nextActionTime = 0.0f;
-        public float interval = 0.2f;
 
         private PlayerController playerControllerScript;
 
         // Start is called before the first frame update
         void Start()
         {
-            positionHistory = new Vector3[3];
             positionIdx = 0;
+            
+            int historyLength = WantsToKnow.Length;
+            positionHistory = new Vector3[historyLength];
+            followerPhysicsScript = new FollowerPhysics[historyLength];
+            for (var ii=0; ii<historyLength; ii++) {
+                GameObject gameobj = WantsToKnow[ii];
+                followerPhysicsScript[ii] = gameobj.GetComponent<FollowerPhysics>();
+            }
 
             playerControllerScript = gameObject.GetComponent<PlayerController>();
         }
@@ -38,6 +51,7 @@
 
         void AddPosition(Vector3 newpos) {
             positionHistory[positionIdx] = newpos;
+            followerPhysicsScript[positionIdx].targetPos = newpos;
 
             positionIdx = positionIdx + 1;
             if (positionIdx >= positionHistory.Length) {

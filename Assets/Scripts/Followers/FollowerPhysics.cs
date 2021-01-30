@@ -4,46 +4,51 @@ namespace GGJ2021
 
     public class FollowerPhysics : MonoBehaviour
     {
-        enum FollowerStates {Idle, Following, Falling};
-        private FollowerStates stateCurr;
-
         public FollowerConfig config;
 
-        private PositionFollower followScript;
+        public float minDistance = 0.005f;
+        public float speed = 10.0f;
+
+        enum FollowerStates {Idling, Falling, Chasing};
+        private FollowerStates stateCurr;
+
+        public Vector3 targetPos = Vector3.one;
 
         void Start() {
-            stateCurr = FollowerStates.Idle;
-            followScript = gameObject.GetComponent<PositionFollower>();
+            stateCurr = FollowerStates.Idling;
         }
 
         void Update() {
-            if (!followScript.IsNearTarget() && stateCurr != FollowerStates.Falling) {
-                stateCurr = FollowerStates.Following;
-            } else if (!IsTouchingGround()) {
+            bool isTouchingGround = IsTouchingGround();
+            if (!IsNearTarget() && isTouchingGround) {
+                stateCurr = FollowerStates.Chasing;
+            } else if (!isTouchingGround) {
                 stateCurr = FollowerStates.Falling;
             } else {
-                stateCurr = FollowerStates.Idle;
+                stateCurr = FollowerStates.Idling;
             }
 
             switch (stateCurr) {
-                case FollowerStates.Idle:
-                    HandleIdleState();
-                    break;
-                case FollowerStates.Following:
-                    followScript.Follow();
+                case FollowerStates.Chasing:
+                    ChaseTarget();
                     break;
                 case FollowerStates.Falling:
                     ApplyGravity();
                     break;
+                case FollowerStates.Idling:
+                    break;
                 default:
                     break;
             }
-
-
         }
 
-        void HandleIdleState() {
-            
+        void ChaseTarget() {
+            if (IsNearTarget()) {   
+                return;
+            }
+
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
         }
 
         void ApplyGravity() {
@@ -62,17 +67,29 @@ namespace GGJ2021
             }
         }
 
-        //
-        public bool IsTouchingGround() {
-            return RaycastGround(config.groundCheckRaycastDistance).collider != null;
-        }
-
         public RaycastHit2D RaycastGround(float distance) {
             float offset = 0.1f;
             Vector3 offsetVec = new Vector3(offset, 0f);
             RaycastHit2D hit = Physics2D.Raycast(transform.position + offsetVec, Vector2.down, distance + offset, config.groundLayerMask);
             Debug.DrawRay(transform.position, Vector2.down * distance, Color.blue);
             return hit;
+        }
+
+        // -- utility methods
+        public bool IsChasing() {
+            return stateCurr == FollowerStates.Chasing;
+        }
+        public bool IsFalling() {
+            return stateCurr == FollowerStates.Falling;
+        }
+        public bool IsIdling() {
+            return stateCurr == FollowerStates.Idling;
+        }
+        public bool IsNearTarget() {
+            return Mathf.Abs(transform.position.x - targetPos.x) < minDistance;
+        }
+        public bool IsTouchingGround() {
+            return RaycastGround(config.groundCheckRaycastDistance).collider != null;
         }
     }
 }
