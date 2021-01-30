@@ -26,7 +26,7 @@ namespace GGJ2021.Enemy
 
 
         #region Default Movement Definitions
-        protected virtual void walk(Vector3 pos1, Vector3 pos2)
+        protected virtual void Walk()
         {
             // TO DO: Write default definition
         }

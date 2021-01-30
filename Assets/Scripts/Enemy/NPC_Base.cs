@@ -37,7 +37,7 @@ namespace GGJ2021.Enemy
         protected int health;        //current health of enemy
         protected ActorState EnemyState;    // controls the enemey state
 
-        protected enum collisionLayerIDs{ PLAYER, ENEMY, PLAYERHITBOX, ENEMYHITBOX, PLAYERPROJECTILE, ENEMYPROJECTILE};
+        protected enum collisionLayerIDs{Default, TransparentFX, IgnoreRaycast, THREE,Water, UI, SIX, SEVEN, PLAYER, ENEMY, PLAYERHITBOX, ENEMYHITBOX, PLAYERPROJECTILE, ENEMYPROJECTILE};
 
         protected SpriteRenderer mySpriteRenderer;
         protected GameObject myGraphicalParent;
