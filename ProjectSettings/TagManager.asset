@@ -14,15 +14,15 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Enemy
+  - PlayerPhysics
+  - EnemyPhysics
   - PlayerHitbox
   - EnemyHitbox
   - PlayerProjectile
   - EnemyProjectile
   - GrapplePoint
-  - 
-  - 
+  - PlayerHurtbox
+  - EnemyHurtbox
   - 
   - 
   - 
