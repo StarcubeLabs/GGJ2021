@@ -41,13 +41,13 @@
                     nextState = new PlayerStateGrapple(playerController);
                 }
             }
-
-            playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);
-            playerController.playerPhysics.ApplyJump(playerController.config.jumpSpeed);
         }
 
         public override void OnFixedUpdate()
         {
+            playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);
+            playerController.playerPhysics.ApplyJump(playerController.config.jumpSpeed);
+
             playerController.playerPhysics.ApplyVelocity(playerController.config.MaxSpeed);
             base.OnFixedUpdate();
         }

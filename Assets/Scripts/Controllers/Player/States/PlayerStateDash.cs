@@ -50,7 +50,10 @@
             {
                 ableToExit = true;
             }
+        }
 
+        public override void OnFixedUpdate()
+        {
             //Restrict the Y axis range of Melody's dash once she leaves the ground.
             if (playerController.playerCollision.IsInAir())
             {
@@ -60,10 +63,7 @@
                 dodge.y = Mathf.Max(normalizedVelocity.y * velocityMagnitude, 0f);
             }
             playerController.playerPhysics.dashDirection = dodge;
-        }
 
-        public override void OnFixedUpdate()
-        {
             playerController.playerPhysics.ApplyDashVelocity(dodge);
             playerController.playerPhysics.ApplyDashGravity(playerController.config.GroundedDashGravity);
             playerController.playerPhysics.SnapToGround();
