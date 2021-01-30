@@ -6,7 +6,8 @@ namespace GGJ2021.Enemy
     {
         // Hold the index of the NPC_Pool.EnemyPool. 
         // -1 when enemy is not aggro
-        protected int flockID;
+        protected int flockID;        
+        protected string enemyName;
 
         [SerializeField]
         protected float speed;
