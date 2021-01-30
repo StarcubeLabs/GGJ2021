@@ -2657,18 +2657,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1484205069, guid: 42e4b74c2a3bce043b769db09e649e33, type: 3}
-      propertyPath: config.grappleRange
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484205069, guid: 42e4b74c2a3bce043b769db09e649e33, type: 3}
-      propertyPath: config.grappleTransitionTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484205069, guid: 42e4b74c2a3bce043b769db09e649e33, type: 3}
-      propertyPath: config.grappleFailRetractTime
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 2986026205746470649, guid: 42e4b74c2a3bce043b769db09e649e33,
         type: 3}
       propertyPath: m_RootOrder
@@ -2876,11 +2864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6277176927594888350, guid: 5db718d50bf8c6141a57a3c8f07d7941,
-        type: 3}
-      propertyPath: offset.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6277176927594888351, guid: 5db718d50bf8c6141a57a3c8f07d7941,
         type: 3}
       propertyPath: m_RootOrder

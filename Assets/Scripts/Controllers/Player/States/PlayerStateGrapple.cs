@@ -5,14 +5,15 @@ namespace GGJ2021
     public class PlayerStateGrapple : PlayerState
     {
         private Vector2 startPos, endPos;
-        private float pauseTimer, moveTimer, initMoveTimer;
+        private float pauseTimer, moveTimer, initMoveTimer, exitTimer;
 
         public PlayerStateGrapple(PlayerController controller) : base(controller)
         {
             stateName = "PlayerStateGrapple";
             startPos = controller.transform.position;
             endPos = controller.playerGrappleManager.GetPlayerDesition();
-            pauseTimer = controller.config.grappleSuccessPauseTime;
+            pauseTimer = controller.config.grappleSuccessPrePauseTime;
+            exitTimer = controller.config.grappleSuccessPostPauseTime;
             moveTimer = controller.config.grappleTransitionTime;
             initMoveTimer = controller.config.grappleTransitionTime;
         }
@@ -21,17 +22,21 @@ namespace GGJ2021
 
         public override void OnUpdate(float time)
         {
-            if (pauseTimer > 0)
+            if (pauseTimer > 0f)
             {
                 pauseTimer -= time;
             }
-            if (moveTimer > 0)
+            else if (moveTimer > 0f)
             {
-                moveTimer = Mathf.Max(0, moveTimer -= time);
+                moveTimer = Mathf.Max(0f, moveTimer -= time);
                 playerController.transform.position = Vector3.Lerp(startPos, endPos, 1f - moveTimer / initMoveTimer);
             }
+            else if (exitTimer > 0f)
+            {
+                exitTimer -= time;
+            }
 
-            if (moveTimer <= 0f)
+            if (exitTimer <= 0f)
             {
                 ableToExit = true;
                 nextState = new PlayerStateIdle(playerController);

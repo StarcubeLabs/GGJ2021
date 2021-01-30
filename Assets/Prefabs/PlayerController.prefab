@@ -725,10 +725,11 @@ MonoBehaviour:
     GroundedDashGravity: {x: 0, y: -40, z: 0}
     jumpSpeed: 12
     jumpTime: 0.2
-    grappleRange: 10
-    grappleSuccessPauseTime: 0.25
-    grappleFailRetractTime: 0.5
-    grappleTransitionTime: 0.5
+    grappleRange: 12
+    grappleFailRetractTime: 0.25
+    grappleSuccessPrePauseTime: 0.1
+    grappleTransitionTime: 0.25
+    grappleSuccessPostPauseTime: 0.1
     grappleLayerMask:
       serializedVersion: 2
       m_Bits: 16384
