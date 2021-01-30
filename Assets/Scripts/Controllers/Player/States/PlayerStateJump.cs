@@ -33,6 +33,15 @@
                 nextState = new PlayerStateDash(playerController);
             }
 
+            if (RewiredPlayerInputManager.instance.IsGrappling() && playerController.playerGrappleManager.CanGrapple())
+            {
+                if (playerController.playerGrappleManager.TryGrapple())
+                {
+                    ableToExit = true;
+                    nextState = new PlayerStateGrapple(playerController);
+                }
+            }
+
             playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);
             playerController.playerPhysics.ApplyJump(playerController.config.jumpSpeed);
         }
