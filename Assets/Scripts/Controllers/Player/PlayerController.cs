@@ -11,6 +11,7 @@
         public PlayerSurfaceCollision playerCollision;
         public PlayerGrappleManager playerGrappleManager;
         public PlayerHealth playerHealth;
+        public PlayerAnimationController playerAnimationController;
         public PlayerConfig config;
 
         public HamsterManager hamsterManager;
@@ -81,6 +82,8 @@
         {
             StateMachine.OnFixedUpdate();
             playerCollision.OnFixedUpdate();
+            playerAnimationController.SetInAir(playerCollision.IsInAir());
+            playerAnimationController.SetIsWalk(move.x != 0);
         }
 
         private void CheckInputs()
