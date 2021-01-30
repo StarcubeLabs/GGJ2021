@@ -5,7 +5,20 @@
 
     public class PlayerHealth
     {
-        private int curHealth, maxHealth = 3;
+        private int CurHealth
+        {
+            get { return PlayerStats.instance.CurHealth; }
+            set
+            {
+                PlayerStats.instance.CurHealth = value;
+                StatBarManager.instance.SetCurr(CurHealth);
+            }
+        }
+        private int MaxHealth
+        {
+            get { return PlayerStats.instance.MaxHealth; }
+            set { PlayerStats.instance.MaxHealth = value; }
+        }
         private CollisionWrapper playerHurtboxColliderWrapper;
 
         private float invulnerabilityTimer, invulnerabilityTimerMax = 1f;
@@ -15,7 +28,7 @@
 
         public PlayerHealth(PlayerController controller, CollisionWrapper playerHurtboxColliderWrapper)
         {
-            curHealth = maxHealth;
+            CurHealth = MaxHealth;
             this.controller = controller;
             this.playerHurtboxColliderWrapper = playerHurtboxColliderWrapper;
             this.playerHurtboxColliderWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);
@@ -36,9 +49,8 @@
                 return;
             }
 
-            curHealth -= damage;
-            StatBarManager.instance.SetCurr(curHealth);
-            if (curHealth <= 0)
+            CurHealth -= damage;
+            if (CurHealth <= 0)
             {
                 Die();
             }
@@ -51,15 +63,13 @@
 
         public void RestoreHealth(int healing)
         {
-            curHealth = Mathf.Min(maxHealth, curHealth + healing);
-            StatBarManager.instance.SetCurr(curHealth);
+            CurHealth += healing;
         }
 
         public void IncreaseMaxHealth(int amount)
         {
-            maxHealth += amount;
-            curHealth = maxHealth;
-            StatBarManager.instance.SetMax(maxHealth);
+            MaxHealth += amount;
+            CurHealth = MaxHealth;
         }
 
         private void Die()
