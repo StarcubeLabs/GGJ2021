@@ -25,6 +25,7 @@
         public List<AimingReticule> reticules;
 
         public GameObject playerSprites;
+        public GameObject cannonSprite;
         private Vector3 originalSpritesScale;
         public GameObject bottom;
 
@@ -89,12 +90,12 @@
             {
                 if (move.x > 0)
                 {
-                    playerSprites.transform.localScale = originalSpritesScale;
+                    playerSprites.transform.localScale = new Vector3(-originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
                     facingRight = true;
                 }
                 else
                 {
-                    playerSprites.transform.localScale = new Vector3(-originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
+                    playerSprites.transform.localScale = new Vector3(originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
                     facingRight = false;
                 }
             }
@@ -120,6 +121,9 @@
                 }
             }
             lookDirection = lookDirection.normalized;
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * -lookDirection;
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, rotatedVectorToTarget);
+            cannonSprite.transform.rotation = targetRotation;
         }
     }
 }
