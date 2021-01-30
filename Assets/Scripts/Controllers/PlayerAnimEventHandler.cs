@@ -4,45 +4,47 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEditor.Animations;
 using AnimatorController = UnityEditor.Animations.AnimatorController;
-
-public class PlayerAnimEventHandler : MonoBehaviour
+namespace GGJ2021
 {
-    public AnimatorController AstroAnimController;
-
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerAnimEventHandler : MonoBehaviour
     {
-        
-    }
+        public AnimatorController AstroAnimController;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    public void PlayStepSound()
-    {
+        }
 
-    }
+        // Update is called once per frame
+        void Update()
+        {
 
-    public void PlayJumpSound()
-    {
+        }
 
-    }
+        public void PlayStepSound()
+        {
 
-    public void PlayPlayerDamageSound()
-    {
+        }
 
-    }
+        public void PlayJumpSound()
+        {
 
-    public void PlayAcidDamagedSound()
-    {
+        }
 
-    }
+        public void PlayPlayerDamageSound()
+        {
 
-    public void PlayPlayerDeathSound()
-    {
+        }
 
+        public void PlayAcidDamagedSound()
+        {
+
+        }
+
+        public void PlayPlayerDeathSound()
+        {
+
+        }
     }
 }
