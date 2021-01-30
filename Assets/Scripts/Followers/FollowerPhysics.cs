@@ -25,7 +25,7 @@ namespace GGJ2021
 
         void FixedUpdate() {
             bool isTouchingGround = IsTouchingGround();
-            if (!IsNearTarget() && isTouchingGround) {
+            if (!IsNearTarget()) {
                 stateCurr = FollowerStates.Chasing;
             } else if (!isTouchingGround) {
                 stateCurr = FollowerStates.Falling;
@@ -70,7 +70,6 @@ namespace GGJ2021
 
         void ApplyGravity() {
             bool isTouchingGround = IsTouchingGround();
-            print("ApplyGravity()" + isTouchingGround);
             if (!isTouchingGround) {
                 Vector3 currPosition = transform.position;
                 Vector3 nextPosition = transform.position - (config.Gravity * Time.deltaTime);
