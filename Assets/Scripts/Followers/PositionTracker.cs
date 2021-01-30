@@ -8,7 +8,7 @@
         private int positionIdx;
 
         private float nextActionTime = 0.0f;
-        public float interval = 1.1f;
+        public float interval = 0.2f;
 
         // Start is called before the first frame update
         void Start()
@@ -34,6 +34,15 @@
             if (positionIdx >= positionHistory.Length) {
                 positionIdx = 0;
             }
+        }
+
+        public Vector3 GetTrackedPosition(int idx) {
+            Vector3 gotten = positionHistory[idx];
+            if (gotten == null) {
+                return transform.position;
+            }
+
+            return gotten;
         }
     }
 }
