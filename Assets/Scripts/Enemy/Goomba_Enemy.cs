@@ -18,14 +18,38 @@ namespace GGJ2021.Enemy
             NPCPoolID = npcID;
             enemyName = "Goomba_" + npcID;
             this.gameObject.name = enemyName;
+            if (myGraphicalParent == null)
+            {
+                myGraphicalParent = GetComponentInChildren<SpriteRenderer>().gameObject;
 
-            if(myGraphicalParent == null)
-                myGraphicalParent = new GameObject("GraphicalParent_Goomba" + npcID);
+                if (myGraphicalParent == null)
+                {
+                    myGraphicalParent = new GameObject("GraphicalParent_Goomba" + npcID);
+                    myGraphicalParent.transform.parent = this.transform;
+                }
+            }
             myGraphicalParent.name = "GraphicalParent_Goomba" + npcID;
 
-            if(mySpriteRenderer == null)
-                mySpriteRenderer = myGraphicalParent.AddComponent<SpriteRenderer>();
-            mySpriteRenderer.sprite = goombaSprite;
+            if (mySpriteRenderer == null)
+            {
+                mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+                if (mySpriteRenderer == null)
+                {
+
+                    mySpriteRenderer = myGraphicalParent.AddComponent<SpriteRenderer>();
+                    mySpriteRenderer.transform.parent = this.transform;
+
+                    if (goombaSprite != null)
+                        mySpriteRenderer.sprite = goombaSprite;
+                    else
+                    {
+#if UNITY_EDITOR
+                        Debug.LogError("prefab lacked an assigned SpriteRenderer, and the Goomba enemy had no reference to a sprite to use. INVISIBLE: " + this.gameObject);
+#endif
+                    }
+                }
+            }
             Init(v);
 
             EnemyState = ActorState.IDLE;
