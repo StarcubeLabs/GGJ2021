@@ -4,7 +4,7 @@ namespace GGJ2021
     using UnityEngine;
 
     [Serializable]
-    public class SpritePrefabDictionary : SerializableDictionary<Sprite, GameObject>
+    public class SpriteIntDictionary : SerializableDictionary<Sprite, int>
     {
     }
 }
