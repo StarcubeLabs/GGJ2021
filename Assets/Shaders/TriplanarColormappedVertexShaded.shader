@@ -76,7 +76,7 @@ Properties {
             fixed4 greenCol = c.g * _ColorG;
             fixed4 blueCol = c.b * _ColorB;
             fixed4 mixCol = max(redCol, max(greenCol, blueCol));
-            o.Albedo = mixCol;
+            o.Albedo = mixCol * IN.color;
  
             // Metallic and smoothness come from slider variables
             o.Metallic = mixCol * _Metallic * IN.color;
