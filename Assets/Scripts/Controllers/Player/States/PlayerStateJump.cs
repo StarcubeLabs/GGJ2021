@@ -27,7 +27,7 @@
             {
                 playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
             }
-            if (RewiredPlayerInputManager.instance.IsDashing() && playerController.playerPhysics.canDash)
+            if (RewiredPlayerInputManager.instance.IsDashing() && playerController.playerPhysics.CanDash())
             {
                 ableToExit = true;
                 nextState = new PlayerStateDash(playerController);

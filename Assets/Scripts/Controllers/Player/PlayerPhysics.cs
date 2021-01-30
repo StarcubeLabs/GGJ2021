@@ -11,8 +11,7 @@
 
         public bool isDashing;
         public Vector2 dashDirection;
-
-        public bool canDash = true;
+        public float dashCooldown;
 
         public PlayerPhysics(PlayerController controller)
         {
@@ -156,12 +155,17 @@
             physicsEntity.ToggleIsKinematic(isKinematic);
         }
 
-        public void CheckIfCanDashAgain()
+        public void UpdateDashCooldown()
         {
-            if (!isDashing && controller.playerCollision.IsGrounded())
+            if (dashCooldown > 0)
             {
-                canDash = true;
+                dashCooldown -= Time.deltaTime;
             }
+        }
+
+        public bool CanDash()
+        {
+            return dashCooldown <= 0f;
         }
 
         public void SetRigidbodyConstraints(RigidbodyConstraints2D constraints)
@@ -197,7 +201,7 @@
         public void OnUpdate()
         {
             ResetDesiredVelocity();
-            CheckIfCanDashAgain();
+            UpdateDashCooldown();
         }
     }
 }
