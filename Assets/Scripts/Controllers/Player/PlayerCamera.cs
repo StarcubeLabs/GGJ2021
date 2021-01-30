@@ -8,6 +8,8 @@
     {
         private PlayerController playerController;
 
+        public Vector3 offset;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -18,6 +20,7 @@
         void Update()
         {
             transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y, transform.position.z);
+            transform.position += offset;
         }
     }
 }
