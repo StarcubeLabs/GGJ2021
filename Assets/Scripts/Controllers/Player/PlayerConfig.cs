@@ -31,9 +31,11 @@
 
         [Header("Projectile Settings")]
         public float ProjectileSpeed;
+        public float ProjectileInitUpwardsBurst;
         public float ProjectileRotationSpeedLowerBound;
         public float ProjectileRotationSpeedUpperBound;
         public Vector3 ProjectileGravity;
+        public float ExplosionDuration;
 
         [Header("Dash Settings")]
         public float DashLength;

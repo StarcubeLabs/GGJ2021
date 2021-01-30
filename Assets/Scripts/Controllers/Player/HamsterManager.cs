@@ -10,7 +10,7 @@
         private int trueHamsterMax = 5;
 
         private float blasterCooldown = 0f;
-        private float maxBlasterCooldown = 0.25f;
+        private float maxBlasterCooldown = 0f;
 
         void Update()
         {

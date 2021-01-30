@@ -7,13 +7,16 @@
         public int id;
         private float timer, maxTimer = 1f;
         private float explosionTimer, maxExplosionTimer = 0.25f;
+        public bool canExplode = false;
 
         private Rigidbody2D rb;
         private Vector2 velocity;
 
-        public SpriteRenderer hamster, explosion;
+        public SpriteRenderer hamster;
 
         public CollisionWrapper collisionWrapper;
+
+        public HamsterExplosion hamsterExplosion;
 
         // Start is called before the first frame update
         void Awake()
@@ -62,12 +65,14 @@
         {
             ResetHamster();
             transform.position = origin;
+            velocity.y += PlayerController.instance.config.ProjectileInitUpwardsBurst;
             rb.velocity = velocity;
             timer = maxTimer;
             int direction = Random.Range(0, 1) * 2 - 1;
             float speed = Random.Range(PlayerController.instance.config.ProjectileRotationSpeedLowerBound,
                 PlayerController.instance.config.ProjectileRotationSpeedUpperBound);
             rb.angularVelocity = direction * speed;
+            canExplode = true;
         }
 
         public void ResetHamster()
@@ -75,7 +80,6 @@
             collisionWrapper.SetActive(true);
             rb.velocity = Vector2.zero;
             hamster.enabled = true;
-            explosion.enabled = false;
         }
 
         public void OnCollision(Collider2D collider)
@@ -83,14 +87,14 @@
             Explode();
         }
 
-        private void Explode()
+        public void Explode()
         {
+            canExplode = false;
             rb.velocity = Vector2.zero;
-            //rb.angularVelocity = 0f;
             collisionWrapper.SetActive(false);
             hamster.enabled = false;
-            explosion.enabled = true;
             explosionTimer = maxExplosionTimer;
+            Instantiate(hamsterExplosion, transform.position, Quaternion.identity);
         }
 
         private void Disable()
