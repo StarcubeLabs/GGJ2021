@@ -147,6 +147,16 @@ namespace GGJ2021.Enemy
             else return i;
         }
 
+        public void RemoveFromNPCPool(int flockID)
+        {
+            RemoveFromPool<NPC_Base>(npcPausePool, flockID, npcPausePoolCount);
+        }
+
+        public void RemoveFromAggroPool(int flockID)
+        {
+            RemoveFromPool<Enemy_NPC>(aggroPool, flockID, aggroPoolCount);
+        }
+
         private void RemoveFromPool<T>(T[] pool, int flockNum, int poolSize)
         {
             int j = 0;

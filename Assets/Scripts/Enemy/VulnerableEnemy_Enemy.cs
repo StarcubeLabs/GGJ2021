@@ -14,16 +14,23 @@ namespace GGJ2021.Enemy
         public virtual void hit()
         {
             // TO DO: Write default definition
+
+            healthChange();
         }
 
         public virtual void hit(int attackValue)
         {
             // TO DO: Write default definition
+            if (attackValue > 0)
+                attackValue = -attackValue;
+            healthChange(attackValue);
         }
 
 
         protected virtual void Init(Vector2 v)
         {
+            base.Init(v);
+
             mySpriteRenderer = myGraphicalParent.AddComponent<SpriteRenderer>();
             if (hurtboxCollisionWrapper != null)
             {

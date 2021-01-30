@@ -51,6 +51,14 @@ namespace GGJ2021.Enemy
         public virtual void healthChange()
         {
             health--;
+
+            if (health > maxhealth)
+                health = maxhealth;
+
+            if (health <= 0)
+            {
+                death();
+            }
         }
 
         /// <summary>
@@ -59,7 +67,15 @@ namespace GGJ2021.Enemy
         /// <param name="value"></param>
         public void healthChange(int value)
         {
-            health += value; 
+            health += value;
+
+            if (health > maxhealth)
+                health = maxhealth;
+
+            if(health <= 0)
+            {
+                death();
+            }
         }
         #endregion
     }
