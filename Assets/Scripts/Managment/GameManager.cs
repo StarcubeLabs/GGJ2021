@@ -30,6 +30,7 @@
 
         private void Init()
         {
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
             persistent = new GameObject[PersistentObjects.Length];
             local = new GameObject[SceneLocalObjects.Length];
@@ -55,11 +56,32 @@
         {
             for (int i = 0; i < local.Length; i++)
             {
-                Destroy(local[i]);
+                if (local[i] != null)
+                {
+                    Destroy(local[i]);
 
-                // Ensure reference is nulled immediately to prevent access after free issues
-                local[i] = null;
+                    // Ensure reference is nulled immediately to prevent access after free issues
+                    local[i] = null;
+                }
             }
+        }
+
+        public void ForceClean()
+        {
+            CleanUp();
+            for (int i = 0; i < persistent.Length; i++)
+            {
+                if (persistent[i] != null)
+                {
+                    Destroy(persistent[i]);
+
+                    // Ensure reference is nulled immediately to prevent access after free issues
+                    persistent[i] = null;
+                }
+            }
+
+            Instance = null;
+            Destroy(this.gameObject);
         }
     }
 }
