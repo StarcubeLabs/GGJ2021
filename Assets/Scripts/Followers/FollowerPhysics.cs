@@ -63,19 +63,20 @@ namespace GGJ2021
 
             if (IsThinking() && !IsNearTarget()) {
                 stateNext = FollowerStates.Walking;
-            } else if (!IsNearPlayer() && !IsFalling()) {
-                // chase player 
+
+            } else if (!IsNearPlayer() && !IsFalling()) { // chase player 
                 stateNext = FollowerStates.Chasing;
-            } else if (!IsTouchingGround() && !IsChasing() && !IsWalking()) {
-                // gotta fall
+
+            } else if (!IsTouchingGround() && !IsChasing()) { // gotta fall
                 stateNext = FollowerStates.Falling;
-            } else if (IsChasing() && IsNearPlayer()) {
-                // close enough, think about doing something else
+
+            } else if (IsChasing() && IsNearPlayer()) { // close enough, think about doing something else
                 stateNext = FollowerStates.Thinking;
-            } else if (IsWalking() && IsNearPlayer() && IsNearTarget()) {
+
+            } else if (IsWalking() && IsNearPlayer() && IsNearTarget()) { // no need to do anything
                 stateNext = FollowerStates.Idling;
 
-            // 
+            // maintain walking state
             } else if (IsWalking()) {
                 stateNext = stateCurr;
             }
@@ -136,7 +137,6 @@ namespace GGJ2021
             targetPos = nextTarget;
         }
         Vector3 ChooseTarget() {
-            print("ChooseTarget()");
             if (!IsNearPlayer()) {
                 return PlayerPosition();
             }
@@ -153,7 +153,7 @@ namespace GGJ2021
             float xOffset = Random.Range(-2.0f, 2.0f);
 
             Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
-            print("FindHangoutPosition() " + nextPos);
+            // print("FindHangoutPosition() " + nextPos);
             return nextPos;
         }
         public RaycastHit2D RaycastGround(float distance) {
