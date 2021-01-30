@@ -16,6 +16,8 @@
       private List<GameObject> icons;
       private float iconWidth = 25;
 
+      private bool isInitialized;
+
         private void Awake()
         {
             if (instance == null)
@@ -41,6 +43,7 @@
           StartCoroutine(InstantiateIcon(ii));
         }
 
+        isInitialized = true;
         RedrawIcons();
       }
 
@@ -74,6 +77,8 @@
       }
 
       void RedrawIcons() {
+        if (!isInitialized) return;
+
         for(int ii=0; ii<statMax; ii++) {
           bool newIconState = ii < statCurr;
           ToggleIconState(ii, newIconState);
