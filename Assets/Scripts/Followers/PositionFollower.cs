@@ -6,21 +6,24 @@
     {
 
         public GameObject trackerObject;
+        // private PlayerController playerControllerScript;
+        private PositionTracker trackerScript;
+
         public int positionIdx;
 
-        public float minDistance = 0.002f;
+        public float minDistance = 0.005f;
         public float speed = 10.0f;
 
         // Start is called before the first frame update
         void Start()
         {
-            
+            // playerControllerScript = trackerObject.GetComponent<PlayerController>();
+            trackerScript = trackerObject.GetComponent<PositionTracker>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            PositionTracker trackerScript = trackerObject.GetComponent<PositionTracker>();
             Vector3 targetPos = trackerScript.GetTrackedPosition(positionIdx);
 
             // print("dist: " + Vector3.Distance(transform.position, targetPos));
