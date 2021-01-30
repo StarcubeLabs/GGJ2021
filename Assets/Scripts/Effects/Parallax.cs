@@ -11,6 +11,9 @@
 
         private void Start()
         {
+            if (target == null)
+                target = PlayerController.instance.transform;
+
             Assert.IsNotNull(target);
             for (int i = 0; i < layers.Length; i++)
                 Assert.IsNotNull(layers[i]);
