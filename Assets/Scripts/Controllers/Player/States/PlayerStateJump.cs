@@ -8,6 +8,7 @@
         {
             stateName = "PlayerStateJump";
             jumpTimer = playerController.config.jumpTime;
+            controller.playerAnimationController.JumpTrigger();
         }
 
         protected override void Enter(){ }

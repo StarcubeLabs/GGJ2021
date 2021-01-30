@@ -11,6 +11,7 @@
         public PlayerSurfaceCollision playerCollision;
         public PlayerGrappleManager playerGrappleManager;
         public PlayerHealth playerHealth;
+        public PlayerAnimationController playerAnimationController;
         public PlayerConfig config;
 
         public HamsterManager hamsterManager;
@@ -25,6 +26,7 @@
         public List<AimingReticule> reticules;
 
         public GameObject playerSprites;
+        public GameObject cannonSprite;
         private Vector3 originalSpritesScale;
         public GameObject bottom;
 
@@ -35,7 +37,7 @@
         [HideInInspector]
         public RigidbodyConstraints2D defaultConstraints;
 
-        PlayerStateMachine StateMachine;
+        public PlayerStateMachine StateMachine;
         public string currentStateName;
 
         private void Awake()
@@ -70,7 +72,10 @@
             playerPhysics.OnUpdate();
             playerGrappleManager.OnUpdate(Time.deltaTime);
             playerHealth.OnUpdate(Time.deltaTime);
-            CheckInputs();
+            if (!playerHealth.dead)
+            {
+                CheckInputs();
+            }
             AimReticule();
             StateMachine.OnUpdate(Time.deltaTime);
             currentStateName = StateMachine.GetCurrentStateName();
@@ -80,6 +85,8 @@
         {
             StateMachine.OnFixedUpdate();
             playerCollision.OnFixedUpdate();
+            playerAnimationController.SetInAir(playerCollision.IsInAir());
+            playerAnimationController.SetIsWalk(move.x != 0);
         }
 
         private void CheckInputs()
@@ -89,12 +96,12 @@
             {
                 if (move.x > 0)
                 {
-                    playerSprites.transform.localScale = originalSpritesScale;
+                    playerSprites.transform.localScale = new Vector3(-originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
                     facingRight = true;
                 }
                 else
                 {
-                    playerSprites.transform.localScale = new Vector3(-originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
+                    playerSprites.transform.localScale = new Vector3(originalSpritesScale.x, originalSpritesScale.y, originalSpritesScale.z);
                     facingRight = false;
                 }
             }
@@ -103,6 +110,10 @@
         private void AimReticule()
         {
             lookDirection = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
+            if (playerHealth.dead)
+            {
+                lookDirection = new Vector2(0f, 0f);
+            }
             reticules.ForEach(p =>
             {
                 p.transform.localPosition = lookDirection * p.maxDistance;
@@ -120,6 +131,9 @@
                 }
             }
             lookDirection = lookDirection.normalized;
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * -lookDirection;
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, rotatedVectorToTarget);
+            cannonSprite.transform.rotation = targetRotation;
         }
     }
 }
