@@ -18,6 +18,7 @@
 
         [Header("Grapple Settings")]
         public float grappleRange;
+        public float grappleScatterOffset;
         public float grappleFailRetractTime;
         public float grappleSuccessPrePauseTime;
         public float grappleTransitionTime;

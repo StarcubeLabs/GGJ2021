@@ -1,5 +1,6 @@
 ﻿namespace GGJ2021
 {
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class PlayerGrappleManager
@@ -11,12 +12,18 @@
         private float grappleLength;
         private float curGrappleFailTime, maxGrappleFailTime;
 
-        RaycastHit2D hit;
+        private List<Vector2> offsets = new List<Vector2>();
+        private RaycastHit2D hit;
 
         public PlayerGrappleManager(PlayerController playerController, LineRenderer grapple)
         {
             this.playerController = playerController;
             this.grapple = grapple;
+            offsets.Add(new Vector2(0f, 0f));
+            offsets.Add(new Vector2( playerController.config.grappleScatterOffset, 0f));
+            offsets.Add(new Vector2(-playerController.config.grappleScatterOffset, 0f));
+            offsets.Add(new Vector2(0f,  playerController.config.grappleScatterOffset));
+            offsets.Add(new Vector2(0f, -playerController.config.grappleScatterOffset));
         }
 
         public void OnUpdate(float deltaTime)
@@ -42,12 +49,16 @@
             direction = playerController.lookDirection;
             grappleLength = playerController.config.grappleRange;
             grappleDestination = playerPos + direction.normalized * grappleLength;
-            hit = Physics2D.Raycast(playerPos, direction, grappleLength, playerController.config.grappleLayerMask);
-            if (hit)
+            foreach (Vector2 offset in offsets)
             {
-                grappleDestination = hit.collider.gameObject.transform.position;
-                playerDestination = hit.collider.gameObject.GetComponent<GrapplePoint>().destination.position;
-                return true;
+                direction = (direction + offset).normalized;
+                hit = Physics2D.Raycast(playerPos, direction, grappleLength, playerController.config.grappleLayerMask);
+                if (hit)
+                {
+                    grappleDestination = hit.collider.gameObject.transform.position;
+                    playerDestination = hit.collider.gameObject.GetComponent<GrapplePoint>().destination.position;
+                    return true;
+                }
             }
             curGrappleFailTime = playerController.config.grappleFailRetractTime;
             maxGrappleFailTime = playerController.config.grappleFailRetractTime;

@@ -33,7 +33,16 @@ namespace GGJ2021
             }
             else if (exitTimer > 0f)
             {
+                playerController.playerPhysics.ApplyStationaryVelocity();
                 exitTimer -= time;
+                if (RewiredPlayerInputManager.instance.IsGrappling() && playerController.playerGrappleManager.CanGrapple())
+                {
+                    if (playerController.playerGrappleManager.TryGrapple())
+                    {
+                        ableToExit = true;
+                        nextState = new PlayerStateGrapple(playerController);
+                    }
+                }
             }
 
             if (exitTimer <= 0f)
