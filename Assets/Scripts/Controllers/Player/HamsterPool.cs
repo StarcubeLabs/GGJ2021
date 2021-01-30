@@ -33,7 +33,19 @@
                     return true;
                 }
             }
+            ExplodeHamster();
             return false;
+        }
+
+        public void ExplodeHamster()
+        {
+            foreach (HamsterPoolable hamster in hamsters)
+            {
+                if (hamster.gameObject.activeSelf == true && hamster.canExplode)
+                {
+                    hamster.Explode();
+                }
+            }
         }
 
         public int GetActiveHamsters()

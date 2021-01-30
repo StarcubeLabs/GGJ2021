@@ -10,7 +10,7 @@
 
         private void Update()
         {
-            ToggleColor(PlayerController.instance.playerPhysics.canDash);
+            ToggleColor(PlayerController.instance.playerPhysics.CanDash());
         }
 
         public void ToggleColor(bool canDash)
