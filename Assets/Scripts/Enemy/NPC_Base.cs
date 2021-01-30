@@ -33,7 +33,8 @@ namespace GGJ2021.Enemy
     public class NPC_Base :  FlippableCharacter
     {
         protected int NPCPoolID;
-        protected int maxhealth;     //maxhealth is a float in case of peeshooter dmg
+        [SerializeField]
+        protected int maxhealth;     
         protected int health;        //current health of enemy
         protected ActorState EnemyState;    // controls the enemey state
 
@@ -41,7 +42,7 @@ namespace GGJ2021.Enemy
 
         protected SpriteRenderer mySpriteRenderer;
         protected GameObject myGraphicalParent;
-
+        public GameObject deathExplosion;
 
 
 
@@ -80,12 +81,16 @@ namespace GGJ2021.Enemy
         /// <param name="pos"></param>
         public virtual void Spawn(Vector3 v, int npcID)
         {
-            // NPC_Pool.addToNPCPausePool();
+            NPCPoolID = npcID;
+            Init(v);
+
+            EnemyState = ActorState.IDLE;
         }
 
         protected virtual void Init(Vector2 v)
         {
-
+            if (maxhealth == 0)
+                maxhealth = 1;
         }
 
         /// <summary>
@@ -93,11 +98,22 @@ namespace GGJ2021.Enemy
         /// </summary>
         public virtual void respawn()
         {
-
+            restoreHealth();
         }
+
+        protected void restoreHealth()
+        {
+            health = maxhealth;
+        }
+
         protected void death()
         {
-            // TO DO Write default definition
+            if (deathExplosion != null)
+                Instantiate(deathExplosion, this.transform.position, Quaternion.identity);
+
+            NPCPool_Base.Instance.RemoveFromNPCPool(NPCPoolID);
+
+            Destroy(this.gameObject);
         }
     }
 }

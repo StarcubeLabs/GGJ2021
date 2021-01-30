@@ -29,6 +29,8 @@ namespace GGJ2021.Enemy
             Init(v);
 
             EnemyState = ActorState.IDLE;
+
+            restoreHealth();
         }
 
         #region Hit variants
