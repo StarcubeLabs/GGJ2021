@@ -4,9 +4,8 @@ namespace GGJ2021
 
     public class FollowerPhysics : MonoBehaviour
     {
+        public GameObject animatedObject;
         public FollowerConfig config;
-
-        public float speed = 10.0f;
 
         public Vector2 velocity = Vector2.zero;
 
@@ -16,11 +15,13 @@ namespace GGJ2021
         public Vector3 targetPos = Vector3.zero;
 
         private PositionRecorder positionRecorderScript;
+        private Animator animator;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
 
             positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
+            animator = animatedObject.GetComponent<Animator>();
         }
 
         void FixedUpdate() {
@@ -43,12 +44,15 @@ namespace GGJ2021
         void Update() {
             switch (stateCurr) {
                 case FollowerStates.Chasing:
+                    animator.Play("JellyWalk");
                     ChaseTarget();
                     break;
                 case FollowerStates.Falling:
+                    animator.Play("JellyFall");
                     ApplyGravity();
                     break;
                 case FollowerStates.Idling:
+                    animator.Play("JellyIdle");
                     break;
                 default:
                     break;
@@ -58,7 +62,7 @@ namespace GGJ2021
         void ChaseTarget() {
             bool wasClose = IsNearSourceTarget();
 
-            float step = speed * Time.deltaTime;
+            float step = config.MaxSpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, targetPos, step);
 
             bool isClose = IsNearSourceTarget();
