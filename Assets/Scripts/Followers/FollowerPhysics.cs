@@ -9,10 +9,12 @@ namespace GGJ2021
         public float minDistance = 0.005f;
         public float speed = 10.0f;
 
+        public Vector2 velocity = Vector2.zero;
+
         enum FollowerStates {Idling, Falling, Chasing};
         private FollowerStates stateCurr;
 
-        public Vector3 targetPos = Vector3.one;
+        public Vector3 targetPos = Vector3.zero;
 
         void Start() {
             stateCurr = FollowerStates.Idling;

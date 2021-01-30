@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2071000974931774853}
   - component: {fileID: 2071000974931774851}
+  - component: {fileID: 1623390634726267835}
+  - component: {fileID: 3121580311703405156}
   m_Layer: 2
   m_Name: Follower
   m_TagString: Untagged
@@ -58,7 +60,45 @@ MonoBehaviour:
     groundCheckRaycastYOffset: 0
   minDistance: 0.005
   speed: 10
+  velocity: {x: 0, y: 0}
   targetPos: {x: 1, y: 1, z: 1}
+--- !u!114 &1623390634726267835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071000974931774854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da24c4fff7bc4da4b013b29a348fdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRecording: 0
+  target: {fileID: 0}
+  recordCount: 10
+  interval: 0.1
+--- !u!50 &3121580311703405156
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071000974931774854}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2071000976643427067
 GameObject:
   m_ObjectHideFlags: 0
