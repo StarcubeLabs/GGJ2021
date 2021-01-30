@@ -26,6 +26,9 @@
         public LayerMask grappleLayerMask;
         public AnimationCurve grappleCurve;
 
+        [Header("Reticule Settings")]
+        public AnimationCurve reticuleCurve;
+
         [Header("Projectile Settings")]
         public float ProjectileSpeed;
         public float ProjectileRotationSpeedLowerBound;

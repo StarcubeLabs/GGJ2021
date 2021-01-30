@@ -1,5 +1,6 @@
 ﻿namespace GGJ2021
 {
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class PlayerController : FlippableCharacter
@@ -19,11 +20,10 @@
         [HideInInspector]
         public Vector2 move = new Vector2();
         public Vector2 lookDirection = new Vector2();
-        private float reticuleDistance = 2.0f;
+        public List<AimingReticule> reticules;
 
         public GameObject playerSprites;
         private Vector3 originalSpritesScale;
-        public GameObject reticule;
         public GameObject bottom;
 
         public LineRenderer grapple;
@@ -99,22 +99,23 @@
         private void AimReticule()
         {
             lookDirection = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
-            if (lookDirection != Vector2.zero)
+            reticules.ForEach(p =>
             {
-                lookDirection = lookDirection.normalized * reticuleDistance;
-            }
-            else
+                p.transform.localPosition = lookDirection * p.maxDistance;
+                p.currentDistance = (lookDirection * p.maxDistance).magnitude;
+            });
+            if (lookDirection == Vector2.zero)
             {
                 if (facingRight)
                 {
-                    lookDirection = new Vector2(reticuleDistance, 0f);
+                    lookDirection = new Vector2(1f, 0f);
                 }
                 else
                 {
-                    lookDirection = new Vector2(-reticuleDistance, 0f);
+                    lookDirection = new Vector2(-1f, 0f);
                 }
             }
-            reticule.transform.localPosition = lookDirection;
+            lookDirection = lookDirection.normalized;
         }
     }
 }
