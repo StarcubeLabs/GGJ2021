@@ -24,6 +24,7 @@
         public float grappleTransitionTime;
         public float grappleSuccessPostPauseTime;
         public LayerMask grappleLayerMask;
+        public AnimationCurve grappleCurve;
 
         [Header("Projectile Settings")]
         public float ProjectileSpeed;

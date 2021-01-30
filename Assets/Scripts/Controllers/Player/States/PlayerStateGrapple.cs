@@ -29,12 +29,25 @@ namespace GGJ2021
             else if (moveTimer > 0f)
             {
                 moveTimer = Mathf.Max(0f, moveTimer -= time);
-                playerController.transform.position = Vector3.Lerp(startPos, endPos, 1f - moveTimer / initMoveTimer);
+                float t = 1f - moveTimer / initMoveTimer;
+                t = playerController.config.grappleCurve.Evaluate(t);
+                playerController.transform.position = Vector3.Lerp(startPos, endPos, t);
             }
             else if (exitTimer > 0f)
             {
                 playerController.playerPhysics.ApplyStationaryVelocity();
                 exitTimer -= time;
+
+                if (RewiredPlayerInputManager.instance.IsFiring())
+                {
+                    playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
+                }
+                if (RewiredPlayerInputManager.instance.IsDashing() && playerController.playerPhysics.canDash)
+                {
+                    ableToExit = true;
+                    nextState = new PlayerStateDash(playerController);
+                }
+
                 if (RewiredPlayerInputManager.instance.IsGrappling() && playerController.playerGrappleManager.CanGrapple())
                 {
                     if (playerController.playerGrappleManager.TryGrapple())
