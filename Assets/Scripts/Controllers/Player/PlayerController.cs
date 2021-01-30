@@ -10,11 +10,13 @@
         public PlayerPhysics playerPhysics;
         public PlayerSurfaceCollision playerCollision;
         public PlayerGrappleManager playerGrappleManager;
+        public PlayerHealth playerHealth;
         public PlayerConfig config;
 
         public HamsterManager hamsterManager;
 
-        public CollisionWrapper playerColliderWrapper;
+        public CollisionWrapper playerPhysicsColliderWrapper;
+        public CollisionWrapper playerHurtboxColliderWrapper;
         public CapsuleCollider2D capsuleCollider;
 
         [HideInInspector]
@@ -58,6 +60,7 @@
             StateMachine = new PlayerStateMachine(this);
             playerPhysics = new PlayerPhysics(this);
             playerCollision = new PlayerSurfaceCollision(this);
+            playerHealth = new PlayerHealth(this, playerHurtboxColliderWrapper);
             playerGrappleManager = new PlayerGrappleManager(this, grapple);
         }
 
@@ -66,6 +69,7 @@
         {
             playerPhysics.OnUpdate();
             playerGrappleManager.OnUpdate(Time.deltaTime);
+            playerHealth.OnUpdate(Time.deltaTime);
             CheckInputs();
             AimReticule();
             StateMachine.OnUpdate(Time.deltaTime);

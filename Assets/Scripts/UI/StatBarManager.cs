@@ -7,6 +7,7 @@
 
   public class StatBarManager : MonoBehaviour
   {
+      public static StatBarManager instance;
 
       public int statMax;
       private int statCurr;
@@ -14,6 +15,18 @@
       public GameObject iconObject;
       private List<GameObject> icons;
       private float iconWidth = 25;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
       void Start()
       {
@@ -67,8 +80,7 @@
         }
       }
 
-      public void AddMax(int amount) {
-        int newMax = statMax + amount;
+      public void SetMax(int newMax) {
 
         // first create additional icons
         for (int ii=statMax; ii<newMax; ii++) {
@@ -77,18 +89,11 @@
 
         // then we can add health, can do curr=max if we wanna
         statMax = newMax;
-        statCurr = statCurr + amount;
+        statCurr = newMax;
         RedrawIcons();
       }
 
-      public void AddCurr(int amount) {
-        int newCurr = Mathf.Min(statMax, statCurr + amount);
-        statCurr = newCurr;
-        RedrawIcons();
-      }
-
-      public void SubtractCurr(int amount) {
-        int newCurr = Mathf.Max(0, statCurr - amount);
+      public void SetCurr(int newCurr) {
         statCurr = newCurr;
         RedrawIcons();
       }
