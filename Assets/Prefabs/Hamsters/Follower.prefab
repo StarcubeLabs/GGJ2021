@@ -45,19 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a0bdb48af4147b88970a9919dfe175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
+  playerObj: {fileID: 0}
+  animatorObj: {fileID: 1514297097593138356}
   config:
-    MaxSpeed: 0
+    MaxSpeed: 2
     MaxAcceleration: 0
-    Gravity: {x: 0, y: 10, z: 0}
+    Gravity: {x: 0, y: 2, z: 0}
     jumpSpeed: 0
     jumpTime: 0
+    targetMinDistance: 0.4
+    followMinDistance: 1.5
+    targetOffset: {x: 0, y: -0.6, z: 0}
     snapToGroundRaycastDistance: 0
+    groundCheckRaycastDistance: 0.75
+    groundCheckRaycastYOffset: 0
     groundLayerMask:
       serializedVersion: 2
       m_Bits: 1
-    groundCheckRaycastDistance: 0.75
-    groundCheckRaycastYOffset: 0
-  speed: 10
   velocity: {x: 0, y: 0}
   targetPos: {x: 1, y: 1, z: 1}
 --- !u!114 &1623390634726267835
@@ -94,6 +99,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028270526759700791, guid: 4af0093c9087f9148a227fdb105f637e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028270526759700791, guid: 4af0093c9087f9148a227fdb105f637e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8028270526759700791, guid: 4af0093c9087f9148a227fdb105f637e,
         type: 3}
@@ -147,6 +162,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4af0093c9087f9148a227fdb105f637e, type: 3}
+--- !u!1 &1514297097593138356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1468048515989893940, guid: 4af0093c9087f9148a227fdb105f637e,
+    type: 3}
+  m_PrefabInstance: {fileID: 98045062711893888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7941665788135233207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8028270526759700791, guid: 4af0093c9087f9148a227fdb105f637e,
