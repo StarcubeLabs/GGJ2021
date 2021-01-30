@@ -1,8 +1,8 @@
-using UnityEditor;
-using UnityEngine;
-
 namespace GGJ2021
 {
+    using UnityEditor;
+    using UnityEngine;
+
     /// <summary>
     /// Editor tool to toggle the 3D tilemap between sprites and objects.
     /// </summary>
