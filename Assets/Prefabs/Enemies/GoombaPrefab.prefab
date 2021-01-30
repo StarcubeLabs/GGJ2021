@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 179549393933172863}
   - component: {fileID: 4941495904268760446}
-  m_Layer: 0
+  - component: {fileID: 3278558894734619624}
+  m_Layer: 16
   m_Name: prefabHurtboxParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,12 +42,33 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3278558894734619624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473989919660572314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9ee5187e2c12841a47e34b4c0cc7e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 4941495904268760446}
+  ignoreCollisionsWithOtherTriggers: 0
+  useLayerMask: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  objectsToIgnore: []
+  namesToIgnore: []
+  isActive: 1
 --- !u!1 &5823470174783820570
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5282108802831187712}
   - component: {fileID: 3586112444780798437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: prefabGraphicalParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +160,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6499107606596095292}
   - component: {fileID: 3968182857837529079}
-  m_Layer: 0
+  - component: {fileID: 6841083720047650242}
+  m_Layer: 9
   m_Name: GoombaPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,4 +198,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   speed: 0.1
-  myHurtBox: {fileID: 4941495904268760446}
+  hurtboxCollisionWrapper: {fileID: 3278558894734619624}
+--- !u!50 &6841083720047650242
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6985398997777358104}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

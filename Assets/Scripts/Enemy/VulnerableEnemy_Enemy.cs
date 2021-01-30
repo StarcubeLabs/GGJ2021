@@ -9,7 +9,7 @@ namespace GGJ2021.Enemy
         /// <summary>
         /// Required 
         /// </summary>
-        public Collider2D myHurtBox;
+        public CollisionWrapper hurtboxCollisionWrapper;
 
         public virtual void hit()
         {
@@ -25,14 +25,23 @@ namespace GGJ2021.Enemy
         protected virtual void Init(Vector2 v)
         {
             mySpriteRenderer = myGraphicalParent.AddComponent<SpriteRenderer>();
-
-            if(myHurtBox != null)
-                myHurtBox.gameObject.layer = (int)collisionLayerIDs.ENEMY;
+            if (hurtboxCollisionWrapper != null)
+            {
+                hurtboxCollisionWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);
+            }
 
 #if UNITY_EDITOR
-            if (myHurtBox == null)
-                Debug.LogError("Hurtbox not assigned to: " + enemyName);
+                if (hurtboxCollisionWrapper == null)
+                Debug.LogError("HurtboxCollisionWrapper not assigned to: " + enemyName);
 #endif
+        }
+
+        public void OnCollision(Collider2D col)
+        {
+            if (col.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+            {
+                hit();
+            }
         }
     }
 }

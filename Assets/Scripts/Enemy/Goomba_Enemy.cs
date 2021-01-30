@@ -42,14 +42,6 @@ namespace GGJ2021.Enemy
 
         protected override void Init(Vector2 loc)
         {
-            // Goomba Specific inherited components
-            if (myHurtBox == null)
-            {
-                CircleCollider2D tempCollider = new GameObject(enemyName + "Hurtbox").AddComponent<CircleCollider2D>();
-                tempCollider.radius = 2;
-                myHurtBox = tempCollider;
-            }
-
             // Catchall inherited components
             base.Init(loc);
 
