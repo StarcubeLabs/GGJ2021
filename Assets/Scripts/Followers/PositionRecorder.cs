@@ -31,6 +31,7 @@
         void Update()
         {  
             if (isRecording && Time.time > nextActionTime) {
+                print("recording");
                 nextActionTime += interval;
 
                 AddRecord(Time.deltaTime);
@@ -48,6 +49,10 @@
                 historyIdx++;
             else
                 historyIdx = 0;
+        }
+
+        public bool IsNearTarget(float mindist) {
+            return Vector3.Distance(target.transform.position, transform.position) < mindist;
         }
     }
 }

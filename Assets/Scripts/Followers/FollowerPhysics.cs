@@ -6,7 +6,6 @@ namespace GGJ2021
     {
         public FollowerConfig config;
 
-        public float minDistance = 0.005f;
         public float speed = 10.0f;
 
         public Vector2 velocity = Vector2.zero;
@@ -16,8 +15,12 @@ namespace GGJ2021
 
         public Vector3 targetPos = Vector3.zero;
 
+        private PositionRecorder positionRecorderScript;
+
         void Start() {
             stateCurr = FollowerStates.Idling;
+
+            positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
         }
 
         void Update() {
@@ -29,6 +32,9 @@ namespace GGJ2021
             } else {
                 stateCurr = FollowerStates.Idling;
             }
+
+            // toggle recording state based on how close we are
+            positionRecorderScript.isRecording = IsNearTarget();
 
             switch (stateCurr) {
                 case FollowerStates.Chasing:
@@ -88,7 +94,7 @@ namespace GGJ2021
             return stateCurr == FollowerStates.Idling;
         }
         public bool IsNearTarget() {
-            return Mathf.Abs(transform.position.x - targetPos.x) < minDistance;
+            return positionRecorderScript.IsNearTarget(0.3f);
         }
         public bool IsTouchingGround() {
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
