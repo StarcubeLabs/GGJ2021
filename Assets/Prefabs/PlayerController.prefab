@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 353910848}
   - component: {fileID: 353910849}
   - component: {fileID: 1963814572}
-  - component: {fileID: 8409313491578417681}
   m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
@@ -265,23 +264,6 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1963814572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353910847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2c0475a82bd16e4cbd9808ece13a06a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 353910849}
-  - {fileID: 171684065}
-  defaultColor: {r: 1, g: 0.4, b: 0, a: 1}
-  dimColor: {r: 0.4627451, g: 0.3254902, b: 0, a: 1}
---- !u!114 &8409313491578417681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

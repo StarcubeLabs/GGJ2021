@@ -8,6 +8,8 @@
         private int curHealth, maxHealth = 3;
         private CollisionWrapper playerHurtboxColliderWrapper;
 
+        private float invulnerabilityTimer, invulnerabilityTimerMax = 1f;
+
         public PlayerHealth(PlayerController controller, CollisionWrapper playerHurtboxColliderWrapper)
         {
             curHealth = maxHealth;
@@ -15,13 +17,30 @@
             this.playerHurtboxColliderWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);
         }
 
+        public void OnUpdate(float deltaTime)
+        {
+            if (invulnerabilityTimer > 0)
+            {
+                invulnerabilityTimer -= deltaTime;
+            }
+        }
+
         public void TakeDamage(int damage)
         {
+            if (invulnerabilityTimer > 0)
+            {
+                return;
+            }
+
             curHealth -= damage;
             StatBarManager.instance.SetCurr(curHealth);
             if (curHealth <= 0)
             {
                 Die();
+            }
+            else
+            {
+                invulnerabilityTimer = invulnerabilityTimerMax;
             }
         }
 
@@ -46,6 +65,11 @@
         public void OnCollision(Collider2D col)
         {
             TakeDamage(1);
+        }
+
+        public bool IsInvulnerableFromHit()
+        {
+            return invulnerabilityTimer > 0;
         }
     }
 }

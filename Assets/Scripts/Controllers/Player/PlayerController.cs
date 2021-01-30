@@ -69,6 +69,7 @@
         {
             playerPhysics.OnUpdate();
             playerGrappleManager.OnUpdate(Time.deltaTime);
+            playerHealth.OnUpdate(Time.deltaTime);
             CheckInputs();
             AimReticule();
             StateMachine.OnUpdate(Time.deltaTime);
