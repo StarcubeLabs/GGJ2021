@@ -37,7 +37,7 @@
         [HideInInspector]
         public RigidbodyConstraints2D defaultConstraints;
 
-        PlayerStateMachine StateMachine;
+        public PlayerStateMachine StateMachine;
         public string currentStateName;
 
         private void Awake()
@@ -72,7 +72,10 @@
             playerPhysics.OnUpdate();
             playerGrappleManager.OnUpdate(Time.deltaTime);
             playerHealth.OnUpdate(Time.deltaTime);
-            CheckInputs();
+            if (!playerHealth.dead)
+            {
+                CheckInputs();
+            }
             AimReticule();
             StateMachine.OnUpdate(Time.deltaTime);
             currentStateName = StateMachine.GetCurrentStateName();
@@ -107,6 +110,10 @@
         private void AimReticule()
         {
             lookDirection = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
+            if (playerHealth.dead)
+            {
+                lookDirection = new Vector2(0f, 0f);
+            }
             reticules.ForEach(p =>
             {
                 p.transform.localPosition = lookDirection * p.maxDistance;

@@ -65,6 +65,7 @@
         private void Die()
         {
             controller.playerAnimationController.DeathTrigger();
+            controller.StateMachine.ForceNextState(new PlayerStateDead(controller));
             dead = true;
         }
 
