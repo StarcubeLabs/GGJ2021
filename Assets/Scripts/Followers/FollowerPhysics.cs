@@ -4,48 +4,41 @@ namespace GGJ2021
 
     public class FollowerPhysics : MonoBehaviour
     {
-        public GameObject animatedObject;
+        public GameObject playerObj;
+
+        public GameObject animatorObj;
+        private Animator animator;
+
         public FollowerConfig config;
 
         public Vector2 velocity = Vector2.zero;
 
-        enum FollowerStates {Idling, Falling, Chasing};
+        enum FollowerStates {Idling, Falling, Chasing, Walking, Thinking};
         private FollowerStates stateCurr;
+        private FollowerStates statePrev;
 
         public Vector3 targetPos = Vector3.zero;
 
         private PositionRecorder positionRecorderScript;
-        private Animator animator;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
 
             positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
-            animator = animatedObject.GetComponent<Animator>();
+            animator = animatorObj.GetComponent<Animator>();
         }
-
         void FixedUpdate() {
-            if (IsNearTarget() && !IsNearSourceTarget() && !IsFalling()) {
-                RefreshTargetPosition();
-            }
-
-            if (!IsNearTarget()) {
-                stateCurr = FollowerStates.Chasing;
-            } else if (!IsTouchingGround()) {
-                stateCurr = FollowerStates.Falling;
-            } else {
-                stateCurr = FollowerStates.Idling;
-            }
+            UpdateState();
 
             // toggle recording state based on how close we are
-            positionRecorderScript.isRecording = !IsNearSourceTarget();
+            positionRecorderScript.isRecording = !IsNearPlayer();
         }
-
         void Update() {
             switch (stateCurr) {
                 case FollowerStates.Chasing:
+                case FollowerStates.Walking:
                     animator.Play("JellyWalk");
-                    ChaseTarget();
+                    MoveToTarget();
                     break;
                 case FollowerStates.Falling:
                     animator.Play("JellyFall");
@@ -58,19 +51,50 @@ namespace GGJ2021
                     break;
             }
         }
+        void UpdateState() {
+            FollowerStates stateNext = FollowerStates.Idling;
 
-        void ChaseTarget() {
-            bool wasClose = IsNearSourceTarget();
+            if (IsThinking() && !IsNearTarget()) {
+                stateNext = FollowerStates.Walking;
+            } else if (!IsNearPlayer() && !IsFalling()) {
+                // chase player 
+                stateNext = FollowerStates.Chasing;
+            } else if (!IsTouchingGround() && !IsChasing() && !IsWalking()) {
+                // gotta fall
+                stateNext = FollowerStates.Falling;
+            } else if (IsChasing() && IsNearPlayer()) {
+                // close enough, think about doing something else
+                stateNext = FollowerStates.Thinking;
+            } else if (IsWalking() && IsNearPlayer() && IsNearTarget()) {
+                stateNext = FollowerStates.Idling;
 
+            // 
+            } else if (IsWalking()) {
+                stateNext = stateCurr;
+            }
+        
+            // 
+            if (!IsNearPlayer() && IsChasing()) {
+                UpdateTargetPos();
+            }
+
+            // -- 
+            // check if no state change
+            if (stateNext == stateCurr) {
+                return;
+            }
+
+            statePrev = stateCurr;
+            stateCurr = stateNext;
+            print("stateCurr: " + stateCurr + "// statePrev: " + statePrev);
+
+            if (IsThinking()) {
+                UpdateTargetPos();
+            }
+        }
+        void MoveToTarget() {
             float step = config.MaxSpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, targetPos, step);
-
-            bool isClose = IsNearSourceTarget();
-
-            // check if newly close to the player
-            if (!wasClose && isClose) {
-                SetHangoutPosition();
-            }
         }
         void RefreshTargetPosition() {
             int firstIdx = positionRecorderScript.historyIdx;
@@ -96,12 +120,35 @@ namespace GGJ2021
                 transform.position = nextPosition;
             }
         }
-        void SetHangoutPosition() {
-            Vector3 sourceTargetPos = positionRecorderScript.target.transform.position;
-            float xOffset = Random.Range(-1.5f, 1.5f);
-            targetPos = new Vector3(sourceTargetPos.x + xOffset, sourceTargetPos.y, sourceTargetPos.z);
-        }
+        void UpdateTargetPos() {
+            Vector3 nextTarget = ChooseTarget();
 
+            // only want to update if not zero
+            if (nextTarget == Vector3.zero) { return; }
+
+            targetPos = nextTarget;
+        }
+        Vector3 ChooseTarget() {
+            print("ChooseTarget()");
+            if (!IsNearPlayer()) {
+                return playerObj.transform.position;
+            }
+
+            if (IsThinking() && !IsFalling()) {
+                return FindHangoutPosition();
+            }
+
+            // zero represents no target
+            return Vector3.zero;
+        }
+        Vector3 FindHangoutPosition() {
+            Vector3 pPos = playerObj.transform.position;
+            float xOffset = Random.Range(-2.0f, 2.0f);
+
+            Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
+            print("FindHangoutPosition() " + nextPos);
+            return nextPos;
+        }
         public RaycastHit2D RaycastGround(float distance) {
             float offset = 0.1f;
             Vector3 offsetVec = new Vector3(offset, 0f);
@@ -109,7 +156,6 @@ namespace GGJ2021
             Debug.DrawRay(transform.position, Vector2.down * distance, Color.blue);
             return hit;
         }
-
         // -- utility methods
         public bool IsChasing() {
             return stateCurr == FollowerStates.Chasing;
@@ -120,11 +166,21 @@ namespace GGJ2021
         public bool IsIdling() {
             return stateCurr == FollowerStates.Idling;
         }
-        public bool IsNearTarget() {
-            return Vector3.Distance(targetPos, transform.position) < 0.5f;
+        public bool IsThinking() {
+            return stateCurr == FollowerStates.Thinking;
         }
-        public bool IsNearSourceTarget() {
-            return positionRecorderScript.IsNearTarget(0.9f);
+        public bool IsWalking() {
+            return stateCurr == FollowerStates.Walking;
+        }
+        public bool IsNearTarget() {
+            if (targetPos == Vector3.zero) {
+                return true;
+            }
+
+            return Vector3.Distance(transform.position, targetPos) < config.targetMinDistance;
+        }
+        public bool IsNearPlayer() {
+            return Vector3.Distance(transform.position, playerObj.transform.position) < config.followMinDistance;
         }
         public bool IsTouchingGround() {
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
