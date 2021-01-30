@@ -44,7 +44,7 @@
 
         public void TakeDamage(int damage)
         {
-            if (invulnerabilityTimer > 0)
+            if (invulnerabilityTimer > 0 || controller.playerPhysics.isDashing || controller.playerPhysics.isGrappling || dead)
             {
                 return;
             }
@@ -75,6 +75,7 @@
         private void Die()
         {
             controller.playerAnimationController.DeathTrigger();
+            controller.cannon.SetActive(false);
             controller.StateMachine.ForceNextState(new PlayerStateDead(controller));
             dead = true;
         }
