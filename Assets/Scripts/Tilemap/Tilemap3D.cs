@@ -114,12 +114,21 @@ namespace GGJ2021
                         {
                             continue;
                         }
-                        Instantiate(prefab, tileMap.GetCellCenterLocal(cellPos),
+                        GameObject newObject = Instantiate(prefab, tileMap.GetCellCenterLocal(cellPos),
                         prefab.transform.rotation * spriteRotationQuat * Quaternion.Euler(0, 0, addedRotation), transform);
+
+                        TilemapInit init = newObject.GetComponent(typeof(TilemapInit)) as TilemapInit;
+                        if (init != null)
+                        {
+                            init.InitFromTilemap(this);
+                        }
                     }
                 }
             }
-            GetComponent<TilemapRenderer>().enabled = false;
+            if (transform.childCount > 0)
+            {
+                GetComponent<TilemapRenderer>().enabled = false;
+            }
         }
 
         public void ToggleObjects()
