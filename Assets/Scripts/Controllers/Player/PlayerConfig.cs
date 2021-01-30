@@ -42,6 +42,8 @@
         public float DashOutroMaxSpeed;
         public Vector3 DashOutroGravity;
 
+        public float dashCooldown;
+
         [Header("Snap to Ground")]
         /// <summary>
         /// The distance threshold within which Player will snap to the ground if she is close enough.
