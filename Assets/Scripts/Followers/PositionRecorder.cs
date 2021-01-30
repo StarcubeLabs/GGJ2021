@@ -14,10 +14,10 @@
         public int historySize = 10; 
 
         [Tooltip("How many seconds between each recording")]
-        public float interval = 0.1f;
+        public float interval = 0;
 
-        private Vector3[] history;
-        private int historyIdx; // tracks when to loop over
+        public Vector3[] history;
+        public int historyIdx; // tracks when to loop over
 
         private float nextActionTime = 0.0f;
 
@@ -31,7 +31,6 @@
         void Update()
         {  
             if (isRecording && Time.time > nextActionTime) {
-                print("recording");
                 nextActionTime += interval;
 
                 AddRecord(Time.deltaTime);
@@ -51,8 +50,8 @@
                 historyIdx = 0;
         }
 
-        public bool IsNearTarget(float mindist) {
-            return Vector3.Distance(target.transform.position, transform.position) < mindist;
+        public bool IsNearTarget(float minDist) {
+            return Vector3.Distance(target.transform.position, transform.position) < minDist;
         }
     }
 }

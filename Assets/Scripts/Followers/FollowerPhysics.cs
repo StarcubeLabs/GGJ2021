@@ -23,7 +23,7 @@ namespace GGJ2021
             positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
         }
 
-        void Update() {
+        void FixedUpdate() {
             bool isTouchingGround = IsTouchingGround();
             if (!IsNearTarget() && isTouchingGround) {
                 stateCurr = FollowerStates.Chasing;
@@ -34,8 +34,10 @@ namespace GGJ2021
             }
 
             // toggle recording state based on how close we are
-            positionRecorderScript.isRecording = IsNearTarget();
+            positionRecorderScript.isRecording = !IsNearTarget();
+        }
 
+        void Update() {
             switch (stateCurr) {
                 case FollowerStates.Chasing:
                     ChaseTarget();
@@ -55,12 +57,20 @@ namespace GGJ2021
                 return;
             }
 
+            int firstIdx = positionRecorderScript.historyIdx;
+            int nextIdx = firstIdx + 1;
+            if (nextIdx >= positionRecorderScript.historySize) {
+                nextIdx = 0;
+            }
+
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            // transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            transform.position = Vector3.Lerp(transform.position, positionRecorderScript.history[nextIdx], step);
         }
 
         void ApplyGravity() {
             bool isTouchingGround = IsTouchingGround();
+            print("ApplyGravity()" + isTouchingGround);
             if (!isTouchingGround) {
                 Vector3 currPosition = transform.position;
                 Vector3 nextPosition = transform.position - (config.Gravity * Time.deltaTime);
@@ -94,7 +104,7 @@ namespace GGJ2021
             return stateCurr == FollowerStates.Idling;
         }
         public bool IsNearTarget() {
-            return positionRecorderScript.IsNearTarget(0.3f);
+            return positionRecorderScript.IsNearTarget(0.9f);
         }
         public bool IsTouchingGround() {
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
