@@ -4,6 +4,9 @@ namespace GGJ2021
 
     public class FollowerPhysics : MonoBehaviour
     {
+        [Tooltip("Use this if you're doing something different")]
+        public bool isActive;
+
         public GameObject playerObj;
 
         public GameObject animatorObj;
@@ -28,6 +31,9 @@ namespace GGJ2021
             animator = animatorObj.GetComponent<Animator>();
         }
         void FixedUpdate() {
+            if (!isActive) { return; }
+
+            // state handler
             UpdateState();
 
             // toggle recording state based on how close we are
