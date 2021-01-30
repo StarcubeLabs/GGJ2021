@@ -8,6 +8,7 @@
         public GameObject trackerObject;
         // private PlayerController playerControllerScript;
         private PositionTracker trackerScript;
+        private Vector3 targetPos;
 
         public int positionIdx;
 
@@ -22,13 +23,20 @@
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            Vector3 targetPos = trackerScript.GetTrackedPosition(positionIdx);
+        void Update() {
+            // gonna constantly update the tracked target
+            targetPos = trackerScript.GetTrackedPosition(positionIdx);
+        }
+
+        public bool IsNearTarget() {
+            // return Vector3.Distance(transform.position, targetPos) < minDistance;
+            return Mathf.Abs(transform.position.x - targetPos.x) < minDistance;
+        }
+
+        public void Follow() {
 
             // print("dist: " + Vector3.Distance(transform.position, targetPos));
-            if (Vector3.Distance(transform.position, targetPos) < minDistance)
-            {   
+            if (IsNearTarget()) {   
                 return;
             }
 
