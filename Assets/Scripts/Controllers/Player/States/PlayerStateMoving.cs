@@ -42,12 +42,11 @@
                     nextState = new PlayerStateGrapple(playerController);
                 }
             }
-
-            playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);
         }
 
         public override void OnFixedUpdate()
         {
+            playerController.playerPhysics.CalculateVelocity(playerController.config.MaxSpeed, playerController.config.MaxAcceleration);
             playerController.playerPhysics.ApplyVelocity(playerController.config.MaxSpeed);
             if (playerController.move.magnitude == 0.0f && playerController.playerCollision.IsGrounded() == true)
             {
