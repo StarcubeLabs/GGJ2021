@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AcidTemp
-  m_Shader: {fileID: 4800000, guid: 567695ead27e01744b4dc7988e4af8e0, type: 3}
+  m_Shader: {fileID: 4800000, guid: d4f8a124f758f334fae8552e87d47905, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 737f6e2df5a160d48aa7d79cf891d966, type: 3}
+        m_Texture: {fileID: 2800000, guid: 88c23c322a195484990186552400816f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SideTex:
-        m_Texture: {fileID: 2800000, guid: f8eb2a8ad9cc6014a8ba7adf691e13a6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 88c23c322a195484990186552400816f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -72,15 +72,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ScrollSpeed: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TexScale: 2
+    - _TexScale: 1
     - _TexScale2: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.02520144, g: 1, b: 0, a: 1}
     - _ColorB: {r: 0.36815858, g: 0.8962264, b: 0.18178178, a: 1}
     - _ColorG: {r: 0.023584902, g: 1, b: 0.023584902, a: 1}
     - _ColorR: {r: 0.22795771, g: 0.6415094, b: 0.021181926, a: 1}
