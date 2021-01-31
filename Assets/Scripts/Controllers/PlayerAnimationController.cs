@@ -1,13 +1,11 @@
 ﻿namespace GGJ2021
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     public class PlayerAnimationController : MonoBehaviour
     {
         public Animator playerAnim;
-        public List<SpriteRenderer> sprites;
+        public Animator cannonAnim;
 
         private string deathTrigger = "Death";
         private string jumpTrigger = "Jump";
@@ -15,6 +13,9 @@
         private string hurtAcidTrigger = "HurtAcid";
         private string walkingBool = "Walking";
         private string inAirBool = "InAir";
+
+        private string fireTrigger = "Fire";
+        private string grappleTrigger = "Grapple";
 
         public void SetIsWalk(bool isWalk)
         {
@@ -46,14 +47,14 @@
             playerAnim.SetTrigger(hurtAcidTrigger);
         }
 
-        public void EnableSprites()
+        public void FireCannon()
         {
-            sprites.ForEach(p => p.enabled = true);
+            cannonAnim.SetTrigger(fireTrigger);
         }
 
-        public void DisableSprites()
+        public void FireGrapple()
         {
-            sprites.ForEach(p => p.enabled = false);
+            cannonAnim.SetTrigger(grappleTrigger);
         }
     }
 }

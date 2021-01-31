@@ -30,6 +30,7 @@
                 {
                     hamster.gameObject.SetActive(true);
                     hamster.Launch(origin, velocity);
+                    PlayerController.instance.playerAnimationController.FireCannon();
                     return true;
                 }
             }

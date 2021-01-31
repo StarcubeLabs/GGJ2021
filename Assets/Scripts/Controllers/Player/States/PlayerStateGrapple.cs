@@ -17,6 +17,7 @@ namespace GGJ2021
             moveTimer = controller.config.grappleTransitionTime;
             initMoveTimer = controller.config.grappleTransitionTime;
             controller.playerPhysics.isGrappling = true;
+            controller.playerAnimationController.FireGrapple();
         }
 
         protected override void Enter(){ }
