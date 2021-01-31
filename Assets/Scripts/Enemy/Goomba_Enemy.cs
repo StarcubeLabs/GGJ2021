@@ -7,6 +7,8 @@ namespace GGJ2021.Enemy
         [SerializeField]
         public static Sprite goombaSprite;
 
+        public Rigidbody2D rgbd2d;
+
         public bool randomDirection;
 
         enum Direction { LEFT, RIGHT}
@@ -92,11 +94,7 @@ namespace GGJ2021.Enemy
             restoreHealth();
 
             // Goomba Specific Components
-            if (randomDirection)
-            {
-                int temp = Random.Range(0, 2);
-                myDir = (Direction)temp;
-            }
+            myDir = Direction.RIGHT;
 
 
             // TO DO: set desired speed on Enemy_NPC.speed
@@ -149,82 +147,99 @@ namespace GGJ2021.Enemy
         void DetectEdge()
         {
             int wallCollisionDetection = 1 << 0; // Default Layer
-            // Set Angle 
-            Vector2 dir;
-            Vector2 dir2;
-            Vector2 dir3;
             RaycastHit2D r;
-
-            // Falling
             if (!detect_Floor)
             {
-                dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
-                r = Physics2D.Raycast(this.transform.position, dir, 0.5f, wallCollisionDetection);
-
+                r = Physics2D.Raycast(this.transform.position, Vector2.down, 0.5f, wallCollisionDetection);
                 if (r)
                     detect_Floor = true;
 
             }
-            else
+
+            r = Physics2D.Raycast(this.transform.position, myDir == Direction.LEFT ? Vector2.left : Vector2.right, 0.5f, wallCollisionDetection);
+            if (r)
             {
-
-                // Detect Floor
-                if (!detect_Wall)
-                {
-                    // If DetectWall is detected, then it could be a slope
-                    dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
-                    detect_Floor = false;
-                    r = Physics2D.Raycast(this.transform.position, dir, 1f, wallCollisionDetection);
-                    dir3 = dir;
-                    //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir3 * 1f), Color.red);
-                    if (r)
-                    {
-                        detect_Floor = true;
-                        // Adjust the angle of its right/left movement based on the angle of what it's standing on
-                        angleOfFoundation = r.transform.rotation.eulerAngles.z;
-                    }
-                }
-
-                // Walking Cane Check
-                // Adjust Walking Cane Angle
-                if (myDir == Direction.RIGHT)
-                    dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.down + Vector2.right));
-                else dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.down + Vector2.left));
-                dir2 = dir;
-                //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir2 * 5f), Color.green);
-                detect_WalkingCane = false;
-                r = Physics2D.Raycast(this.transform.position, dir, 5f, wallCollisionDetection);
-                // Is it colliding
-                if (r)
-                {
-                    detect_WalkingCane = true;
-                    // Continue Forward
-                }
-                else if (myDir == Direction.LEFT) myDir = Direction.RIGHT; else myDir = Direction.LEFT;
-                // else turn around
-
-                // Detect Wall
-                if (myDir == Direction.RIGHT)
-                    dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.right));
-                else dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.left));
-                //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir * 0.5f), Color.blue);
-                detect_Wall = false;
-                r = Physics2D.Raycast(this.transform.position, dir, 0.5f, wallCollisionDetection);
-
-                if (r)
-                {
-                    detect_Wall = true;
-                    // Wall check
-                    if (r.transform.rotation.z > 45)
-                    {
-                        // too steep, consider this a wall and not a slope
-                        if (myDir == Direction.LEFT)
-                            myDir = Direction.RIGHT;
-                        else myDir = Direction.LEFT;
-                    }
-                    else angleOfFoundation = r.transform.rotation.eulerAngles.z;    // Set angle
-                }
+                if (myDir == Direction.LEFT)
+                    myDir = Direction.RIGHT;
+                else
+                    myDir = Direction.LEFT;
             }
+
+            // Set Angle 
+            //Vector2 dir;
+            //Vector2 dir2;
+            //Vector2 dir3;
+
+            //// Falling
+            //if (!detect_Floor)
+            //{
+            //    dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
+            //    r = Physics2D.Raycast(this.transform.position, dir, 0.5f, wallCollisionDetection);
+
+            //    if (r)
+            //        detect_Floor = true;
+
+            //}
+            //else
+            //{
+
+            //    // Detect Floor
+            //    if (!detect_Wall)
+            //    {
+            //        // If DetectWall is detected, then it could be a slope
+            //        dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
+            //        detect_Floor = false;
+            //        r = Physics2D.Raycast(this.transform.position, dir, 1f, wallCollisionDetection);
+            //        dir3 = dir;
+            //        //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir3 * 1f), Color.red);
+            //        if (r)
+            //        {
+            //            detect_Floor = true;
+            //            // Adjust the angle of its right/left movement based on the angle of what it's standing on
+            //            angleOfFoundation = r.transform.rotation.eulerAngles.z;
+            //        }
+            //    }
+
+            //    // Walking Cane Check
+            //    // Adjust Walking Cane Angle
+            //    if (myDir == Direction.RIGHT)
+            //        dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.down + Vector2.right));
+            //    else dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.down + Vector2.left));
+            //    dir2 = dir;
+            //    //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir2 * 5f), Color.green);
+            //    detect_WalkingCane = false;
+            //    r = Physics2D.Raycast(this.transform.position, dir, 5f, wallCollisionDetection);
+            //    // Is it colliding
+            //    if (r)
+            //    {
+            //        detect_WalkingCane = true;
+            //        // Continue Forward
+            //    }
+            //    else if (myDir == Direction.LEFT) myDir = Direction.RIGHT; else myDir = Direction.LEFT;
+            //    // else turn around
+
+            //    // Detect Wall
+            //    if (myDir == Direction.RIGHT)
+            //        dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.right));
+            //    else dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.left));
+            //    //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir * 0.5f), Color.blue);
+            //    detect_Wall = false;
+            //    r = Physics2D.Raycast(this.transform.position, dir, 0.5f, wallCollisionDetection);
+
+            //    if (r)
+            //    {
+            //        detect_Wall = true;
+            //        // Wall check
+            //        if (r.transform.rotation.z > 45)
+            //        {
+            //            // too steep, consider this a wall and not a slope
+            //            if (myDir == Direction.LEFT)
+            //                myDir = Direction.RIGHT;
+            //            else myDir = Direction.LEFT;
+            //        }
+            //        else angleOfFoundation = r.transform.rotation.eulerAngles.z;    // Set angle
+            //    }
+            //}
         }
 
         void Update()
