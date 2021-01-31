@@ -89,9 +89,24 @@
             return curGrappleFailTime <= 0f && PlayerStats.instance.HasAbility(Ability.Grapple);
         }
 
+        public bool GrappleActive()
+        {
+            return curGrappleFailTime > 0f;
+        }
+
         public Vector2 GetPlayerDesition()
         {
             return playerDestination;
+        }
+
+        public Vector2 GetGrappleEndPos()
+        {
+            return grapple.GetPosition(1);
+        }
+
+        public Vector2 GetGrappleDirection()
+        {
+            return (grapple.GetPosition(1) - grapple.GetPosition(0)).normalized;
         }
     }
 }
