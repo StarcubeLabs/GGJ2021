@@ -248,7 +248,8 @@ MonoBehaviour:
   facingRight: 1
   maxhealth: 0
   EnemyState: 0
-  deathExplosion: {fileID: 0}
+  deathExplosion: {fileID: 4692375779195941762, guid: a2ab91b642105e741a986db78b222381,
+    type: 3}
   speed: 200
   hurtboxCollisionWrapper: {fileID: 879476686065958425}
   idleTimer: 0
