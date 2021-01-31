@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6309267281501004065}
   - component: {fileID: 474644006875151613}
   - component: {fileID: 619842604033410176}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Health Restore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +80,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6309267281501004065}
     m_Modifications:
+    - target: {fileID: 8274250881654652223, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274250881698577295, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274250882503329812, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274250882624606554, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 8274250882833742556, guid: 1c783e70287b5a846b2adac4976639d6,
         type: 3}
       propertyPath: m_RootOrder
@@ -139,6 +159,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BerrySingleAnimObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274250882833743138, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274250883120408243, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274250883385658980, guid: 1c783e70287b5a846b2adac4976639d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c783e70287b5a846b2adac4976639d6, type: 3}
