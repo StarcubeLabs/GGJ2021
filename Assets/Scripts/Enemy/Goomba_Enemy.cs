@@ -17,9 +17,18 @@ namespace GGJ2021.Enemy
         //[SerializeField]
         float angleOfFoundation;
 
+        /// <summary>
+        /// Called by the NPCPool_Base to spawn an enemy.
+        /// Receives its 'ticket' here
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="npcID"></param>
         public override void Spawn(Vector3 v, int npcID)
         {
+            // Assign ticket
             NPCPoolID = npcID;
+
+            // Handle missing or damaged gameobjects
             enemyName = "Goomba_" + npcID;
             this.gameObject.name = enemyName;
             if (myGraphicalParent == null)
@@ -54,11 +63,11 @@ namespace GGJ2021.Enemy
                     }
                 }
             }
+
+            // Init values
             Init(v);
 
-            EnemyState = ActorState.IDLE;
 
-            restoreHealth();
         }
 
         #region Hit variants
@@ -78,6 +87,10 @@ namespace GGJ2021.Enemy
             // Catchall inherited components
             base.Init(loc);
 
+            EnemyState = ActorState.IDLE;
+
+            restoreHealth();
+
             // Goomba Specific Components
             if (randomDirection)
             {
@@ -89,15 +102,12 @@ namespace GGJ2021.Enemy
             // TO DO: set desired speed on Enemy_NPC.speed
         }
 
+        /// <summary>
+        /// Moves the Goomba left or right based on myDir
+        /// Calls DetectEdge() to handle how it moves over the platforms
+        /// </summary>
         protected override void Walk()
         {
-            // TO DO: 
-
-            // myDir LEFT or RIGHT?
-            // Raycast respectively using Vector2.Right/Left*speed, if not triggered
-            // Overlap Circle with the centerpoint Vector2.Right*speed - Vector2.Up * 2, if triggered
-            // Move respectively using transform+= Vector2.Right/Left * speed
-
             DetectEdge();
 
             if (!detect_Floor)
@@ -118,12 +128,24 @@ namespace GGJ2021.Enemy
         }
 
         //[SerializeField]
+        // Fires straight forward at 'eye level'
         private bool detect_Wall;
         //[SerializeField]
+        // Fires down and forward 
         private bool detect_WalkingCane;
         //[SerializeField]
+        // Fires straight down
         private bool detect_Floor;
 
+        // Down is relative to angleOfFoundation
+
+        /// <summary>
+        /// Detects whether or not the goomba will:
+        /// 1) Fall: detectWall == false
+        /// 2) Keep moving Right/Left
+        /// 3) Turn Around: ledge found/wall found
+        /// 4) Adjust its direction along the floor (handles slopes)
+        /// </summary>
         void DetectEdge()
         {
             int wallCollisionDetection = 1 << 0; // Default Layer
@@ -133,6 +155,7 @@ namespace GGJ2021.Enemy
             Vector2 dir3;
             RaycastHit2D r;
 
+            // Falling
             if (!detect_Floor)
             {
                 dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
@@ -145,9 +168,10 @@ namespace GGJ2021.Enemy
             else
             {
 
-                // if detectWall whisker is not colliding
+                // Detect Floor
                 if (!detect_Wall)
                 {
+                    // If DetectWall is detected, then it could be a slope
                     dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
                     detect_Floor = false;
                     r = Physics2D.Raycast(this.transform.position, dir, 1f, wallCollisionDetection);
@@ -156,6 +180,7 @@ namespace GGJ2021.Enemy
                     if (r)
                     {
                         detect_Floor = true;
+                        // Adjust the angle of its right/left movement based on the angle of what it's standing on
                         angleOfFoundation = r.transform.rotation.eulerAngles.z;
                     }
                 }
@@ -192,6 +217,7 @@ namespace GGJ2021.Enemy
                     // Wall check
                     if (r.transform.rotation.z > 45)
                     {
+                        // too steep, consider this a wall and not a slope
                         if (myDir == Direction.LEFT)
                             myDir = Direction.RIGHT;
                         else myDir = Direction.LEFT;
