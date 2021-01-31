@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4692375779195941764}
   - component: {fileID: 4692375779195941765}
   m_Layer: 0
-  m_Name: HamGrenadeBoomAnimator
+  m_Name: HamDashBoomAnimator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ Animator:
   m_GameObject: {fileID: 4692375779195941762}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 105fc6c1d5e74e849bc0de7868e042f9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 289907f3c14cef8418e1d6171a5c0e12, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

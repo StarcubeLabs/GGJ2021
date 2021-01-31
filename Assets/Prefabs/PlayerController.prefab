@@ -1127,6 +1127,8 @@ MonoBehaviour:
   playerHurtboxColliderWrapper: {fileID: 5971055944718477433}
   capsuleCollider: {fileID: 1300345069}
   physicsCollider: {fileID: 1300345069}
+  dashExplosionPrefab: {fileID: 1086600868608601223, guid: 13911a1ddb35c4e47b06a0edcf37af1f,
+    type: 3}
   move: {x: 0, y: 0}
   lookDirection: {x: 0, y: 0}
   reticules:

@@ -78,6 +78,7 @@
             playerController.playerPhysics.isDashing = false;
             playerController.playerPhysics.ApplyStationaryVelocity();
             playerController.GooBallHandler.StopDash();
+            playerController.SpawnDashExplosion();
             //FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_explosion_wet");
         }
     }
