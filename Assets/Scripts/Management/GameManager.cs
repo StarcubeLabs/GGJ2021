@@ -17,6 +17,7 @@
         public GameObject[] PersistentObjects;
 
         public PlayerController PlayerManagerPrefab;
+        public EnemyManager EnemyManagerPrefab;
         public GameObject[] SceneLocalObjects;
 
         private FmodFacade fmod;
@@ -24,6 +25,7 @@
         private GameObject[] persistent;
 
         private GameObject player;
+        private EnemyManager enemies;
         private GameObject[] local;
 
         private void Start()
@@ -91,6 +93,7 @@
                 CleanUp();
 
             player = Instantiate(PlayerManagerPrefab.gameObject);
+            enemies = Instantiate(EnemyManagerPrefab.gameObject).GetComponent<EnemyManager>();
             for (int i = 0; i < local.Length; i++)
                 local[i] = Instantiate(SceneLocalObjects[i]);
         }
@@ -101,6 +104,11 @@
             player = null;
             PlayerController.instance = null;
             FollowerManager.instance = null;
+            if (enemies != null)
+            {
+                enemies.CleanUp();
+                Destroy(enemies);
+            }
 
             for (int i = 0; i < local.Length; i++)
             {
