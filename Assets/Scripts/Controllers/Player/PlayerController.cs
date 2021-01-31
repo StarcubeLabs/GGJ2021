@@ -143,10 +143,7 @@ namespace GGJ2021
 
             float mouseX = Input.mousePosition.x - screenW;
             float mouseY = Input.mousePosition.y - screenH;
-            if (Mathf.Abs(mouseX) > 0 || Mathf.Abs(mouseY) > 0)
-            {
-                lookDirection = new Vector2(mouseX, mouseY).normalized;
-            }
+            lookDirection += new Vector2(mouseX, mouseY).normalized;
 
             if (playerHealth.dead)
             {
