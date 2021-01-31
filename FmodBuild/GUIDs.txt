@@ -6,7 +6,8 @@
 {eda48465-0241-4862-9659-177b8d5bb1cd} bus:/
 {bb8612bb-438b-4f5b-b139-3ac3d325b417} bus:/Reverb
 {f388cb4a-804e-4c8f-9f0d-9e0271443068} event:/music/final_cutscene
-{d4c82b4d-a0c6-4601-af90-1410f065c5c4} event:/music/level1
+{a3cf6a75-6878-4329-90a9-bf2749b2981a} event:/music/level1
+{d4c82b4d-a0c6-4601-af90-1410f065c5c4} event:/music/level1 (old)
 {4058fc25-dfdd-416b-9a47-82530df98cee} event:/music/title_screen
 {14ff8678-9157-484b-84f6-9d7897617ce6} event:/sfx/abilities/hamster_dash
 {d1d3b50d-633e-499e-ba92-8215d7836336} event:/sfx/abilities/hamster_dash_tube_enter
