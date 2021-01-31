@@ -22,6 +22,8 @@
         public Vector3 targetOffset = new Vector3(0, -1.1f, 0);
         [Tooltip("How far from player before starting to chase after it.")]
         public float followMinDistance = 1.5f;
+        [Tooltip("Amount to Wander around")]
+        public float wanderRange = 1.5f;
 
         [Header("Ground")]
         // [Tooltip("The distance threshold within which Player will snap to the ground if she is close enough.")]

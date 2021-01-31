@@ -176,7 +176,7 @@ namespace GGJ2021
         }
         Vector3 FindWanderPosition() {
             Vector3 pPos = PlayerPosition();
-            float xOffset = Random.Range(-5.0f, 5.0f);
+            float xOffset = Random.Range(-config.wanderRange, config.wanderRange);
 
             Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
             return nextPos;
