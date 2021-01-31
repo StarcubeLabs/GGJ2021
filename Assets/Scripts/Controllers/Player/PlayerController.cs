@@ -54,6 +54,9 @@ namespace GGJ2021
 
         public bool goingThroughPipe = false;
 
+        private float screenH;
+        private float screenW;
+
         private void Awake()
         {
             if (instance == null)
@@ -81,6 +84,9 @@ namespace GGJ2021
             playerGrappleManager = new PlayerGrappleManager(this, grapple);
 
             cannon.SetActive(PlayerStats.instance.HasAbility(Ability.Grenade));
+
+            screenH = Screen.height / 2;
+            screenW = Screen.width / 2;
 
             Spawn();
         }
@@ -134,6 +140,14 @@ namespace GGJ2021
         private void AimReticule()
         {
             lookDirection = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
+
+            float mouseX = Input.mousePosition.x - screenW;
+            float mouseY = Input.mousePosition.y - screenH;
+            if (Mathf.Abs(mouseX) > 0 || Mathf.Abs(mouseY) > 0)
+            {
+                lookDirection = new Vector2(mouseX, mouseY).normalized;
+            }
+
             if (playerHealth.dead)
             {
                 lookDirection = new Vector2(0f, 0f);
