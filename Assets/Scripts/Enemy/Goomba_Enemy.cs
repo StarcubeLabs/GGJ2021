@@ -193,6 +193,9 @@ namespace GGJ2021.Enemy
 
         void FixedUpdate()
         {
+            if (!InheritedUpdateCall())
+                return;
+
             switch (EnemyState)
             {
                 case ActorState.IDLE:
