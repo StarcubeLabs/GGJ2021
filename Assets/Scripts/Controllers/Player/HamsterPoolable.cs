@@ -58,6 +58,9 @@
             if (collisionWrapper.isActive)
             {
                 rb.AddForce(PlayerController.instance.config.ProjectileGravity, ForceMode2D.Force);
+                Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 180) * -rb.velocity;
+                Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, rotatedVectorToTarget);
+                transform.rotation = targetRotation;
             }
         }
 
@@ -68,10 +71,6 @@
             velocity.y += PlayerController.instance.config.ProjectileInitUpwardsBurst;
             rb.velocity = velocity;
             timer = maxTimer;
-            int direction = Random.Range(0, 1) * 2 - 1;
-            float speed = Random.Range(PlayerController.instance.config.ProjectileRotationSpeedLowerBound,
-                PlayerController.instance.config.ProjectileRotationSpeedUpperBound);
-            rb.angularVelocity = direction * speed;
             canExplode = true;
         }
 
