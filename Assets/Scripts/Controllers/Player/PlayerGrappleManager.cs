@@ -45,6 +45,7 @@
 
         public bool TryGrapple()
         {
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_grapple_shoot");
             playerPos = playerController.transform.position;
             direction = playerController.lookDirection;
             grappleLength = playerController.config.grappleRange;

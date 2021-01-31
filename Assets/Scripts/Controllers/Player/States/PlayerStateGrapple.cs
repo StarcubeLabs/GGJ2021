@@ -18,6 +18,7 @@ namespace GGJ2021
             initMoveTimer = controller.config.grappleTransitionTime;
             controller.playerPhysics.isGrappling = true;
             controller.playerAnimationController.FireGrapple();
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_grapple_hit");
         }
 
         protected override void Enter(){ }
@@ -27,6 +28,10 @@ namespace GGJ2021
             if (pauseTimer > 0f)
             {
                 pauseTimer -= time;
+                if (pauseTimer <= 0f)
+                {
+                    FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_grapple_zip");
+                }
             }
             else if (moveTimer > 0f)
             {

@@ -1,9 +1,10 @@
-﻿namespace Audio
+﻿namespace GGJ2021
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
+    using Audio;
     using UnityEngine.SceneManagement;
 
     /// <summary>
@@ -238,7 +239,7 @@
         /// <param name="paramData"> An array of param data that should be passed to our fmod event before playing it </param>
         public void CreateAndRunOneShotFmodEvent(string eventPath, float volume = 1.0f, GameObject parent = null, Rigidbody rb = null, FmodParamData[] paramData = null)
         {
-            FMOD.Studio.EventInstance fmodEvent = CreateFmodEventInstance(eventPath, parent, rb);
+            FMOD.Studio.EventInstance fmodEvent = CreateFmodEventInstance(GetFmodSFXEventFromDictionary(eventPath), parent, rb);
             PlayOneShotFmodEvent(fmodEvent, volume, paramData);
         }
 

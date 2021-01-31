@@ -45,6 +45,9 @@
         public PlayerStateMachine StateMachine;
         public string currentStateName;
 
+        public GameObject jumpVFXPrefab;
+        private GameObject jumpVFX;
+
         public bool goingThroughPipe = false;
 
         private void Awake()
@@ -168,6 +171,12 @@
                 StateMachine.ForceNextState(new PlayerStatePipe(this));
                 pipe.MoveObjectThroughPipe(transform, 20f, () => goingThroughPipe = false, pipeType);
             }
+        }
+
+        public void SpawnJumpDust()
+        {
+            jumpVFX = Instantiate(jumpVFXPrefab, bottom.transform.position, Quaternion.identity);
+            Destroy(jumpVFX, 1f);
         }
     }
 }

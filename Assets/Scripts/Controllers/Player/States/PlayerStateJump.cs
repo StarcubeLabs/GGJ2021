@@ -9,6 +9,8 @@
             stateName = "PlayerStateJump";
             jumpTimer = playerController.config.jumpTime;
             controller.playerAnimationController.JumpTrigger();
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("player_jump");
+            controller.SpawnJumpDust();
         }
 
         protected override void Enter(){ }

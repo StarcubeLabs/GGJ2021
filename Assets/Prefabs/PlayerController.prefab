@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &352213350
 Transform:
   m_ObjectHideFlags: 0
@@ -979,6 +979,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   defaultConstraints: 0
   currentStateName: 
+  jumpVFXPrefab: {fileID: 612894780564948775, guid: fed1688056628cd4c99713067c6e2958,
+    type: 3}
   goingThroughPipe: 0
 --- !u!50 &3314526497338754251
 Rigidbody2D:

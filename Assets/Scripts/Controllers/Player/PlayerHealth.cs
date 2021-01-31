@@ -56,6 +56,7 @@
             }
             else
             {
+                FmodFacade.instance.CreateAndRunOneShotFmodEvent("player_damage");
                 controller.playerAnimationController.HurtTrigger();
                 invulnerabilityTimer = invulnerabilityTimerMax;
             }
@@ -74,6 +75,7 @@
 
         private void Die()
         {
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("player_death");
             controller.playerAnimationController.DeathTrigger();
             controller.cannon.SetActive(false);
             controller.StateMachine.ForceNextState(new PlayerStateDead(controller));
