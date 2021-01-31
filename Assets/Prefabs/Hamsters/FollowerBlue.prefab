@@ -45,22 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  playerObj: {fileID: 0}
+  sourceObj: {fileID: 0}
   animatorObj: {fileID: 1514297097593138356}
   config:
-    speed: 7
+    speed: 8
     Gravity: {x: 0, y: 6, z: 0}
-    flySpeed: 3.5
-    flyingDistance: 0.5
+    flySpeed: 10.5
+    flyingDistance: 0.2
     nearbyDistance: {x: 0.6, y: 0.6, z: 0}
     targetOffset: {x: 0, y: -1.1, z: 0}
     followMinDistance: 1.5
+    wanderRange: 1.5
     groundCheckRaycastDistance: 0.2
     groundFarRaycastDistance: 0.5
     groundLayerMask:
       serializedVersion: 2
       m_Bits: 1
-  velocity: {x: 0, y: 0}
+  stateCurr: 0
 --- !u!1001 &98045062711893888
 PrefabInstance:
   m_ObjectHideFlags: 0

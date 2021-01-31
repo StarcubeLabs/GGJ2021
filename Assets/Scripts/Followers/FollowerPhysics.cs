@@ -7,7 +7,7 @@ namespace GGJ2021
         [Tooltip("Use this if you're doing something different")]
         public bool isActive;
 
-        public GameObject playerObj;
+        public GameObject sourceObj;
 
         public GameObject animatorObj;
         private Animator animator;
@@ -176,7 +176,7 @@ namespace GGJ2021
         }
         Vector3 ChooseTarget() {
             if (!IsNearPlayer()) {
-                return PlayerPosition();
+                return SourcePosition();
             }
 
             if (doesWantToWander) {
@@ -186,7 +186,7 @@ namespace GGJ2021
             return transform.position;
         }
         Vector3 FindWanderPosition() {
-            Vector3 pPos = PlayerPosition();
+            Vector3 pPos = SourcePosition();
             float xOffset = Random.Range(-config.wanderRange, config.wanderRange);
 
             Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
@@ -237,7 +237,7 @@ namespace GGJ2021
                 (Mathf.Abs(transform.position.y - targetPos.y) > config.nearbyDistance.y);
         }
         public bool IsNearPlayer() {
-            return Vector3.Distance(transform.position, PlayerPosition()) < config.followMinDistance;
+            return Vector3.Distance(transform.position, SourcePosition()) < config.followMinDistance;
         }
         public bool IsNearTargetButNeedToJump() {
             if (targetPos == Vector3.zero) return false;
@@ -254,8 +254,8 @@ namespace GGJ2021
         public bool IsFarFromGround() {
             return RaycastGround(config.groundFarRaycastDistance).collider == null;
         }
-        public Vector3 PlayerPosition() {
-            return playerObj.transform.position;
+        public Vector3 SourcePosition() {
+            return sourceObj.transform.position;
         }
         //--
         void OnDrawGizmos() {
