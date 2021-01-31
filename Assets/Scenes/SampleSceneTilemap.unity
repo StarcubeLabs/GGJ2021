@@ -66273,6 +66273,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1368657557689237443, guid: 5db718d50bf8c6141a57a3c8f07d7941,
+        type: 3}
+      propertyPath: parallaxEffectMulitplyer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368657557689237443, guid: 5db718d50bf8c6141a57a3c8f07d7941,
+        type: 3}
+      propertyPath: parallaxEffectMulitplyer.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368657557689237443, guid: 5db718d50bf8c6141a57a3c8f07d7941,
+        type: 3}
+      propertyPath: parallaxEffectMulitplyer.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368657557689237443, guid: 5db718d50bf8c6141a57a3c8f07d7941,
+        type: 3}
+      propertyPath: layersVelocityScales.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368657557689237443, guid: 5db718d50bf8c6141a57a3c8f07d7941,
+        type: 3}
+      propertyPath: layersVelocityScales.Array.data[2]
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6277176927594888351, guid: 5db718d50bf8c6141a57a3c8f07d7941,
         type: 3}
       propertyPath: m_RootOrder
