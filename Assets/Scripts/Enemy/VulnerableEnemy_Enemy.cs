@@ -31,7 +31,19 @@ namespace GGJ2021.Enemy
         {
             base.Init(v);
 
-            mySpriteRenderer = myGraphicalParent.AddComponent<SpriteRenderer>();
+            if (myGraphicalParent == null)
+                gameObject.GetComponentInChildren<SpriteRenderer>();
+
+            if (mySpriteRenderer == null)
+                gameObject.GetComponentInChildren<SpriteRenderer>();
+
+            if(mySpriteRenderer == null)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("Prefab missing mySpriteRenderer assignment: " + enemyName);
+#endif
+            }
+
             if (hurtboxCollisionWrapper != null)
             {
                 hurtboxCollisionWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);

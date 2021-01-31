@@ -37,6 +37,7 @@ namespace GGJ2021.Enemy
         protected int maxhealth;     
         protected int health;        //current health of enemy
         protected ActorState EnemyState;    // controls the enemey state
+        protected ActorState prePauseEnemyState;
 
         protected enum collisionLayerIDs{Default, TransparentFX, IgnoreRaycast, THREE,Water, UI, SIX, SEVEN, PLAYER, ENEMY, PLAYERHITBOX, ENEMYHITBOX, PLAYERPROJECTILE, ENEMYPROJECTILE};
 
@@ -48,10 +49,57 @@ namespace GGJ2021.Enemy
 
         /// <summary>
         /// Called by the NPC_Pool Singleton Class when NPC_Pool is asked to pause all NPCs & bullets
+        /// Holds onto the previous state of the NPC if the previous state is not the paused state
         /// </summary>
         public void pause()
         {
             // TO DO: Write default definition
+            if (EnemyState != ActorState.PAUSED)
+            {
+                prePauseEnemyState = EnemyState;
+                // Pause all graphical components
+            }
+            EnemyState = ActorState.PAUSED;
+        }
+
+        /// <summary>
+        /// Called by the NPC_Pool Singleton Class when NPC_Pool is asked to pause all NPCs & bullets
+        /// </summary>
+        public void Unpause()
+        {
+            EnemyState = prePauseEnemyState;
+
+            // Unpause all graphical components
+        }
+
+        /// <summary>
+        /// Runs on update to halt npc logic at runtime
+        /// </summary>
+        /// <returns>False if the npc is paused</returns>
+        protected bool HandlePause()
+        {
+            bool ret;
+            if (EnemyState == ActorState.PAUSED)
+            {
+                ret = false;
+            }
+            else ret = true;
+            //Debug.Log(ret + " " + EnemyState);
+            return ret;
+        }
+
+        /// <summary>
+        /// Call in the lowest level Update() method to make mandatory maintenance from higher level classes
+        /// </summary>
+        /// <returns>False if the Update() method must halt and exit</returns>
+        public virtual bool InheritedUpdateCall()
+        {
+            if (!HandlePause())
+                return false;
+
+            // Put any Inherited functions that need to be run here
+
+            return true;
         }
 
         protected virtual void idle()
