@@ -17,6 +17,7 @@
             timer = 0.0f;
             maxTimer = playerController.config.DashTime;
             controller.GooBallHandler.StartDash();
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_dash");
         }
 
         protected override void Enter()
@@ -77,6 +78,7 @@
             playerController.playerPhysics.isDashing = false;
             playerController.playerPhysics.ApplyStationaryVelocity();
             playerController.GooBallHandler.StopDash();
+            //FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_explosion_wet");
         }
     }
 }

@@ -16,7 +16,8 @@ namespace GGJ2021
             playerController.playerPhysics.isDashing = false;
             playerController.physicsCollider.enabled = false;
             nextState = new PlayerStateIdle(playerController);
-            Debug.Log("PlayerStatePipe Enter");
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_dash_tube_enter");
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_dash_tube_rolling");
         }
 
         public override void OnUpdate(float time)
@@ -37,7 +38,7 @@ namespace GGJ2021
         {
             playerController.physicsCollider.enabled = true;
             playerController.GooBallHandler.StopDash();
-            Debug.Log("PlayerStatePipe Exit");
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_dash_tube_exit");
         }
     }
 }

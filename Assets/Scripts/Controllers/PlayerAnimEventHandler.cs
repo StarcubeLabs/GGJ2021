@@ -24,7 +24,7 @@ namespace GGJ2021
 
         public void PlayStepSound()
         {
-
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("player_footsteps");
         }
 
         public void PlayJumpSound()
