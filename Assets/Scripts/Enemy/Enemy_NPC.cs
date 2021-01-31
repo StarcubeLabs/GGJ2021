@@ -8,6 +8,7 @@ namespace GGJ2021.Enemy
         // -1 when enemy is not aggro
         protected int flockID;        
         protected string enemyName;
+        protected Rigidbody2D myRigidBody;
 
         [SerializeField]
         protected float speed;
@@ -78,5 +79,18 @@ namespace GGJ2021.Enemy
             }
         }
         #endregion
+
+        protected virtual void Init(Vector2 v)
+        {
+            base.Init(v);
+
+            if (myRigidBody == null)
+            {
+                myRigidBody = GetComponent<Rigidbody2D>();
+
+                if (myRigidBody == null)
+                    myRigidBody = gameObject.AddComponent<Rigidbody2D>();
+            }
+        }
     }
 }

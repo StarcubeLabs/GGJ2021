@@ -25,7 +25,7 @@ namespace GGJ2021.Enemy
                     if (instance.enemyPrefabLibrary == null)
                         Debug.LogError("Assets/Prefabs/EnemySpritePrefabs missing from scene. CANNOT SPAWN ENEMIES");
 #endif
-                    Debug.LogError("make new singleton: " + instance); } return instance; }
+                    } return instance; }
         }
 
         NPC_Base[] npcPausePool;
