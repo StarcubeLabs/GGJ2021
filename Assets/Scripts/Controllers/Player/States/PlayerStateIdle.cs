@@ -45,7 +45,7 @@
         {
             if (playerController.playerCollision.IsGrounded() && !playerController.playerCollision.IsSliding())
             {
-                playerController.playerPhysics.IgnoreHorizontalMovementInput();
+                playerController.playerPhysics.ApplyStationaryVelocity();
                 playerController.playerPhysics.ApplyVelocity(playerController.config.MaxSpeed);
             }
             playerController.playerPhysics.ApplyGravity(playerController.config.Gravity, true);
