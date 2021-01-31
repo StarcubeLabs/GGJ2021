@@ -55,6 +55,10 @@ namespace GGJ2021
         public bool goingThroughPipe = false;
         public float currentPipeSpeed = 20f;
 
+        private bool aimWithController;
+        private Vector2 controllerAim;
+        private Vector2 mouseAim;
+
         private void Awake()
         {
             if (instance == null)
@@ -134,12 +138,34 @@ namespace GGJ2021
 
         private void AimReticule()
         {
-            lookDirection = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
+            Vector2 newControllerAim = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
 
             Vector3 cannonScreenPosition = Camera.main.WorldToScreenPoint(cannon.transform.position);
             float mouseX = RewiredPlayerInputManager.instance.GetMousePosition().x - cannonScreenPosition.x;
             float mouseY = RewiredPlayerInputManager.instance.GetMousePosition().y - cannonScreenPosition.y;
-            lookDirection += new Vector2(mouseX, mouseY);
+            Vector2 newMouseAim = new Vector2(mouseX, mouseY);
+
+            if (newControllerAim != controllerAim)
+            {
+                aimWithController = true;
+                controllerAim = newControllerAim;
+            }
+            else if (newMouseAim != mouseAim)
+            {
+                aimWithController = false;
+                mouseAim = newMouseAim;
+            }
+
+            if (aimWithController)
+            {
+                lookDirection = controllerAim;
+            }
+            else
+            {
+                lookDirection = mouseAim;
+            }
+
+            Debug.Log(aimWithController);
 
             if (playerHealth.dead)
             {
