@@ -960,6 +960,7 @@ MonoBehaviour:
   playerPhysicsColliderWrapper: {fileID: 1300345068}
   playerHurtboxColliderWrapper: {fileID: 5971055944718477433}
   capsuleCollider: {fileID: 1300345069}
+  physicsCollider: {fileID: 1300345069}
   move: {x: 0, y: 0}
   lookDirection: {x: 0, y: 0}
   reticules:
@@ -978,6 +979,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   defaultConstraints: 0
   currentStateName: 
+  goingThroughPipe: 0
 --- !u!50 &3314526497338754251
 Rigidbody2D:
   serializedVersion: 4

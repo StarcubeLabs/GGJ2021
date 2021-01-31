@@ -44,7 +44,7 @@
 
         public void TakeDamage(int damage)
         {
-            if (invulnerabilityTimer > 0 || controller.playerPhysics.isDashing || controller.playerPhysics.isGrappling || dead)
+            if (invulnerabilityTimer > 0 || controller.playerPhysics.isDashing || controller.playerPhysics.isGrappling || dead || controller.goingThroughPipe)
             {
                 return;
             }
