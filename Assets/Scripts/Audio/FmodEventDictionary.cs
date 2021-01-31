@@ -50,6 +50,9 @@
             { "heal_power_up", "event:/sfx/misc/heal_power_up" },
 
             { "title_menu_button", "event:/ui/title_menu_button" },
+
+            { "rock_breaking", "event:/sfx/misc/rock_breaking" },
+            { "door_open", "event:/sfx/misc/door_open" },
             #endregion
         };
 
