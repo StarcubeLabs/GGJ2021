@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 550928864}
   - component: {fileID: 550928863}
   - component: {fileID: 550928862}
+  - component: {fileID: 1631966839862071978}
   m_Layer: 0
   m_Name: Acid Tilemap
   m_TagString: Untagged
@@ -404,6 +405,19 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 4a8876393bef34b8492e122fd509cdfd, type: 3}
     - {fileID: 21300000, guid: 50a2835fe42b44579bae038f3e326298, type: 3}
     m_values: 0f0000000e000000
+--- !u!114 &1631966839862071978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550928860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8256aa9ae96a43568215bf54915546a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &2033916860
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,12 +722,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2c2fe84d683ef8b4a8210ef41bd85f88, type: 3}
     - {fileID: 21300000, guid: 10386cdcf66a8454d92d48ba09c7f598, type: 3}
     - {fileID: 21300000, guid: 16de1ce9b597a1b48a25af1fd9d8a1bb, type: 3}
+    - {fileID: 21300000, guid: 9f8589961017d4bfb830477dd36167ff, type: 3}
     m_values:
     - {fileID: 5849434476336709983, guid: 52940afa2cc18407d8c3768aed74d300, type: 3}
     - {fileID: 4695478475771728632, guid: d5f71226e9cb3ad48bdd312893c0a87f, type: 3}
     - {fileID: 176395825514269726, guid: eebb13ca6adb5483b8e1949c6bd74c4f, type: 3}
     - {fileID: 886622923315366520, guid: 3e713aaab200443589536176f71626b7, type: 3}
     - {fileID: 6389280853863972247, guid: 829bd3300e2014548aeeeb0f91c9060a, type: 3}
+    - {fileID: 7792700149051646863, guid: 12020d0a7a5724a6b96c1724ff48ac97, type: 3}
   shadedPrefabs:
     m_keys: []
     m_values: []

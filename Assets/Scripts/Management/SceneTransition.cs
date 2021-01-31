@@ -12,7 +12,7 @@ namespace GGJ2021.Management
         private string levelToLoad;
         [Tooltip("Door index to spawn at in the next level.")]
         [SerializeField]
-        private int levelToLoadDoorIndex;
+        protected int levelToLoadDoorIndex;
         [SerializeField]
         private bool stopMusic;
 
@@ -26,7 +26,7 @@ namespace GGJ2021.Management
             Transition();
         }
 
-        public void Transition()
+        public virtual void Transition()
         {
             GameManager.Instance.CleanUp();
             LoadLevel();
