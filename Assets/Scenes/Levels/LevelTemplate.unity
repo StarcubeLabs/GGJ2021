@@ -481,6 +481,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
+        type: 3}
+      propertyPath: levelToLoad
+      value: P7
+      objectReference: {fileID: 0}
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
       propertyPath: m_RootOrder
@@ -3122,6 +3127,16 @@ PrefabInstance:
     - target: {fileID: 395005233, guid: 69d648b8c381cfd4facf58b5d39e12de, type: 3}
       propertyPath: m_LocalPosition.y
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697630437173372866, guid: 69d648b8c381cfd4facf58b5d39e12de,
+        type: 3}
+      propertyPath: Types.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697630437173372866, guid: 69d648b8c381cfd4facf58b5d39e12de,
+        type: 3}
+      propertyPath: SpawnPoints.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7699397582753236898, guid: 69d648b8c381cfd4facf58b5d39e12de,
         type: 3}
