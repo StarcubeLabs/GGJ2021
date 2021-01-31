@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 2033916862}
   - component: {fileID: 2033916865}
   m_Layer: 0
-  m_Name: Collectible Tilemap
+  m_Name: Object Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,8 +621,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -19, y: -5, z: 0}
-  m_Size: {x: 28, y: 20, z: 1}
+  m_Origin: {x: -19, y: -6, z: 0}
+  m_Size: {x: 28, y: 21, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -704,8 +704,10 @@ MonoBehaviour:
   spritesToPrefabs:
     m_keys:
     - {fileID: 21300000, guid: 362898d9ebe5f45c6be702e3e8bb4aa8, type: 3}
+    - {fileID: 21300000, guid: 2ace24d2a0d6445b2acb97a9dd39686a, type: 3}
     m_values:
     - {fileID: 5849434476336709983, guid: 52940afa2cc18407d8c3768aed74d300, type: 3}
+    - {fileID: 4695478475771728632, guid: d5f71226e9cb3ad48bdd312893c0a87f, type: 3}
   shadedPrefabs:
     m_keys: []
     m_values: []
@@ -739,6 +741,7 @@ GameObject:
   - component: {fileID: 5957064099566551696}
   - component: {fileID: 5957064099566551699}
   - component: {fileID: 5957064099566551710}
+  - component: {fileID: 9315200}
   m_Layer: 0
   m_Name: Wall Tilemap
   m_TagString: Untagged
@@ -943,8 +946,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -21, y: -5, z: 0}
-  m_Size: {x: 30, y: 23, z: 1}
+  m_Origin: {x: -21, y: -6, z: 0}
+  m_Size: {x: 30, y: 24, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1133,6 +1136,18 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e22668a4e80254875b0bffe8a3939e1e, type: 3}
     - {fileID: 21300000, guid: ae683f37965a24aeb8077c5a6d8392cc, type: 3}
     m_values: 060000000f0000000600000002000000
+--- !u!114 &9315200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957064099566551703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e8a1cce2ce430d87ad1ac27239960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5957064100281629261
 GameObject:
   m_ObjectHideFlags: 0
