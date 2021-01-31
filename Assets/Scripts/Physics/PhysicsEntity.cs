@@ -46,12 +46,12 @@
             this.colliderOffset = colliderOffset;
             this.colliderRadius = colliderRadius;
             this.upperLowerYHeightScale = upperLowerYHeightScale;
-            this.colliderHeight = colliderHeight;
+            this.colliderHeight = colliderHeight + 1.0f;
             upperColliderOffset = colliderOffset;
-            upperColliderOffset.y += (colliderHeight / 2.0f) * upperLowerYHeightScale;
+            upperColliderOffset.y += (this.colliderHeight / 2.0f) * upperLowerYHeightScale;
             lowerColliderOffset = colliderOffset;
-            lowerColliderOffset.y += (-colliderHeight / 2.0f) * upperLowerYHeightScale;
-            steepSlopeCheckRaycastDistance = colliderHeight * 0.25f;
+            lowerColliderOffset.y += (-this.colliderHeight / 2.0f) * upperLowerYHeightScale;
+            steepSlopeCheckRaycastDistance = this.colliderHeight * 0.25f;
         }
 
         public void ResetDesiredVelocity()
@@ -181,7 +181,7 @@
             //Check if the body's current velocity will result in a collision
             if (Physics2D.Raycast(colliderCenterPosition, PlayerController.instance.GetDirectionFacing(), predictedMovementDistance * 1.5f, layerMask) ||
                 Physics2D.Raycast(colliderUpperPosition, PlayerController.instance.GetDirectionFacing(), predictedMovementDistance * 1.5f, layerMask) ||
-                (Physics2D.Raycast(colliderLowerPosition, PlayerController.instance.GetDirectionFacing(), predictedMovementDistance * 0.9f, layerMask) && !isDash))
+                (Physics2D.Raycast(colliderLowerPosition, PlayerController.instance.GetDirectionFacing(), predictedMovementDistance * 0.8f, layerMask) && !isDash))
             {
                 if (isDash == true)
                 {
@@ -198,7 +198,7 @@
             {
                 Debug.DrawRay(colliderCenterPosition, PlayerController.instance.GetDirectionFacing() * predictedMovementDistance * 1.5f, Color.yellow);
                 Debug.DrawRay(colliderUpperPosition, PlayerController.instance.GetDirectionFacing() * predictedMovementDistance * 1.5f, Color.blue);
-                Debug.DrawRay(colliderLowerPosition, PlayerController.instance.GetDirectionFacing() * predictedMovementDistance * 0.9f, Color.green);
+                Debug.DrawRay(colliderLowerPosition, PlayerController.instance.GetDirectionFacing() * predictedMovementDistance * 0.8f, Color.green);
             }
         }
 

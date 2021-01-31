@@ -11,6 +11,10 @@
         public Transform leftBound;
         public Transform rightBound;
 
+        Vector2 target;
+
+        private Vector3 offset = new Vector3(0, 2);
+
         void Start()
         {
         }
@@ -25,21 +29,23 @@
                 player = PlayerController.instance.transform;
             }
 
-            float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, player.position))) + trackSpeed);
-            if (player.position.x > leftBound.transform.position.x && player.position.x < rightBound.position.x)
+            target = player.position + offset;
+
+            float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, target))) + trackSpeed);
+            if (target.x > leftBound.transform.position.x && target.x < rightBound.position.x)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
-                    new Vector3(player.position.x, this.transform.position.y, this.transform.position.z), speed);
-            else if (player.position.x < leftBound.transform.position.x)
+                    new Vector3(target.x, this.transform.position.y, this.transform.position.z), speed);
+            else if (target.x < leftBound.transform.position.x)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
                     new Vector3(leftBound.position.x, this.transform.position.y, this.transform.position.z), speed);
             else
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
                     new Vector3(rightBound.position.x, this.transform.position.y, this.transform.position.z), speed);
 
-            if (player.position.y > lowerBound.transform.position.y && player.position.y < upperBound.position.y)
+            if (target.y > lowerBound.transform.position.y && target.y < upperBound.position.y)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
-                    new Vector3(this.transform.position.x, player.position.y, this.transform.position.z), speed);
-            else if (player.position.y < lowerBound.transform.position.y)
+                    new Vector3(this.transform.position.x, target.y, this.transform.position.z), speed);
+            else if (target.y < lowerBound.transform.position.y)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
                     new Vector3(this.transform.position.x, lowerBound.position.y, this.transform.position.z), speed);
             else
@@ -58,7 +64,7 @@
         /// <summary> Centers the camera on the player immediately. </summary>
         public void ResetPosition()
         {
-            this.transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+            this.transform.position = new Vector3(player.position.x, player.position.y, transform.position.z) + offset;
         }
     }
 }
