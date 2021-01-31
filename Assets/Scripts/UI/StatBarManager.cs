@@ -32,7 +32,6 @@
 
       void Start()
       {
-        statCurr = statMax;
         icons = new List<GameObject>();
 
         InitIcons();
