@@ -105,6 +105,7 @@
         private void Disable()
         {
             gameObject.SetActive(false);
+            FollowerManager.instance.AddAbilityHamster(Ability.Grenade);
         }
     }
 }

@@ -13,7 +13,7 @@
       private int statCurr;
 
       public GameObject iconObject;
-      private List<GameObject> icons;
+      private List<GameObject> icons = new List<GameObject>();
       private float iconWidth = 25;
 
       private bool isInitialized;
@@ -32,8 +32,6 @@
 
       void Start()
       {
-        icons = new List<GameObject>();
-
         InitIcons();
       }
 
@@ -41,7 +39,10 @@
         for (int ii=0; ii<statMax; ii++) {
           StartCoroutine(InstantiateIcon(ii));
         }
-        SetCurr(statMax);
+        if (statCurr == 0)
+        {
+          SetCurr(statMax);
+        }
 
         isInitialized = true;
         RedrawIcons();
@@ -85,17 +86,24 @@
         }
       }
 
-      public void SetMax(int newMax) {
+      public void SetMax(int newMax)
+      {
+          if (isInitialized)
+          {
+              // first create additional icons
+              for (int ii = statMax; ii < newMax; ii++)
+              {
+                  StartCoroutine(InstantiateIcon(ii));
+              }
 
-        // first create additional icons
-        for (int ii=statMax; ii<newMax; ii++) {
-          StartCoroutine(InstantiateIcon(ii));
-        }
-
-        // then we can add health, can do curr=max if we wanna
-        statMax = newMax;
-        statCurr = newMax;
-        RedrawIcons();
+              // then we can add health, can do curr=max if we wanna
+              statMax = newMax;
+              RedrawIcons();
+          }
+          else
+          {
+              statMax = newMax;
+          }
       }
 
       public void SetCurr(int newCurr) {
