@@ -7,6 +7,7 @@
     {
         [Header("Basic Movement")]
         public float speed;
+        // public float maxSpeedDelta;
         public Vector3 Gravity;
 
         [Header("Flying Settings")]
@@ -23,12 +24,12 @@
         public float followMinDistance = 1.5f;
 
         [Header("Ground")]
-        [Tooltip("The distance threshold within which Player will snap to the ground if she is close enough.")]
-        public float snapToGroundRaycastDistance;
+        // [Tooltip("The distance threshold within which Player will snap to the ground if she is close enough.")]
+        // public float snapToGroundRaycastDistance;
         [Tooltip("How far to check below Player for the ground.")]
         public float groundCheckRaycastDistance;
-        [Tooltip("How far above Player's position to start our grounded raycast.")]
-        public float groundCheckRaycastYOffset;
+        [Tooltip("How far to check below Player to be considered Far from ground")]
+        public float groundFarRaycastDistance = 1f;
 
         [Tooltip("Which surfaces we consider walkable ground.")]
         public LayerMask groundLayerMask;

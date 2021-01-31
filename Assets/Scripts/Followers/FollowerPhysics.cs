@@ -16,7 +16,7 @@ namespace GGJ2021
 
         public Vector2 velocity = Vector2.zero;
 
-        enum FollowerStates {Idling, Falling, Flying, Chasing, Walking, Thinking};
+        enum FollowerStates {Idling, Falling, Flying, Chasing, Wandering, Thinking};
         private FollowerStates stateCurr;
         private FollowerStates statePrev;
 
@@ -53,7 +53,7 @@ namespace GGJ2021
         void Update() {
             switch (stateCurr) {
                 case FollowerStates.Chasing:
-                case FollowerStates.Walking:
+                case FollowerStates.Wandering:
                     animator.Play("JellyWalk");
                     MoveTowardsTarget();
                     break;
@@ -83,14 +83,11 @@ namespace GGJ2021
             bool doesWantToChase = !isNearPlayer;
             bool doesWantToThink = false;
             bool doesWantIdle = isNearTarget && isNearPlayer && hasFinishedWandering;
-            // print("isNearTargetButNeedToJump: " + isNearTargetButNeedToJump + " // isNearTarget: " + isNearTarget + " // hasFinishedWandering: " + hasFinishedWandering);
-            // print("doesWantToChase: " + doesWantToChase);
-            // print("isNearTargetButNeedToJump: " + isNearTargetButNeedToJump);
 
             if (!doesWantToThink && doesWantToChase) {
                 if (isNearTargetButNeedToJump) {
                     stateNext = FollowerStates.Flying;
-                } else if (!IsFarFromGround()) {
+                } else if (!isTouchingGround && IsTargetBelow()) {
                     stateNext = FollowerStates.Falling;
                 } else {
                     stateNext = FollowerStates.Chasing;
@@ -103,7 +100,7 @@ namespace GGJ2021
 
             } else if (isTouchingGround && isNearPlayer && hasFinishedWandering && !IsIdling()) {
                 hasFinishedWandering = false;
-                stateNext = FollowerStates.Walking;
+                stateNext = FollowerStates.Wandering;
 
             } else if (doesWantToThink) {
                 stateNext = FollowerStates.Thinking;
@@ -126,28 +123,15 @@ namespace GGJ2021
 
             statePrev = stateCurr;
             stateCurr = stateNext;
-            print("stateCurr: " + stateCurr + " // statePrev: " + statePrev);
+            // print("stateCurr: " + stateCurr + " // statePrev: " + statePrev);
         }
         void MoveTowardsTarget() {
             float step = config.speed * Time.deltaTime;
-            if (IsFalling()) {
-                step = step * 0.5f;
-            }
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
-            float nextPosY = targetPos.y;
-            if (Mathf.Abs(targetPos.y - transform.position.y) > config.flyingDistance) {
-                if (IsTargetBelow()) {
-                    nextPosY = transform.position.y - (config.speed * 0.5f);
-                } else {
-                    nextPosY = transform.position.y + (config.speed * 0.5f);
-                }
-            }
-            Vector3 nextPosition = new Vector3(targetPos.x, nextPosY, 0);
-
-            transform.position = Vector3.Lerp(transform.position, nextPosition, step);
-
+            // reached destination so do something else
             if (IsNearTarget()) {
-                if (IsWalking()) {
+                if (IsWandering()) {
                     hasFinishedWandering = true;
                 } else {
                     readyForNextTarget = true;
@@ -156,7 +140,7 @@ namespace GGJ2021
         }
         void FlyToTarget() {
             float step = config.flySpeed * Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, targetPos, step);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
             if (IsNearTarget()) {
                 readyForNextTarget = true;
@@ -239,11 +223,11 @@ namespace GGJ2021
         public bool IsThinking() {
             return stateCurr == FollowerStates.Thinking;
         }
-        public bool IsWalking() {
-            return stateCurr == FollowerStates.Walking;
+        public bool IsWandering() {
+            return stateCurr == FollowerStates.Wandering;
         }
         public bool IsMoving() {
-            return IsWalking() || IsChasing() || IsFlying();
+            return IsWandering() || IsChasing() || IsFlying();
         }
         public bool IsNearTarget() {
             if (targetPos == Vector3.zero) return true;
@@ -276,7 +260,7 @@ namespace GGJ2021
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
         }
         public bool IsFarFromGround() {
-            return RaycastGround(config.groundCheckRaycastDistance * 3f).collider != null;
+            return RaycastGround(config.groundFarRaycastDistance).collider == null;
         }
         public Vector3 PlayerPosition() {
             return playerObj.transform.position;
