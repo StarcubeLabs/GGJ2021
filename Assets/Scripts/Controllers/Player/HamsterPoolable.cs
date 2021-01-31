@@ -85,6 +85,7 @@
         public void OnCollision(Collider2D collider)
         {
             Explode();
+            collider.gameObject.GetComponent<BreakableTile>()?.Break();
         }
 
         public void Explode()

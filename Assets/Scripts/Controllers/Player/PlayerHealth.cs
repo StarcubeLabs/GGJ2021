@@ -29,7 +29,10 @@
         public PlayerHealth(PlayerController controller, CollisionWrapper playerHurtboxColliderWrapper)
         {
             // Initialize the HP bar at the start of the scene.
-            StatBarManager.instance.SetCurr(CurHealth);
+            if (MaxHealth > 0)
+            {
+                StatBarManager.instance.SetCurr(CurHealth);
+            }
             this.controller = controller;
             this.playerHurtboxColliderWrapper = playerHurtboxColliderWrapper;
             this.playerHurtboxColliderWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);
@@ -68,10 +71,16 @@
             CurHealth += healing;
         }
 
+        public void RestoreHealthToFull()
+        {
+            CurHealth = MaxHealth;
+            dead = false;
+        }
+
         public void IncreaseMaxHealth(int amount)
         {
             MaxHealth += amount;
-            CurHealth = MaxHealth;
+            RestoreHealthToFull();
         }
 
         private void Die()
