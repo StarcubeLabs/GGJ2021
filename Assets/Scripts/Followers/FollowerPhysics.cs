@@ -14,16 +14,14 @@ namespace GGJ2021
 
         public FollowerConfig config;
 
-        public Vector2 velocity = Vector2.zero;
-
-        enum FollowerStates {Idling, Falling, Flying, Chasing, Wandering, Thinking};
-        private FollowerStates stateCurr;
+        public enum FollowerStates {Idling, Falling, Flying, Chasing, Wandering, Thinking};
+        public FollowerStates stateCurr; // public just for the sake of debugging
         private FollowerStates statePrev;
 
-        private Vector3 _targetPos;
-        public Vector3 targetPos {
+        private Vector3 _targetPos; // public just for the sake of debugging
+        private Vector3 targetPos {
             get { 
-                // if (_targetPos == Vector3.zero) return Vector3.zero;
+                if (_targetPos == Vector3.zero) return Vector3.zero;
                 return _targetPos + config.targetOffset; 
             }
             set { _targetPos = value; }
@@ -31,7 +29,7 @@ namespace GGJ2021
 
         private int playIdx;
         private bool readyForNextTarget = false;
-        private bool hasFinishedWandering = true;
+        private bool doesWantToWander = true;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
@@ -76,10 +74,10 @@ namespace GGJ2021
             bool isNearTargetButNeedToJump = IsNearTargetButNeedToJump();
             bool isTouchingGround = IsTouchingGround();
             bool doesWantToChase = !isNearPlayer;
-            bool doesWantToThink = false;
-            bool doesWantIdle = isNearTarget && isNearPlayer && hasFinishedWandering;
+            bool doesWantIdle = isNearTarget && isNearPlayer && !doesWantToWander;
 
-            if (!doesWantToThink && doesWantToChase) {
+            // UGHH sorry this is undeciferable
+            if (!doesWantIdle && doesWantToChase) {
                 if (isNearTargetButNeedToJump) {
                     stateNext = FollowerStates.Flying;
                 } else if (!isTouchingGround && IsTargetBelow()) {
@@ -87,18 +85,17 @@ namespace GGJ2021
                 } else {
                     stateNext = FollowerStates.Chasing;
                 }
-            } else if (doesWantIdle && !doesWantToThink) {
-                stateNext = FollowerStates.Idling;
+
+                doesWantToWander = true;
 
             } else if (!isTouchingGround && !IsMoving()) {
                 stateNext = FollowerStates.Falling;
 
-            } else if (isTouchingGround && isNearPlayer && hasFinishedWandering && !IsIdling()) {
-                hasFinishedWandering = false;
+            } else if (isTouchingGround && !doesWantToChase && doesWantToWander) {
                 stateNext = FollowerStates.Wandering;
 
-            } else if (doesWantToThink) {
-                stateNext = FollowerStates.Thinking;
+            } else if (doesWantIdle) {
+                stateNext = FollowerStates.Idling;
 
             // maintain movement state
             } else if (IsMoving()) {
@@ -127,7 +124,7 @@ namespace GGJ2021
             // reached destination so do something else
             if (IsNearTarget()) {
                 if (IsWandering()) {
-                    hasFinishedWandering = true;
+                    doesWantToWander = false;
                 } else {
                     readyForNextTarget = true;
                 }
@@ -171,19 +168,17 @@ namespace GGJ2021
                 return PlayerPosition();
             }
 
-            if (!IsFalling() && !IsIdling()) {
-                return FindHangoutPosition();
+            if (doesWantToWander) {
+                return FindWanderPosition();
             }
 
-            // zero represents no target
             return transform.position;
         }
-        Vector3 FindHangoutPosition() {
+        Vector3 FindWanderPosition() {
             Vector3 pPos = PlayerPosition();
-            float xOffset = Random.Range(-2.0f, 2.0f);
+            float xOffset = Random.Range(-5.0f, 5.0f);
 
             Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
-            // print("FindHangoutPosition() " + nextPos);
             return nextPos;
         }
         public RaycastHit2D RaycastGround(float distance) {
