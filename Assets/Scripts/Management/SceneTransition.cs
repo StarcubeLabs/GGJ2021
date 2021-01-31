@@ -1,6 +1,5 @@
-﻿namespace GGJ2021.Management
+namespace GGJ2021.Management
 {
-    using Audio;
     using UnityEngine;
     using UnityEngine.SceneManagement;
 
@@ -33,7 +32,7 @@
             LoadLevel();
         }
 
-        public void LoadLevel()
+        public virtual void LoadLevel()
         {
             if (stopMusic)
             {
