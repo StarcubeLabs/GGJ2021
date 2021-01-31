@@ -182,7 +182,7 @@ namespace GGJ2021
             Destroy(jumpVFX, 1f);
         }
 
-        private void Spawn()
+        public void Spawn()
         {
             if (PlayerStats.instance.spawnDoor > -1)
             {
