@@ -26,9 +26,8 @@
 
         public void ForceNextState(PlayerState NewNextState)
         {
-            NextState = NewNextState;
-            CurrentState = NextState;
-            NextState = null;
+            CurrentState.ableToExit = true;
+            CurrentState.nextState = NewNextState;
         }
 
         public void OnFixedUpdate()

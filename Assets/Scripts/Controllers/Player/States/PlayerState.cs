@@ -8,8 +8,8 @@
 
         private bool isEntering;
 
-        protected bool ableToExit;
-        protected PlayerState nextState;
+        public bool ableToExit;
+        public PlayerState nextState;
         protected readonly PlayerController playerController;
 
         public PlayerState(PlayerController controller)

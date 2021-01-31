@@ -20,6 +20,7 @@
         public CollisionWrapper playerPhysicsColliderWrapper;
         public CollisionWrapper playerHurtboxColliderWrapper;
         public CapsuleCollider2D capsuleCollider;
+        public Collider2D physicsCollider;
 
         [HideInInspector]
         public Vector2 move = new Vector2();
@@ -43,6 +44,8 @@
 
         public PlayerStateMachine StateMachine;
         public string currentStateName;
+
+        public bool goingThroughPipe = false;
 
         private void Awake()
         {
@@ -154,6 +157,16 @@
             else
             {
                 return new Vector2(-1f, 0f);
+            }
+        }
+
+        public void OnPipeCollision(Pipe pipe, Pipe.StartingPoint pipeType)
+        {
+            if (playerPhysics.isDashing)
+            {
+                goingThroughPipe = true;
+                StateMachine.ForceNextState(new PlayerStatePipe(this));
+                pipe.MoveObjectThroughPipe(transform, 20f, () => goingThroughPipe = false, pipeType);
             }
         }
     }
