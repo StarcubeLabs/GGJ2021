@@ -733,7 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorIndex: -1
   levelToLoad: R1
-  levelToLoadDoorIndex: 0
+  levelToLoadDoorIndex: 10
   stopMusic: 0
 --- !u!1 &5550217757159960372
 GameObject:
