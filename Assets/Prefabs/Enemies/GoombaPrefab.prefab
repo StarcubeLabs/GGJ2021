@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 6499107606596095292}
   - component: {fileID: 3968182857837529079}
   - component: {fileID: 6841083720047650242}
+  - component: {fileID: 1126896412}
   m_Layer: 9
   m_Name: GoombaPrefab
   m_TagString: Untagged
@@ -261,6 +262,7 @@ MonoBehaviour:
   deathExplosion: {fileID: 0}
   speed: 60
   hurtboxCollisionWrapper: {fileID: 3278558894734619624}
+  rgbd2d: {fileID: 6841083720047650242}
   randomDirection: 1
   myDir: 0
 --- !u!50 &6841083720047650242
@@ -284,6 +286,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!61 &1126896412
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6985398997777358104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.9}
+  m_EdgeRadius: 0
 --- !u!1001 &6009692057424261911
 PrefabInstance:
   m_ObjectHideFlags: 0
