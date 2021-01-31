@@ -47,6 +47,7 @@ MonoBehaviour:
   isActive: 1
   sourceObj: {fileID: 0}
   animatorObj: {fileID: 1514297097593138356}
+  jumpSprite: {fileID: 21300000, guid: 01230e64f7e514f7c8db3558f38683a7, type: 3}
   config:
     speed: 8
     Gravity: {x: 0, y: 6, z: 0}

@@ -10,7 +10,10 @@ namespace GGJ2021
         public GameObject sourceObj;
 
         public GameObject animatorObj;
+        public Sprite jumpSprite;
+        private Sprite defaultSprite;
         private Animator animator;
+        private SpriteRenderer spriter;
 
         public FollowerConfig config;
 
@@ -36,6 +39,9 @@ namespace GGJ2021
             stateCurr = FollowerStates.Idling;
 
             animator = animatorObj.GetComponent<Animator>();
+            spriter = animatorObj.GetComponentInChildren<SpriteRenderer>();
+
+            defaultSprite = spriter.sprite;
 
             animName = "JellyIdle";
         }
@@ -65,6 +71,11 @@ namespace GGJ2021
                     break;
             }
 
+            if (animName == "JellyJump") {
+                spriter.sprite = jumpSprite;
+            } else {
+                spriter.sprite = defaultSprite;
+            }
             animator.Play(animName);
         }
         void UpdateState() {
