@@ -50,7 +50,7 @@ namespace GGJ2021
 
         public virtual void InitFromTilemap(Tilemap3D tilemap)
         {
-            if (id == null)
+            if (id == null || id == "")
             {
                 id = tilemap.GetComponent<CollectibleIndexer>().GenerateId(this);
             }
