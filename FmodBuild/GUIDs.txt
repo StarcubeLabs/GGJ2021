@@ -5,6 +5,7 @@
 {266ae8d3-79b5-480d-9c29-85b9d35ddd11} bank:/ui
 {eda48465-0241-4862-9659-177b8d5bb1cd} bus:/
 {bb8612bb-438b-4f5b-b139-3ac3d325b417} bus:/Reverb
+{ad63a4c3-8767-45f6-8c5b-f9750148ae67} bus:/SFX
 {f388cb4a-804e-4c8f-9f0d-9e0271443068} event:/music/final_cutscene
 {a3cf6a75-6878-4329-90a9-bf2749b2981a} event:/music/level1
 {d4c82b4d-a0c6-4601-af90-1410f065c5c4} event:/music/level1 (old)
@@ -27,9 +28,11 @@
 {cb8d2055-19d0-4537-878e-c9db5a264321} event:/sfx/enemies/enemy_death
 {6bf34eb3-02c7-4a19-bbe3-39abef2d752b} event:/sfx/enemies/enemy_shoot
 {9eab5bb0-974d-4230-b76e-ddb9ee39a587} event:/sfx/misc/collect_hamster
+{2152a589-58fd-4757-963f-ef90f80296de} event:/sfx/misc/door_open
 {15be1611-8d29-4810-99ae-6ec5108e7ff3} event:/sfx/misc/hamster_respawn
 {93a97391-befb-41a4-a02e-e33c12a1400e} event:/sfx/misc/heal
 {a9ce8272-23ae-4331-8433-843afeea591f} event:/sfx/misc/heal_power_up
+{6d5f2b2a-375f-4d64-abe2-0ff898ab8dc6} event:/sfx/misc/rock_breaking
 {33d07f47-95d1-4296-9b75-5f8971878ea7} event:/ui/title_menu_button
 {0906a127-5deb-47fb-aa10-d710dd63d311} parameter:/atmo_acid
 {6166ee86-2c87-4e30-83c5-ed08278f3608} parameter:/battle
