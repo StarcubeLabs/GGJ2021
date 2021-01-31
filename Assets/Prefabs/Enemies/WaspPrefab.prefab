@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1473989919660572314
+--- !u!1 &78137208959873189
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 179549393933172863}
-  - component: {fileID: 4941495904268760446}
-  - component: {fileID: 3278558894734619624}
+  - component: {fileID: 2676264655697603855}
+  - component: {fileID: 8231068357127502325}
+  - component: {fileID: 879476686065958425}
   m_Layer: 16
-  m_Name: prefabHurtboxParent
+  m_Name: prefabWaspHurtboxparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &179549393933172863
+--- !u!4 &2676264655697603855
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473989919660572314}
+  m_GameObject: {fileID: 78137208959873189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6499107606596095292}
+  m_Father: {fileID: 6086124259728178237}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4941495904268760446
+--- !u!58 &8231068357127502325
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473989919660572314}
+  m_GameObject: {fileID: 78137208959873189}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -47,20 +47,20 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &3278558894734619624
+  m_Radius: 1
+--- !u!114 &879476686065958425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473989919660572314}
+  m_GameObject: {fileID: 78137208959873189}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d9ee5187e2c12841a47e34b4c0cc7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 4941495904268760446}
+  col: {fileID: 0}
   ignoreCollisionsWithOtherTriggers: 0
   useLayerMask: 0
   mask:
@@ -69,7 +69,7 @@ MonoBehaviour:
   objectsToIgnore: []
   namesToIgnore: []
   isActive: 1
---- !u!1 &5823470174783820570
+--- !u!1 &536171072001836007
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,36 +77,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5282108802831187712}
-  - component: {fileID: 3586112444780798437}
-  m_Layer: 9
-  m_Name: prefabGraphicalParent
+  - component: {fileID: 1254430164213133734}
+  - component: {fileID: 928253428942366291}
+  m_Layer: 0
+  m_Name: prefabWaspGraphicalParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5282108802831187712
+--- !u!4 &1254430164213133734
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5823470174783820570}
+  m_GameObject: {fileID: 536171072001836007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
-  m_Father: {fileID: 6499107606596095292}
+  m_Father: {fileID: 6086124259728178237}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3586112444780798437
+--- !u!212 &928253428942366291
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5823470174783820570}
+  m_GameObject: {fileID: 536171072001836007}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -139,18 +139,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: acc7fd0a817ef4df99105306e7c61a1b, type: 3}
-  m_Color: {r: 0.8867924, g: 0.11294055, b: 0.11294055, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dcf4034025bc68a48a7a27ebf443c007, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.25, y: 1.25}
+  m_Size: {x: 6.52, y: 8.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &6985398997777358104
+--- !u!1 &698050050661473661
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,60 +158,110 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6499107606596095292}
-  - component: {fileID: 3968182857837529079}
-  - component: {fileID: 6841083720047650242}
-  m_Layer: 9
-  m_Name: GoombaPrefab
+  - component: {fileID: 4506737122003465981}
+  - component: {fileID: 1407986098135689692}
+  m_Layer: 11
+  m_Name: prefabWaspHitboxparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6499107606596095292
+--- !u!4 &4506737122003465981
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6985398997777358104}
+  m_GameObject: {fileID: 698050050661473661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.098499, y: 0.14833118, z: -0.16451332}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6086124259728178237}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1407986098135689692
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698050050661473661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &6953483895165788306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6086124259728178237}
+  - component: {fileID: 2483768920142708545}
+  - component: {fileID: 4313583457639805918}
+  m_Layer: 0
+  m_Name: WaspPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6086124259728178237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6953483895165788306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.01, y: 8.04, z: -32.934376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5282108802831187712}
-  - {fileID: 179549393933172863}
+  - {fileID: 1254430164213133734}
+  - {fileID: 2676264655697603855}
+  - {fileID: 4506737122003465981}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3968182857837529079
+--- !u!114 &2483768920142708545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6985398997777358104}
+  m_GameObject: {fileID: 6953483895165788306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e4b1ef2b3e0a4499130edbbb1a9bbd, type: 3}
+  m_Script: {fileID: 11500000, guid: e65369095eaa7c749b899ecce9572d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
   maxhealth: 0
   EnemyState: 0
   deathExplosion: {fileID: 0}
-  speed: 60
-  hurtboxCollisionWrapper: {fileID: 3278558894734619624}
-  randomDirection: 1
-  myDir: 0
---- !u!50 &6841083720047650242
+  speed: 200
+  hurtboxCollisionWrapper: {fileID: 879476686065958425}
+  AggroRange: 0
+  movementDirection: 0
+  findNewAngle: 0
+  debugVector: 0
+--- !u!50 &4313583457639805918
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6985398997777358104}
+  m_GameObject: {fileID: 6953483895165788306}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -221,7 +271,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -107,11 +107,11 @@ namespace GGJ2021.Enemy
                 switch (myDir)
                 {
                     case Direction.LEFT:
-                        myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.left) * speed * Time.time;
+                        myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.left) * speed * Time.deltaTime;
                         break;
 
                     case Direction.RIGHT:
-                        myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.right) * speed * Time.time;
+                        myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.right) * speed * Time.deltaTime;
                         break;
                 }
             }
