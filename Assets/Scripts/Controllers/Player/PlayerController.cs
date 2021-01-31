@@ -165,8 +165,6 @@ namespace GGJ2021
                 lookDirection = mouseAim;
             }
 
-            Debug.Log(aimWithController);
-
             if (playerHealth.dead)
             {
                 lookDirection = new Vector2(0f, 0f);
