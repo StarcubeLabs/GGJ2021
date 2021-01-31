@@ -52,13 +52,17 @@ Shader "GGJ2021/Inokuchi/Advanced MatCap"
                     fixed3 diff : COLOR0;
                     fixed3 ambient : COLOR1;
 				};
-
-				sampler2D _BumpMap;
-
+				
 				v2f vert (appdata_base v)
 				{
 					v2f o;
 					o.pos = UnityObjectToClipPos (v.vertex);
+					
+//					half2 capCoord;
+//					// Inverse transpose of model*view matrix
+//					capCoord.x = dot(UNITY_MATRIX_IT_MV[0].xyz, v.normal);
+//					capCoord.y = dot(UNITY_MATRIX_IT_MV[1].xyz, v.normal);
+//					o.cap = capCoord * 0.5 + 0.5;
 
 					float4 p = float4( v.vertex );
 
@@ -74,7 +78,7 @@ Shader "GGJ2021/Inokuchi/Advanced MatCap"
 					half2 capCoord;
 					capCoord = r.xy / m + 0.5;
 					o.cap = capCoord;
-                    half3 worldNormal = UnityObjectToWorldNormal(_BumpMap);
+                    half3 worldNormal = UnityObjectToWorldNormal(v.normal);
                     half nl = max(0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
                     o.diff = nl * _LightColor0.rgb;
                     o.ambient = ShadeSH9(half4(worldNormal,1));
@@ -85,7 +89,6 @@ Shader "GGJ2021/Inokuchi/Advanced MatCap"
 				
 				uniform float4 _Color;
 				uniform sampler2D _MatCap;
-
 				
 				float4 frag (v2f i) : COLOR
 				{

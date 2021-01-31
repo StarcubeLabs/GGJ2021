@@ -60,7 +60,7 @@ Shader "GGJ2021/MinionsArt/Lit Glass Normal" {
  
     struct Input {     
         float3 viewDir; // view direction from camera
-        float2 uv_BumpMap: TEXCOORD0;
+        float2 uv_BumpMap;
     };
  
     void surf(Input IN, inout SurfaceOutput o) {
