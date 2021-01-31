@@ -41,6 +41,7 @@
         for (int ii=0; ii<statMax; ii++) {
           StartCoroutine(InstantiateIcon(ii));
         }
+        SetCurr(statMax);
 
         isInitialized = true;
         RedrawIcons();
