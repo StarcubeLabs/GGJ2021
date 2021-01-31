@@ -22,10 +22,6 @@ namespace GGJ2021
             {
                 instance = this;
             }
-            else
-            {
-                Destroy(gameObject);
-            }
         }
 
         private void Start()

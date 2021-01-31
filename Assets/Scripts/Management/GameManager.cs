@@ -1,4 +1,4 @@
-﻿namespace GGJ2021.Managment
+﻿namespace GGJ2021.Management
 {
     using Audio;
     using System.Linq;
@@ -97,10 +97,10 @@
 
         public void CleanUp()
         {
-
             Destroy(player);
             player = null;
             PlayerController.instance = null;
+            FollowerManager.instance = null;
 
             for (int i = 0; i < local.Length; i++)
             {

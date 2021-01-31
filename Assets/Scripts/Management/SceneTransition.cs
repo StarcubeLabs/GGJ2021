@@ -1,4 +1,4 @@
-﻿namespace GGJ2021.Managment
+﻿namespace GGJ2021.Management
 {
     using Audio;
     using UnityEngine;
