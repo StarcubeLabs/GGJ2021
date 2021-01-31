@@ -580,6 +580,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1207267954, guid: f153c9fbc4d04d74aa9f57b31ba3933c, type: 3}
+      propertyPath: m_text
+      value: 'Grapple Acquired!
+
+
+        Right Click/R2
+
+        To Grapple To Hooks!
+
+
+        Mouse/Right
+        Stick
+
+        To Aim!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207267954, guid: f153c9fbc4d04d74aa9f57b31ba3933c, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207267954, guid: f153c9fbc4d04d74aa9f57b31ba3933c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 8447117933748013800, guid: f153c9fbc4d04d74aa9f57b31ba3933c,
         type: 3}
       propertyPath: m_RootOrder
@@ -664,6 +687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447117935255134811, guid: f153c9fbc4d04d74aa9f57b31ba3933c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.4
       objectReference: {fileID: 0}
     - target: {fileID: 8447117935354765176, guid: f153c9fbc4d04d74aa9f57b31ba3933c,
         type: 3}
@@ -1206,7 +1234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &266880845244157116
 PrefabInstance:
@@ -1238,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 266880844552404542, guid: a23f8c24a2fb943b689adb586469bfea,
         type: 3}
       propertyPath: m_Tiles.Array.data[0].first.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 266880844552404542, guid: a23f8c24a2fb943b689adb586469bfea,
         type: 3}
@@ -2321,7 +2349,7 @@ Transform:
   - {fileID: 1932077215}
   - {fileID: 717533951}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5957064099492467471
 GameObject:

@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
@@ -298,6 +298,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1207267954, guid: f153c9fbc4d04d74aa9f57b31ba3933c, type: 3}
+      propertyPath: m_text
+      value: 'Hamster Rush
+
+        Acquired!
+
+
+        Shift/L2 To Dash!
+
+        Works
+        On The Ground
+
+        And In The Air!
+
+
+        Try It On Tubes!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207267954, guid: f153c9fbc4d04d74aa9f57b31ba3933c, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207267954, guid: f153c9fbc4d04d74aa9f57b31ba3933c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8447117933748013800, guid: f153c9fbc4d04d74aa9f57b31ba3933c,
         type: 3}
       propertyPath: m_RootOrder
@@ -367,6 +392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447117935255134811, guid: f153c9fbc4d04d74aa9f57b31ba3933c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 8447117935354765176, guid: f153c9fbc4d04d74aa9f57b31ba3933c,
         type: 3}
@@ -640,7 +670,7 @@ PrefabInstance:
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
@@ -798,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
@@ -1440,7 +1470,7 @@ PrefabInstance:
     - target: {fileID: 1275766850233499819, guid: 0f834e09087033b49bf8fdd04263555a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1275766850233499819, guid: 0f834e09087033b49bf8fdd04263555a,
         type: 3}
@@ -1527,7 +1557,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &266880845244157116
 PrefabInstance:
@@ -2355,7 +2385,7 @@ Transform:
   - {fileID: 1932077215}
   - {fileID: 717533951}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5957064099492467471
 GameObject:

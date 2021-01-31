@@ -19,6 +19,17 @@
             tutorial.SetActive(true);
         }
 
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (checkForAbility)
+            {
+                if (!PlayerStats.instance.HasAbility(ability))
+                    return;
+            }
+
+            tutorial.SetActive(true);
+        }
+
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (checkForAbility)
