@@ -53,6 +53,8 @@ MonoBehaviour:
   - {fileID: 8688532137458341517, guid: b7d65c41f2db0e84da4842199ddb5d8d, type: 3}
   PlayerManagerPrefab: {fileID: 1484205069, guid: 42e4b74c2a3bce043b769db09e649e33,
     type: 3}
+  EnemyManagerPrefab: {fileID: 7409803997337284207, guid: ad047c1b534bd464e905a52f3544bc99,
+    type: 3}
   SceneLocalObjects:
   - {fileID: 5906788304912100862, guid: bb46af37fa8b0445aa9ef7acaaeea07d, type: 3}
   - {fileID: 5941193376213620568, guid: 235b82c1135184648a94aa9baf560c1c, type: 3}

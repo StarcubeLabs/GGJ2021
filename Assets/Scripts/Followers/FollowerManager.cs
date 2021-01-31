@@ -10,6 +10,8 @@ namespace GGJ2021
 
         public static FollowerManager instance;
 
+        private static float FIRST_HAMSTER_OFFSET = -1f;
+
         [SerializeField]
         private FollowerPhysics followerGrapple;
         [SerializeField]
@@ -40,38 +42,68 @@ namespace GGJ2021
 
         public void AddAbilityHamster(Ability ability)
         {
-            FollowerPhysics hamster = null;
-            switch(ability)
-            {
-                case Ability.Grapple:
-                    hamster = followerGrapple;
-                    break;
-                case Ability.Grenade:
-                    hamster = followerGrenade;
-                    break;
-                case Ability.Dash:
-                    hamster = followerDash;
-                    break;
-            }
+            FollowerPhysics hamster = GetHamster(ability);
 
             if (!hamster.gameObject.activeSelf)
             {
                 hamster.gameObject.SetActive(true);
+                hamster.enabled = true;
+                hamster.transform.position = PlayerController.instance.transform.position;
+                activeFollowers.Add(hamster);
+                ConfigureActiveFollowers();
+            }
+        }
+
+        public void RemoveAbilityHamster(Ability ability)
+        {
+            FollowerPhysics removeHamster = GetHamster(ability);
+            if (activeFollowers.Contains(removeHamster))
+            {
+                removeHamster.gameObject.SetActive(false);
+                removeHamster.enabled = false;
+                List<FollowerPhysics> newFollowers = new List<FollowerPhysics>();
+                foreach (FollowerPhysics hamster in activeFollowers)
+                {
+                    if (hamster != removeHamster)
+                    {
+                        newFollowers.Add(hamster);
+                    }
+                }
+                activeFollowers = newFollowers;
+                ConfigureActiveFollowers();
+            }
+        }
+
+        private void ConfigureActiveFollowers()
+        {
+            for (int i = 0; i < activeFollowers.Count; i++)
+            {
+                FollowerPhysics hamster = activeFollowers[i];
                 GameObject sourceObject;
-                if (activeFollowers.Count == 0)
+                if (i == 0)
                 {
                     sourceObject = PlayerController.instance.gameObject;
                     // Offset the first hamster to account for the player's height.
-                    hamster.config.targetOffset.y = -1f;
+                    hamster.config.targetOffset.y = FIRST_HAMSTER_OFFSET;
                 }
                 else
                 {
-                    sourceObject = activeFollowers[activeFollowers.Count - 1].gameObject;
+                    sourceObject = activeFollowers[i - 1].gameObject;
+                    hamster.config.targetOffset.y = 0;
                 }
                 hamster.sourceObj = sourceObject;
-                hamster.transform.position = PlayerController.instance.transform.position;
-                activeFollowers.Add(hamster);
             }
+        }
+
+        private FollowerPhysics GetHamster(Ability ability)
+        {
+            switch (ability)
+            {
+                case Ability.Grapple: return followerGrapple;
+                case Ability.Grenade: return followerGrenade;
+                case Ability.Dash: return followerDash;
+            }
+            return followerGrapple;
         }
     }
 }

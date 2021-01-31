@@ -31,6 +31,7 @@
             {
                 blasterCooldown = maxBlasterCooldown;
                 hamsterPool.SpawnHamster(origin, direction + PlayerController.instance.playerPhysics.GetVelocity());
+                FollowerManager.instance.RemoveAbilityHamster(Ability.Grenade);
             }
         }
 

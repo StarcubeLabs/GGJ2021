@@ -45,6 +45,7 @@
 
         public bool TryGrapple()
         {
+            FollowerManager.instance.RemoveAbilityHamster(Ability.Grapple);
             FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_grapple_shoot");
             playerPos = playerController.transform.position;
             direction = playerController.lookDirection;
@@ -82,6 +83,7 @@
         {
             grapple.SetPosition(0, Vector2.zero);
             grapple.SetPosition(1, Vector2.zero);
+            FollowerManager.instance.AddAbilityHamster(Ability.Grapple);
         }
 
         public bool CanGrapple()
