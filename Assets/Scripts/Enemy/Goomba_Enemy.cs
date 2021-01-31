@@ -94,11 +94,11 @@ namespace GGJ2021.Enemy
             switch (myDir)
             {
                 case Direction.LEFT:
-                    this.transform.position += (Vector3)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.left) * speed * Time.time;
+                    myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.left) * speed * Time.time;
                     break;
 
                 case Direction.RIGHT:
-                    this.transform.position += (Vector3)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.right) * speed * Time.time;
+                    myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.right) * speed * Time.time;
                     break;
             }
         }
@@ -198,19 +198,10 @@ namespace GGJ2021.Enemy
 
             switch (EnemyState)
             {
-                case ActorState.IDLE:
-                    Walk();
-                    break;
-
                 case ActorState.PURSUIT:
-                    Walk();
-                    break;
-
                 case ActorState.RETURNTOPOST:
-                    Walk();
-                    break;
-
                 case ActorState.ATTACKING:
+                case ActorState.IDLE:
                     Walk();
                     break;
             }
