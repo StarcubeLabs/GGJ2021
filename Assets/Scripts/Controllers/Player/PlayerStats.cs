@@ -101,5 +101,13 @@ namespace GGJ2021
             }
             return false;
         }
+
+        public void Reset()
+        {
+            maxHealth = startingMaxHealth;
+            curHealth = maxHealth;
+            collectedCollectibles.Clear();
+            spawnDoor = -1;
+        }
     }
 }
