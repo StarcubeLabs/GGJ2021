@@ -28,13 +28,23 @@ namespace GGJ2021.Enemy
                     } return instance; }
         }
 
+        /// <summary>
+        /// Pool of every spawned enemy
+        /// </summary>
         NPC_Base[] npcPausePool;
         static int npcPausePoolCount;
+        /// <summary>
+        /// Unused pool of type enemy
+        /// </summary>
         Enemy_NPC[] aggroPool;
         static int aggroPoolCount;
 
         // BulletPool[]
-
+        /// <summary>
+        /// Spawn Enemy of type eT
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="eT"></param>
         public void SpawnEnemy(Vector3 v, EnemyTypes eT)
         {
             if (enemyPrefabLibrary.prefabs.Length > 0)
@@ -101,6 +111,10 @@ namespace GGJ2021.Enemy
             }
         }
 
+        /// <summary>
+        /// Pauses all NPCs held in npcPausePool
+        /// This pauses all enemies called by spawn()
+        /// </summary>
         public void PauseAll()
         {
             int total = 0;
@@ -119,6 +133,10 @@ namespace GGJ2021.Enemy
             // TO DO: Pause Bullets 
         }
 
+        /// <summary>
+        /// Unpauses all NPCs held in npcPausePool
+        /// This unpases all enemies called by spawn()
+        /// </summary>
         public void UnPauseAll()
         {
             int total = 0;
@@ -138,11 +156,15 @@ namespace GGJ2021.Enemy
             // TO DO: Unpause Bullets 
         }
 
+        /// <summary>
+        /// Prints the ID 'ticket' of an available spot in the pool to be assigned
+        /// </summary>
+        /// <returns></returns>
         private int AddToNPCPool()
         {
             int i = 0;
             bool emptyspotNotFound = true;
-            while (emptyspotNotFound && i < 100)
+            while (emptyspotNotFound && i < npcPausePool.Length)
             {
                 if (instance.npcPausePool[i] == null)
                 {
@@ -153,16 +175,21 @@ namespace GGJ2021.Enemy
                 else i++;
             }
 
-            if (i >= 100)
+            if (i >= npcPausePool.Length)
                 return -1;
             else return i;
         }
 
+        /// <summary>
+        /// Prints the ID 'ticket' of an available spot in the pool to be asigned
+        /// </summary>
+        /// <param name="eNPC"></param>
+        /// <returns></returns>
         public int AddToAggroPool(Enemy_NPC eNPC)
         {
             int i = 0;
             bool emptyspotNotFound = true;
-            while (emptyspotNotFound && i < 100)
+            while (emptyspotNotFound && i < aggroPool.Length)
             {
                 if (instance.aggroPool[i] == null)
                 {
@@ -174,26 +201,41 @@ namespace GGJ2021.Enemy
                 else i++;
             }
 
-            if (i >= 100)
+            if (i >= aggroPool.Length)
                 return -1;
             else return i;
         }
 
+        /// <summary>
+        /// Releases the requested NPC by receiving their 'ticket'
+        /// </summary>
+        /// <param name="flockID"></param>
         public void RemoveFromNPCPool(int flockID)
         {
             RemoveFromPool<NPC_Base>(instance.npcPausePool, flockID, npcPausePoolCount);
         }
 
+        /// <summary>
+        /// Releases the requested Enemy by receiving their 'ticket'
+        /// </summary>
+        /// <param name="flockID"></param>
         public void RemoveFromAggroPool(int flockID)
         {
             RemoveFromPool<Enemy_NPC>(instance.aggroPool, flockID, aggroPoolCount);
         }
 
+        /// <summary>
+        /// Helper function that removes the member from their respective pool
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pool"></param>
+        /// <param name="flockNum"></param>
+        /// <param name="poolSize"></param>
         private void RemoveFromPool<T>(T[] pool, int flockNum, int poolSize)
         {
             int j = 0;
             int j_countingValidUnits = 0;
-            while (j_countingValidUnits < poolSize && j < 100)
+            while (j_countingValidUnits < poolSize && j < pool.Length)
             {
                 if (pool[j] != null)
                 {
@@ -205,6 +247,13 @@ namespace GGJ2021.Enemy
             poolSize--;
         }
 
+        /// <summary>
+        /// Helper function that adds the member to their pool once Instantiated
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pool"></param>
+        /// <param name="member"></param>
+        /// <param name="index"></param>
         private static void AddToPool<T>(T[] pool, T member, int index)
         {
             pool[index] = member;

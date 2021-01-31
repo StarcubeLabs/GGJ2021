@@ -32,14 +32,24 @@ namespace GGJ2021.Enemy
 
     public class NPC_Base :  FlippableCharacter
     {
+        /// <summary>
+        /// The ticket that controls where it is held in the pool array. Must be used to release the NPC from the pool
+        /// </summary>
         protected int NPCPoolID;
         [SerializeField]
         protected int maxhealth;     
         protected int health;        //current health of enemy
         [SerializeField]
         protected ActorState EnemyState;    // controls the enemey state
-        protected ActorState prePauseEnemyState;
 
+        /// <summary>
+        /// Holds the state previous to asking the enemy to be Paused
+        /// </summary>
+        protected ActorState prePauseEnemyState;   
+
+        /// <summary>
+        /// Used as a guide to assign layermaskIDs at the lowest levels
+        /// </summary>
         protected enum collisionLayerIDs{Default, TransparentFX, IgnoreRaycast, THREE,Water, UI, SIX, SEVEN, PLAYER, ENEMY, PLAYERHITBOX, ENEMYHITBOX, PLAYERPROJECTILE, ENEMYPROJECTILE};
 
         protected SpriteRenderer mySpriteRenderer;
@@ -103,6 +113,7 @@ namespace GGJ2021.Enemy
             return true;
         }
 
+        // Empty Virtuals to be used at the lowest level
         protected virtual void idle()
         {
         }
@@ -136,6 +147,10 @@ namespace GGJ2021.Enemy
             EnemyState = ActorState.IDLE;
         }
 
+        /// <summary>
+        /// Called during the npc's spawn and respawn methods
+        /// </summary>
+        /// <param name="v"></param>
         protected virtual void Init(Vector2 v)
         {
             if (maxhealth == 0)
@@ -145,9 +160,10 @@ namespace GGJ2021.Enemy
         /// <summary>
         /// Reinitialize location and default constructor values
         /// </summary>
-        public virtual void respawn()
+        public virtual void respawn(Vector2 v)
         {
             restoreHealth();
+            Init(v);
         }
 
         protected void restoreHealth()
@@ -155,6 +171,9 @@ namespace GGJ2021.Enemy
             health = maxhealth;
         }
 
+        /// <summary>
+        /// Destroys the npc and removes itself from the NPCPool_Base pool
+        /// </summary>
         protected void death()
         {
             if (deathExplosion != null)
