@@ -15,12 +15,18 @@ namespace GGJ2021.Enemy
         float idleTimer = 0;
         public float AggroRange;
 
+        /// <summary>
+        /// Called by the NPCPool_Base Instance to spawn this enemy and init its base values
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="npcID"></param>
         public override void Spawn(Vector3 v, int npcID)
         {
+            // Assign Hold pool ID to be requested to be removed when it is destroyed
             NPCPoolID = npcID;
 
+            // Set up base Game Objects
             enemyName = "Wasp_" + npcID;
-
             this.gameObject.name = enemyName;
 
             if(myGraphicalParent == null)
@@ -52,18 +58,30 @@ namespace GGJ2021.Enemy
                     }
                 }
             }
+
+            // Init values
             Init(v);
 
-            EnemyState = ActorState.IDLE;
 
-            restoreHealth();
+
+
         }
 
+        /// <summary>
+        /// Initializes values for enemy.
+        /// Intended for Spawn() and Respawn() logic
+        /// </summary>
+        /// <param name="v"></param>
         protected override void Init(Vector2 v)
         {
             base.Init(v);
+            restoreHealth();
 
+            // Initial logic state
+            EnemyState = ActorState.IDLE;
             playerRef = PlayerController.instance;
+
+            // Default AggroRange
             if (AggroRange <= 0)
                 AggroRange = 10.0f;
 
@@ -82,13 +100,19 @@ namespace GGJ2021.Enemy
         }
         #endregion
 
+        // Holds the proposed Movement
         Vector2 movementDirectionVec;
+        // Holds the vector towards the clostest collisionPoint
         Vector2 prevMovementDirectionVec;
         [SerializeField]
         private float movementDirection = 0;
         [SerializeField]
-        bool findNewAngle;
+        bool findNewAngle;  // This value is true during state changes
 
+        /// <summary>
+        /// Handles whether the Wasp will Aggro.
+        /// Running during every EnemyState except ATTACKING & PURSUIT
+        /// </summary>
         private void DetectPlayer()
         {
             Vector2 playerPos = playerRef.transform.position;
@@ -99,6 +123,7 @@ namespace GGJ2021.Enemy
                 RaycastHit2D r = Physics2D.Raycast(this.transform.position, playerPos - (Vector2)this.transform.position, AggroRange, player_LayerMask);
                 if(r)
                 {
+                    // Any State >> PURSUIT
                     EnemyState = ActorState.PURSUIT;
                     findNewAngle = true;
                     idleTimer = 0;
@@ -106,6 +131,13 @@ namespace GGJ2021.Enemy
             }
         }
 
+
+        /// <summary>
+        /// If dotProduct(a,b) > 0, then they 'upstream' or pointing in the same 180 range as each other
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         float dotProduct(Vector2 a, Vector2 b)
         {
             float ret = (a.x * b.x + a.y * b.y);
@@ -113,15 +145,21 @@ namespace GGJ2021.Enemy
             return ret;
         }
 
+        // The vector in which the Wasp is charging towards the player
         Vector2 attackVector;
         [SerializeField]
         float debugVector;
 
+        /// <summary>
+        /// Charging toward the player
+        /// </summary>
         void Attack()
         {
+            // Current vector pointing to the player
             Vector2 temp = (playerRef.transform.position - this.transform.position).normalized;
             if(findNewAngle)
             {
+                // Lock in AttackVector
                 attackVector = temp;
                 findNewAngle = false;
                 idleTimer = 0;
@@ -133,7 +171,7 @@ namespace GGJ2021.Enemy
                 myRigidBody.velocity = myRigidBody.velocity / 1.7f;
                 idleTimer += Time.deltaTime;
 
-                // Change to new 
+                // If it missed the player it will eventually stop charging based on this timer
                 if (idleTimer > 3.0f)
                 {
                     idleTimer = 0;
@@ -157,7 +195,7 @@ namespace GGJ2021.Enemy
                     if (myRigidBody.velocity.magnitude > 500f)
                         myRigidBody.velocity = myRigidBody.velocity.normalized *500f;
 
-                    // Will stop short if it is about to hit a wall
+                    // Will stop short if it is stuck in a wall
                     int wallLayerMask = 1 << (int)collisionLayerIDs.Default;
                     Collider2D r = Physics2D.OverlapCircle((Vector2)this.transform.position + myRigidBody.velocity*(Time.deltaTime * 1), 1f, wallLayerMask);
                     //Debug.DrawLine(this.transform.position, this.transform.position+ (Vector3)myRigidBody.velocity*Time.deltaTime, Color.red);
@@ -168,6 +206,7 @@ namespace GGJ2021.Enemy
                         {
                             if (rx.distance <= 1)
                             {
+                                // Double checks that the intended direction is not towards a wall before returning to idle
                                 EnemyState = ActorState.IDLE;
                                 findNewAngle = true;
                                 idleTimer = 0;
@@ -180,6 +219,10 @@ namespace GGJ2021.Enemy
 
 
         Vector2 closetContactPoint;
+
+        /// <summary>
+        /// Wasp random Patrolling
+        /// </summary>
         protected override void Walk()
         {
             int layerMask = 1 << (int)collisionLayerIDs.Default;
@@ -189,6 +232,7 @@ namespace GGJ2021.Enemy
                     prevMovementDirectionVec = (Vector2)this.transform.position - (Vector2)playerRef.transform.position;
                 else prevMovementDirectionVec = closetContactPoint - (Vector2)this.transform.position;
 
+                // Randomly pick angles until picking 180 degrees away from the closest point collided with
                 do
                 {
                     movementDirection = Random.Range(0, 361);
@@ -196,7 +240,9 @@ namespace GGJ2021.Enemy
                     movementDirectionVec = (Vector2)(Quaternion.Euler(0, 0, movementDirection) * Vector2.right) * speed * Time.deltaTime;
                 } while (dotProduct(movementDirectionVec.normalized, prevMovementDirectionVec.normalized) > 0.5f);
 
-                RaycastHit2D r1;// = Physics2D.Raycast(this.transform.position, movementDirectionVec, 5f, layerMask);
+
+                // To reduce bad angles the angle will be checked and radially scanned around to find if there is a more suitable angle
+                RaycastHit2D r1;
                 Vector2 temp;
                 float maxDist = -1;
                 Vector2 maxTemp = Vector2.zero;
@@ -234,6 +280,7 @@ namespace GGJ2021.Enemy
 
             myRigidBody.velocity = movementDirectionVec.normalized * speed * Time.deltaTime;
 
+            // If it gets stuck in a wall
             Collider2D r = Physics2D.OverlapCircle((Vector2)this.transform.position + myRigidBody.velocity * Time.deltaTime, 1.5f, layerMask);
             if(r != null)
             {
@@ -247,6 +294,7 @@ namespace GGJ2021.Enemy
 
                     if(rx.distance <= 1.5f)
                     {
+                        // Double checks that the inteded direction is towards a wall
                         EnemyState = ActorState.IDLE;
                         findNewAngle = true;
                         idleTimer = 0;
@@ -267,15 +315,20 @@ namespace GGJ2021.Enemy
 
             switch(EnemyState)
             {
+                // Pauses in between patrolling
                 case ActorState.IDLE:
                     myRigidBody.velocity = Vector2.zero;
                     break;
+                // Larry plays animation here
                 case ActorState.PURSUIT:
                     myRigidBody.velocity = Vector2.zero;
                     break;
+                // Charging the player
                 case ActorState.ATTACKING:
                     Attack();
                     break;
+
+                // Patrolling
                 case ActorState.RETURNTOPOST:
                     Walk();
                     break;
@@ -287,6 +340,7 @@ namespace GGJ2021.Enemy
             if (!InheritedUpdateCall())
                 return;
 
+            // Checks for Player aggro
             if(EnemyState != ActorState.PURSUIT && EnemyState != ActorState.ATTACKING)
             {
                 DetectPlayer();
@@ -294,6 +348,7 @@ namespace GGJ2021.Enemy
 
             switch (EnemyState)
             {
+                // Pauses during patrol
                 case ActorState.IDLE:
                     if (idleTimer >= 3.5)
                     {
@@ -301,6 +356,8 @@ namespace GGJ2021.Enemy
                         EnemyState = ActorState.RETURNTOPOST;
                     }else idleTimer += Time.fixedDeltaTime;
                     break;
+
+                // Larry plays animation of being angry during this state
                 case ActorState.PURSUIT:
                     if (idleTimer >= 1)
                     {
@@ -309,7 +366,9 @@ namespace GGJ2021.Enemy
                     }
                     else idleTimer += Time.fixedDeltaTime;
                     break;
+                // Charging
                 case ActorState.ATTACKING:
+                // Patrolling
                 case ActorState.RETURNTOPOST:
                     break;
             }

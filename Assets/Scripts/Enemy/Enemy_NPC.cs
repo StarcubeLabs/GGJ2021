@@ -14,6 +14,7 @@ namespace GGJ2021.Enemy
         protected float speed;
 
         #region Shooting Enemy functions
+        // empty virtuals
         protected virtual void fire()
         {
             // TO DO: Write default definition here
@@ -27,6 +28,7 @@ namespace GGJ2021.Enemy
 
 
         #region Default Movement Definitions
+        // Empty virtuals
         protected virtual void Walk()
         {
             // TO DO: Write default definition
@@ -80,6 +82,11 @@ namespace GGJ2021.Enemy
         }
         #endregion
 
+
+        /// <summary>
+        /// Handles Rigidbody assignment
+        /// </summary>
+        /// <param name="v"></param>
         protected virtual void Init(Vector2 v)
         {
             base.Init(v);
