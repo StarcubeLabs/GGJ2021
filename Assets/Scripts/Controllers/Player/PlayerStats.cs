@@ -48,6 +48,7 @@ namespace GGJ2021
         private void Start()
         {
             MaxHealth = startingMaxHealth;
+            CurHealth = startingMaxHealth;
         }
 
         /// <summary>
