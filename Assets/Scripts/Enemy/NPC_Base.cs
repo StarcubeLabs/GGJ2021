@@ -37,7 +37,7 @@ namespace GGJ2021.Enemy
         /// </summary>
         protected int NPCPoolID;
         [SerializeField]
-        protected int maxhealth;     
+        protected int maxhealth;
         protected int health;        //current health of enemy
         [SerializeField]
         protected ActorState EnemyState;    // controls the enemey state
@@ -45,7 +45,7 @@ namespace GGJ2021.Enemy
         /// <summary>
         /// Holds the state previous to asking the enemy to be Paused
         /// </summary>
-        protected ActorState prePauseEnemyState;   
+        protected ActorState prePauseEnemyState;
 
         /// <summary>
         /// Used as a guide to assign layermaskIDs at the lowest levels
@@ -180,6 +180,7 @@ namespace GGJ2021.Enemy
                 Instantiate(deathExplosion, this.transform.position, Quaternion.identity);
 
             //NPCPool_Base.Instance.RemoveFromNPCPool(NPCPoolID);
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("enemy_death");
 
             Destroy(this.gameObject);
         }
