@@ -17,7 +17,10 @@
         private int MaxHealth
         {
             get { return PlayerStats.instance.MaxHealth; }
-            set { PlayerStats.instance.MaxHealth = value; }
+            set {
+                PlayerStats.instance.MaxHealth = value;
+                StatBarManager.instance.SetMax(MaxHealth);
+            }
         }
         private CollisionWrapper playerHurtboxColliderWrapper;
 
@@ -31,6 +34,7 @@
             // Initialize the HP bar at the start of the scene.
             if (MaxHealth > 0)
             {
+                StatBarManager.instance.SetMax(MaxHealth);
                 StatBarManager.instance.SetCurr(CurHealth);
             }
             this.controller = controller;
