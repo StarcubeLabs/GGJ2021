@@ -1718,8 +1718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorIndex: 0
-  levelToLoad: SampleSceneTilemap
-  levelToLoadDoorIndex: 0
+  levelToLoad: P
+  levelToLoadDoorIndex: 10
   stopMusic: 0
 --- !u!1 &1957985824
 GameObject:
