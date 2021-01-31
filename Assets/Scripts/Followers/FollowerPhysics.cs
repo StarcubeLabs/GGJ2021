@@ -27,7 +27,7 @@ namespace GGJ2021
             set { _targetPos = value; }
         }
 
-        private int playIdx;
+        private string animName;
         private bool readyForNextTarget = false;
         private bool doesWantToWander = true;
 
@@ -36,6 +36,8 @@ namespace GGJ2021
 
             animator = animatorObj.GetComponent<Animator>();
             playerObj = PlayerController.instance.gameObject;
+
+            animName = "JellyIdle";
         }
         void FixedUpdate() {
             if (!isActive) { return; }
@@ -47,55 +49,59 @@ namespace GGJ2021
             switch (stateCurr) {
                 case FollowerStates.Chasing:
                 case FollowerStates.Wandering:
-                    animator.Play("JellyWalk");
                     MoveTowardsTarget();
                     break;
                 case FollowerStates.Falling:
-                    animator.Play("JellyFall");
                     ApplyGravity();
                     break;
                 case FollowerStates.Flying:
-                    animator.Play("JellyJump");
                     FlyToTarget();
                     break;
                 case FollowerStates.Idling:
-                    animator.Play("JellyIdle");
+                    // animator.Play("JellyIdle");
                     break;
                 case FollowerStates.Thinking:
                 default:
                     break;
             }
+
+            animator.Play(animName);
         }
         void UpdateState() {
             FollowerStates stateNext = FollowerStates.Idling;
 
             bool isNearTarget = IsNearTarget();
             bool isNearPlayer = IsNearPlayer();
-            bool isNearTargetButNeedToJump = IsNearTargetButNeedToJump();
             bool isTouchingGround = IsTouchingGround();
             bool doesWantToChase = !isNearPlayer;
             bool doesWantIdle = isNearTarget && isNearPlayer && !doesWantToWander;
 
             // UGHH sorry this is undeciferable
             if (!doesWantIdle && doesWantToChase) {
-                if (isNearTargetButNeedToJump) {
+                if (!isTouchingGround && !IsTargetBelow()) {
                     stateNext = FollowerStates.Flying;
-                } else if (!isTouchingGround && IsTargetBelow()) {
+                    animName = "JellyJump";
+                } else if (IsTargetBelow()) {
                     stateNext = FollowerStates.Falling;
+                    animName = "JellyFall";
                 } else {
                     stateNext = FollowerStates.Chasing;
+                    animName = "JellyWalk";
                 }
 
                 doesWantToWander = true;
 
             } else if (!isTouchingGround && !IsMoving()) {
                 stateNext = FollowerStates.Falling;
+                animName = "JellyFall";
 
             } else if (isTouchingGround && !doesWantToChase && doesWantToWander) {
                 stateNext = FollowerStates.Wandering;
+                animName = "JellyWalk";
 
             } else if (doesWantIdle) {
                 stateNext = FollowerStates.Idling;
+                animName = "JellyIdle";
 
             // maintain movement state
             } else if (IsMoving()) {
