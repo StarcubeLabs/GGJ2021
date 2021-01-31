@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2319657881762279949}
   - component: {fileID: 8153863410613956561}
   - component: {fileID: 3956057552816160807}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Health Extension
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +80,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2319657881762279949}
     m_Modifications:
+    - target: {fileID: 5197525804648832239, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525804719874748, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525804941672844, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525804971554887, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525805006612423, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525805019696405, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525805027777865, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525805065836770, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525805129486263, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5197525805476328762, guid: ced48cfa94c805a498be21c93792859d,
         type: 3}
       propertyPath: m_RootOrder
@@ -139,6 +184,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BerriesBunchAnimObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525805476328764, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525806158947793, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525806360259086, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525806706607264, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197525806747186957, guid: ced48cfa94c805a498be21c93792859d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ced48cfa94c805a498be21c93792859d, type: 3}
