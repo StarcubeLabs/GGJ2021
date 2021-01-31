@@ -7,31 +7,31 @@ namespace GGJ2021.Enemy
     public sealed class NPCPool_Base : MonoBehaviour
     {
 
-        private static NPCPool_Base instance = null;
+        private static NPCPool_Base instance;
         private static object padlock = new object();
         public EnemySpriteHolder_Base enemyPrefabLibrary;
+
 
         NPCPool_Base()
         {
             npcPausePool = new NPC_Base[100];
             aggroPool = new Enemy_NPC[100];
-            enemyPrefabLibrary = FindObjectOfType<EnemySpriteHolder_Base>();
-
-#if UNITY_EDITOR
-            if (enemyPrefabLibrary == null)
-                Debug.LogError("Assets/Prefabs/EnemySpritePrefabs missing from scene. CANNOT SPAWN ENEMIES");
-#endif
         }
 
         public static NPCPool_Base Instance
         {
-            get { lock (padlock) { if (instance == null) { instance = new NPCPool_Base(); } return instance; } }
+            get { if (instance == null) { GameObject g = new GameObject();  instance = g.AddComponent<NPCPool_Base>(); instance.enemyPrefabLibrary = FindObjectOfType<EnemySpriteHolder_Base>();
+#if UNITY_EDITOR
+                    if (instance.enemyPrefabLibrary == null)
+                        Debug.LogError("Assets/Prefabs/EnemySpritePrefabs missing from scene. CANNOT SPAWN ENEMIES");
+#endif
+                    Debug.LogError("make new singleton: " + instance); } return instance; }
         }
 
-        private NPC_Base[] npcPausePool;
-        private int npcPausePoolCount;
-        private Enemy_NPC[] aggroPool;
-        private int aggroPoolCount;
+        NPC_Base[] npcPausePool;
+        static int npcPausePoolCount;
+        Enemy_NPC[] aggroPool;
+        static int aggroPoolCount;
 
         // BulletPool[]
 
@@ -44,7 +44,7 @@ namespace GGJ2021.Enemy
 
                 if (tempID < 0)
                 {
-                    Debug.Log("Error in assigning NPC_ID");
+                    Debug.LogError("Error in assigning NPC_ID");
                     return;
                 }
 
@@ -54,11 +54,14 @@ namespace GGJ2021.Enemy
 
                         if (enemyPrefabLibrary.prefabs.Length <= (int)eT)
                         {
-                            tempEnemy = Instantiate<Enemy_NPC>(enemyPrefabLibrary.prefabs[(int)eT]);
+                            tempEnemy = Instantiate<Enemy_NPC>(enemyPrefabLibrary.prefabs[0]);
+                            AddToPool<NPC_Base>(instance.npcPausePool, tempEnemy, tempID);
                             tempEnemy.Spawn(v, tempID);
                         }else
                         {
-                            tempEnemy = Instantiate<Enemy_NPC>(enemyPrefabLibrary.prefabs[0]);
+                            tempEnemy = Instantiate<Enemy_NPC>(enemyPrefabLibrary.prefabs[(int)eT]);
+                            AddToPool<NPC_Base>(instance.npcPausePool, tempEnemy, tempID);
+
                             tempEnemy.Spawn(v, tempID);
                         }
 
@@ -90,13 +93,12 @@ namespace GGJ2021.Enemy
         public void PauseAll()
         {
             int total = 0;
-            for (int i = 0; i < npcPausePool.Length; i++)
+            for (int i = 0; i < instance.npcPausePool.Length; i++)
             {
-                if (npcPausePool[i] != null)
+                if (instance.npcPausePool[i] != null)
                 {
                     total++;
-
-                    npcPausePool[i].pause();
+                    instance.npcPausePool[i].pause();
                 }
 
                 if (total >= npcPausePoolCount)
@@ -106,13 +108,32 @@ namespace GGJ2021.Enemy
             // TO DO: Pause Bullets 
         }
 
+        public void UnPauseAll()
+        {
+            int total = 0;
+            for (int i = 0; i < instance.npcPausePool.Length; i++)
+            {
+                if (instance.npcPausePool[i] != null)
+                {
+                    total++;
+
+                    instance.npcPausePool[i].Unpause();
+                }
+
+                if (total >= npcPausePoolCount)
+                    break;
+            }
+
+            // TO DO: Unpause Bullets 
+        }
+
         private int AddToNPCPool()
         {
             int i = 0;
             bool emptyspotNotFound = true;
             while (emptyspotNotFound && i < 100)
             {
-                if (npcPausePool[i] == null)
+                if (instance.npcPausePool[i] == null)
                 {
                     npcPausePoolCount++;
 
@@ -132,9 +153,9 @@ namespace GGJ2021.Enemy
             bool emptyspotNotFound = true;
             while (emptyspotNotFound && i < 100)
             {
-                if (aggroPool[i] == null)
+                if (instance.aggroPool[i] == null)
                 {
-                    aggroPool[i] = eNPC;
+                    instance.aggroPool[i] = eNPC;
                     aggroPoolCount++;
 
                     emptyspotNotFound = false;
@@ -149,12 +170,12 @@ namespace GGJ2021.Enemy
 
         public void RemoveFromNPCPool(int flockID)
         {
-            RemoveFromPool<NPC_Base>(npcPausePool, flockID, npcPausePoolCount);
+            RemoveFromPool<NPC_Base>(instance.npcPausePool, flockID, npcPausePoolCount);
         }
 
         public void RemoveFromAggroPool(int flockID)
         {
-            RemoveFromPool<Enemy_NPC>(aggroPool, flockID, aggroPoolCount);
+            RemoveFromPool<Enemy_NPC>(instance.aggroPool, flockID, aggroPoolCount);
         }
 
         private void RemoveFromPool<T>(T[] pool, int flockNum, int poolSize)
@@ -168,13 +189,12 @@ namespace GGJ2021.Enemy
                     j_countingValidUnits++;
                 }
                 j++;
-                //if (j == 100) Debug.LogError("couldn't find an enemy using aggropoolcount: jCount"+ j_countingValidUnits+" Count of enemies: "+ AggroPoolCount+" flockID: "+flockNum);
             }
             pool[flockNum] = default(T);
             poolSize--;
         }
 
-        private void AddToPool<T>(T[] pool, T member, int index)
+        private static void AddToPool<T>(T[] pool, T member, int index)
         {
             pool[index] = member;
         }
