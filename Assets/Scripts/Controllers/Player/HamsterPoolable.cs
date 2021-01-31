@@ -89,13 +89,16 @@
 
         public void Explode()
         {
-            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_explosion_wet");
-            canExplode = false;
-            rb.velocity = Vector2.zero;
-            collisionWrapper.SetActive(false);
-            hamster.enabled = false;
-            explosionTimer = maxExplosionTimer;
-            Instantiate(hamsterExplosion, transform.position, Quaternion.identity);
+            if (canExplode)
+            {
+                FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_explosion_wet");
+                canExplode = false;
+                rb.velocity = Vector2.zero;
+                collisionWrapper.SetActive(false);
+                hamster.enabled = false;
+                explosionTimer = maxExplosionTimer;
+                Instantiate(hamsterExplosion, transform.position, Quaternion.identity);
+            }
         }
 
         private void Disable()

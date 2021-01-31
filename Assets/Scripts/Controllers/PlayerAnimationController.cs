@@ -30,6 +30,8 @@
         public void DeathTrigger()
         {
             playerAnim.SetTrigger(deathTrigger);
+            SetIsWalk(false);
+            SetInAir(false);
         }
 
         public void JumpTrigger()
