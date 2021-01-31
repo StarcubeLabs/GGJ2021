@@ -66,6 +66,11 @@
             return player.GetAxis("MoveVertical2");
         }
 
+        public Vector2 GetMousePosition()
+        {
+            return ReInput.controllers.Mouse.screenPosition;
+        }
+
         public bool ADown()
         {
             return player.GetButtonDown("ADown");
