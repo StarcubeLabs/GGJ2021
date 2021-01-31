@@ -28,6 +28,8 @@
 
         public PlayerHealth(PlayerController controller, CollisionWrapper playerHurtboxColliderWrapper)
         {
+            // Initialize the HP bar at the start of the scene.
+            StatBarManager.instance.SetCurr(CurHealth);
             this.controller = controller;
             this.playerHurtboxColliderWrapper = playerHurtboxColliderWrapper;
             this.playerHurtboxColliderWrapper.AssignFunctionToTriggerEnterDelegate(OnCollision);
