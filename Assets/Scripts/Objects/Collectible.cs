@@ -25,12 +25,9 @@ namespace GGJ2021
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerPhysics"))
-            {
-                PlayerStats.instance.CollectCollectible(this);
-                OnCollect();
-                gameObject.SetActive(false);
-            }
+            PlayerStats.instance.CollectCollectible(this);
+            OnCollect();
+            gameObject.SetActive(false);
         }
 
         protected abstract void OnCollect();
