@@ -30,6 +30,7 @@ namespace GGJ2021
         private string animName;
         private bool readyForNextTarget = false;
         private bool doesWantToWander = true;
+        private bool isFacingLeft = true;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
@@ -124,10 +125,17 @@ namespace GGJ2021
             // print("stateCurr: " + stateCurr + " // statePrev: " + statePrev);
         }
         void MoveTowardsTarget() {
+            if (targetPos.x > transform.position.x && isFacingLeft) {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                isFacingLeft = false;
+            } else if (targetPos.x < transform.position.x && !isFacingLeft) {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                isFacingLeft = true;
+            }
+
             float step = config.speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
-            // reached destination so do something else
             if (IsNearTarget()) {
                 if (IsWandering()) {
                     doesWantToWander = false;
@@ -143,9 +151,6 @@ namespace GGJ2021
             if (IsNearTarget()) {
                 readyForNextTarget = true;
             }
-        }
-        void ShouldOverrideTarget() {
-
         }
         void ApplyGravity() {
             Vector3 currPosition = transform.position;
