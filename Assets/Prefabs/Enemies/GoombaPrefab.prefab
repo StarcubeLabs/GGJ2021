@@ -197,8 +197,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  speed: 0.1
+  maxhealth: 0
+  deathExplosion: {fileID: 0}
+  speed: 0.3
   hurtboxCollisionWrapper: {fileID: 3278558894734619624}
+  randomDirection: 1
+  myDir: 0
 --- !u!50 &6841083720047650242
 Rigidbody2D:
   serializedVersion: 4
