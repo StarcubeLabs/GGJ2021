@@ -9,7 +9,15 @@ namespace GGJ2021
     public class BreakableTile : MonoBehaviour
     {
 
-        public void Break()
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+            {
+                Break();
+            }
+        }
+
+        private void Break()
         {
             //TODO Animate destruction.
             Destroy(gameObject);

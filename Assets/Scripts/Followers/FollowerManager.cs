@@ -47,7 +47,6 @@ namespace GGJ2021
             if (!hamster.gameObject.activeSelf)
             {
                 hamster.gameObject.SetActive(true);
-                hamster.enabled = true;
                 hamster.transform.position = PlayerController.instance.transform.position;
                 activeFollowers.Add(hamster);
                 ConfigureActiveFollowers();
@@ -60,7 +59,6 @@ namespace GGJ2021
             if (activeFollowers.Contains(removeHamster))
             {
                 removeHamster.gameObject.SetActive(false);
-                removeHamster.enabled = false;
                 List<FollowerPhysics> newFollowers = new List<FollowerPhysics>();
                 foreach (FollowerPhysics hamster in activeFollowers)
                 {
