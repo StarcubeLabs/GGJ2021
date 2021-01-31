@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingMaxHealth: 3
-  unlockAllAbilities: 1
+  unlockAllAbilities: 0
   spawnDoor: -1

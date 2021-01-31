@@ -15,11 +15,27 @@ namespace GGJ2021
             get { return id; }
         }
 
+        private bool initialized = false;
+
         private void Start()
         {
-            if (PlayerStats.instance.IsCollectibleCollected(this))
+            TryInit();
+        }
+
+        private void Update()
+        {
+            TryInit();
+        }
+
+        private void TryInit()
+        {
+            if (!initialized && PlayerStats.instance != null)
             {
-                gameObject.SetActive(false);
+                if (PlayerStats.instance.IsCollectibleCollected(this))
+                {
+                    gameObject.SetActive(false);
+                }
+                initialized = true;
             }
         }
 
