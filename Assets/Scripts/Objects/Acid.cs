@@ -13,13 +13,16 @@
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            PlayerController.instance.playerHealth.TakeDamage(damage);
-            if (!PlayerController.instance.playerHealth.dead)
+            if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerPhysics"))
             {
-                // Sanity check to respawn somewhere even if spawn door isn't set.
-                PlayerStats.instance.spawnDoor = Mathf.Max(0, PlayerStats.instance.spawnDoor);
-                //TODO Play animation.
-                PlayerController.instance.Spawn();
+                PlayerController.instance.playerHealth.TakeDamage(damage);
+                if (!PlayerController.instance.playerHealth.dead)
+                {
+                    // Sanity check to respawn somewhere even if spawn door isn't set.
+                    PlayerStats.instance.spawnDoor = Mathf.Max(0, PlayerStats.instance.spawnDoor);
+                    //TODO Play animation.
+                    PlayerController.instance.Spawn();
+                }
             }
         }
     }
