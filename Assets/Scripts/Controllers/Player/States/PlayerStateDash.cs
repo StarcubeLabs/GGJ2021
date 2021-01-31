@@ -18,6 +18,7 @@
             maxTimer = playerController.config.DashTime;
             controller.GooBallHandler.StartDash();
             FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_dash");
+            FollowerManager.instance.RemoveAbilityHamster(Ability.Dash);
         }
 
         protected override void Enter()
@@ -80,6 +81,7 @@
             playerController.GooBallHandler.StopDash();
             playerController.SpawnDashExplosion();
             //FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_explosion_wet");
+            FollowerManager.instance.AddAbilityHamster(Ability.Dash);
         }
     }
 }

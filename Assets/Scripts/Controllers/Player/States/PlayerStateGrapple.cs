@@ -86,6 +86,7 @@ namespace GGJ2021
             playerController.playerPhysics.isGrappling = false;
             playerController.playerGrappleManager.ResetGrapple();
             playerController.playerPhysics.ApplyStationaryVelocity();
+            FollowerManager.instance.AddAbilityHamster(Ability.Grapple);
         }
     }
 }
