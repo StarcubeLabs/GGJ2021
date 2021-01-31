@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6388667678744643364}
   - component: {fileID: -3771395047155619768}
   - component: {fileID: -5955847877507389959}
+  - component: {fileID: 2713678235354210125}
   m_Layer: 0
   m_Name: BreakableTile
   m_TagString: Untagged
@@ -120,6 +121,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa453afff37a484eacba034deaf357e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2713678235354210125
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792700149051646863}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &6697500777630016586
 PrefabInstance:
   m_ObjectHideFlags: 0
