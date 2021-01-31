@@ -16,7 +16,7 @@
                 nextState = new PlayerStateMoving(playerController);
             }
 
-            if (RewiredPlayerInputManager.instance.IsFiring())
+            if (RewiredPlayerInputManager.instance.IsFiring() && playerController.hamsterManager.CanFire())
             {
                 playerController.hamsterManager.ShootProjectile(playerController.transform.position, playerController.lookDirection.normalized * playerController.config.ProjectileSpeed);
             }

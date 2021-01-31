@@ -20,6 +20,11 @@
             }
         }
 
+        public bool CanFire()
+        {
+            return PlayerStats.instance.HasAbility(Ability.Grenade);
+        }
+
         public void ShootProjectile(Vector2 origin, Vector2 direction)
         {
             if (blasterCooldown <= 0f && GetAvailableHamsters() > 0)

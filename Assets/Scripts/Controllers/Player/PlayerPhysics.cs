@@ -166,7 +166,7 @@
 
         public bool CanDash()
         {
-            return dashCooldown <= 0f;
+            return dashCooldown <= 0f && PlayerStats.instance.HasAbility(Ability.Dash);
         }
 
         public void SetRigidbodyConstraints(RigidbodyConstraints2D constraints)
