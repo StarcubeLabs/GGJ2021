@@ -23,6 +23,9 @@ namespace GGJ2021
         public CapsuleCollider2D capsuleCollider;
         public Collider2D physicsCollider;
 
+        public GameObject dashExplosionPrefab;
+        private GameObject dashExplosion;
+
         [HideInInspector]
         public Vector2 move = new Vector2();
         public Vector2 lookDirection = new Vector2();
@@ -180,6 +183,12 @@ namespace GGJ2021
         {
             jumpVFX = Instantiate(jumpVFXPrefab, bottom.transform.position, Quaternion.identity);
             Destroy(jumpVFX, 1f);
+        }
+
+        public void SpawnDashExplosion()
+        {
+            dashExplosion = Instantiate(dashExplosionPrefab, bottom.transform.position, Quaternion.identity);
+            Destroy(dashExplosion, 1f);
         }
 
         public void Spawn()
