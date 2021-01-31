@@ -152,53 +152,110 @@ namespace GGJ2021.Enemy
                 }else
                 {
                     // Accelerating into the player
-                    myRigidBody.velocity += attackVector * speed /25 * Time.deltaTime;
+                    myRigidBody.velocity += attackVector * speed /5* Time.deltaTime;
 
                     if (myRigidBody.velocity.magnitude > 500f)
                         myRigidBody.velocity = myRigidBody.velocity.normalized *500f;
 
                     // Will stop short if it is about to hit a wall
                     int wallLayerMask = 1 << (int)collisionLayerIDs.Default;
-                    Collider2D r = Physics2D.OverlapCircle((Vector2)this.transform.position + myRigidBody.velocity*Time.deltaTime, 1f, wallLayerMask);
+                    Collider2D r = Physics2D.OverlapCircle((Vector2)this.transform.position + myRigidBody.velocity*(Time.deltaTime * 1), 1f, wallLayerMask);
                     //Debug.DrawLine(this.transform.position, this.transform.position+ (Vector3)myRigidBody.velocity*Time.deltaTime, Color.red);
                     if (r != null)
                     {
-                        EnemyState = ActorState.IDLE;
-                        findNewAngle = true;
-                        idleTimer = 0;
+                        RaycastHit2D rx = Physics2D.Raycast((Vector2)this.transform.position + attackVector.normalized * 1f, attackVector.normalized, 5f, wallLayerMask);
+                        if (rx)
+                        {
+                            if (rx.distance <= 1)
+                            {
+                                EnemyState = ActorState.IDLE;
+                                findNewAngle = true;
+                                idleTimer = 0;
+                            }
+                        }
                     }
                 }
             }
         }
 
+
+        Vector2 closetContactPoint;
         protected override void Walk()
         {
             int layerMask = 1 << (int)collisionLayerIDs.Default;
             if(findNewAngle)
             {
-                if (movementDirectionVec == Vector2.zero)
+                if (closetContactPoint == Vector2.zero)
                     prevMovementDirectionVec = (Vector2)this.transform.position - (Vector2)playerRef.transform.position;
-                else prevMovementDirectionVec = movementDirectionVec;
+                else prevMovementDirectionVec = closetContactPoint - (Vector2)this.transform.position;
 
                 do
                 {
                     movementDirection = Random.Range(0, 361);
 
                     movementDirectionVec = (Vector2)(Quaternion.Euler(0, 0, movementDirection) * Vector2.right) * speed * Time.deltaTime;
-                } while (dotProduct(movementDirectionVec.normalized, prevMovementDirectionVec.normalized) > 0f);
+                } while (dotProduct(movementDirectionVec.normalized, prevMovementDirectionVec.normalized) > 0.5f);
+
+                RaycastHit2D r1;// = Physics2D.Raycast(this.transform.position, movementDirectionVec, 5f, layerMask);
+                Vector2 temp;
+                float maxDist = -1;
+                Vector2 maxTemp = Vector2.zero;
+                float maxAngleTemp = 0;
+                for(int i = 0; i < 361; i++)
+                {
+                    temp = (Vector2)(Quaternion.Euler(0, 0, i) * movementDirectionVec.normalized);
+
+                    r1 = Physics2D.Raycast(this.transform.position, temp.normalized, 10f, layerMask);
+
+                    if (!r1)
+                    {
+                        movementDirectionVec = temp;
+                        movementDirection += i;
+                    }
+
+                    if (maxDist < 0 || r1.distance > maxDist)
+                    {
+                        maxDist = r1.distance;
+                        maxTemp = temp;
+                        maxAngleTemp = i;
+                    }
+
+                    if (i == 360)
+                    {
+                        movementDirectionVec = maxTemp;
+                        movementDirection += maxAngleTemp;
+                    }
+                }
+
+                //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + movementDirectionVec.normalized * 10f, Color.red);
 
                 findNewAngle = false;
             }
 
-            myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, movementDirection) * Vector2.right) * speed * Time.deltaTime;
+            myRigidBody.velocity = movementDirectionVec.normalized * speed * Time.deltaTime;
 
-            Collider2D r = Physics2D.OverlapCircle((Vector2)this.transform.position + myRigidBody.velocity * Time.deltaTime, 1f, layerMask);
-
+            Collider2D r = Physics2D.OverlapCircle((Vector2)this.transform.position + myRigidBody.velocity * Time.deltaTime, 1.5f, layerMask);
             if(r != null)
             {
-                EnemyState = ActorState.IDLE;
-                findNewAngle = true;
-                idleTimer = 0;
+                closetContactPoint = Physics2D.ClosestPoint(this.transform.position, r);
+                RaycastHit2D rx = Physics2D.Raycast((Vector2)this.transform.position+ movementDirectionVec.normalized * 1f, movementDirectionVec.normalized, 5f, layerMask);
+
+                //Debug.DrawLine((Vector2)this.transform.position + movementDirectionVec.normalized * 1f, (Vector2)this.transform.position + movementDirectionVec.normalized * 5f, Color.green);
+                
+                if(rx)
+                {
+
+                    if(rx.distance <= 1.5f)
+                    {
+                        EnemyState = ActorState.IDLE;
+                        findNewAngle = true;
+                        idleTimer = 0;
+
+                        myRigidBody.velocity = Vector2.zero;
+                    }
+
+                }
+
             }
             
         }
