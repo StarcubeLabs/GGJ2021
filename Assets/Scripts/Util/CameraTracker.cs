@@ -16,6 +16,14 @@
 
         void Update()
         {
+            if (player == null)
+            {
+                if (PlayerController.instance == null)
+                    return;
+
+                player = PlayerController.instance.transform;
+            }
+
             float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, player.position))) + 1f);
             if (player.position.x > leftBound.transform.position.x && player.position.x < rightBound.position.x)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,

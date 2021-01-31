@@ -11,9 +11,6 @@
 
         private void Start()
         {
-            if (target == null)
-                target = PlayerController.instance.transform;
-
             Assert.IsNotNull(target);
             for (int i = 0; i < layers.Length; i++)
                 Assert.IsNotNull(layers[i]);
@@ -21,6 +18,14 @@
 
         private void Update()
         {
+            if (target == null)
+            {
+                if (PlayerController.instance == null)
+                    return;
+
+                target = PlayerController.instance.transform;
+            }
+
             Vector2 vel = (this.transform.position - target.position).normalized * parallaxEffectMulitplyer;
             Vector2 foreground = vel * .25f;
             Vector2 middleground = vel * .5f;
