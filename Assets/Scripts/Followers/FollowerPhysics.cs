@@ -31,9 +31,10 @@ namespace GGJ2021
         }
 
         private string animName;
+        private bool isFacingLeft = true;
+
         private bool readyForNextTarget = false;
         private bool doesWantToWander = true;
-        private bool isFacingLeft = true;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
@@ -100,7 +101,7 @@ namespace GGJ2021
                     animName = "JellyWalk";
                 }
 
-                doesWantToWander = true;
+                doesWantToWander = config.isAllowedWandering;
 
             } else if (!isTouchingGround && !IsMoving()) {
                 stateNext = FollowerStates.Falling;
