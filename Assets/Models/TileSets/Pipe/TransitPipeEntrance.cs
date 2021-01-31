@@ -16,6 +16,7 @@
 
         public void OnCollision(Collider2D col)
         {
+            Debug.Log("COLLISION");
             PlayerController.instance.OnPipeCollision(pipe, pipeType);
         }
     }
