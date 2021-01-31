@@ -23,14 +23,16 @@ namespace GGJ2021
         private Vector3 _targetPos;
         public Vector3 targetPos {
             get { 
-                if (_targetPos == Vector3.zero) return Vector3.zero;
-
+                // if (_targetPos == Vector3.zero) return Vector3.zero;
                 return _targetPos + config.targetOffset; 
             }
             set { _targetPos = value; }
         }
 
         private PositionRecorder positionRecorderScript;
+        private int playIdx;
+        private bool readyForNextTarget = false;
+        private bool hasFinishedWandering = true;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
@@ -74,39 +76,47 @@ namespace GGJ2021
         void UpdateState() {
             FollowerStates stateNext = FollowerStates.Idling;
 
+            bool isNearTarget = IsNearTarget();
+            bool isNearPlayer = IsNearPlayer();
             bool isNearTargetButNeedToJump = IsNearTargetButNeedToJump();
             bool isTouchingGround = IsTouchingGround();
-            bool doesWantToChase = !IsFalling() && !IsNearPlayer();
+            bool doesWantToChase = !IsFalling() && !isNearPlayer;
+            bool doesWantToThink = false;
+            bool doesWantIdle = isNearTarget && isNearPlayer;
+            // print("isNearTargetButNeedToJump: " + isNearTargetButNeedToJump + " // isNearTarget: " + isNearTarget + " // hasFinishedWandering: " + hasFinishedWandering);
+            // print("doesWantToChase: " + doesWantToChase);
+            // print("doesWantIdle: " + doesWantIdle);
 
-            if (isTouchingGround && IsThinking() && !IsNearTarget()) {
+            if (!doesWantToThink && doesWantToChase) {
+                if (isNearTargetButNeedToJump) {
+                    stateNext = FollowerStates.Flying;
+                } else {
+                    stateNext = FollowerStates.Chasing;
+                }
+            } else if (isTouchingGround && isNearPlayer && hasFinishedWandering && !IsIdling()) {
+                hasFinishedWandering = false;
                 stateNext = FollowerStates.Walking;
 
-            } else if (isNearTargetButNeedToJump && doesWantToChase) {
-                stateNext = FollowerStates.Flying;
-
-            } else if (!isNearTargetButNeedToJump && isTouchingGround && doesWantToChase) { // chase player 
-                stateNext = FollowerStates.Chasing;
-
-            } else if (!isTouchingGround && !IsChasing() && !IsFlying()) { // gotta fall
+            } else if (!isTouchingGround && !IsMoving()) {
                 stateNext = FollowerStates.Falling;
 
-            } else if (IsMoving() && !IsWalking() && IsNearPlayer()) { // close enough, think about doing something else
+            } else if (doesWantToThink) {
                 stateNext = FollowerStates.Thinking;
 
-            } else if (!IsMoving() && IsNearPlayer() && IsNearTarget()) { // no need to do anything
+            } else if (doesWantIdle && !doesWantToThink) {
                 stateNext = FollowerStates.Idling;
 
             // maintain movement state
             } else if (IsMoving()) {
                 stateNext = stateCurr;
             }
-        
-            // 
-            if (doesWantToChase && (IsChasing() || IsFlying())) {
+            
+            if (readyForNextTarget) {
                 UpdateTargetPos();
+                readyForNextTarget = false;
             }
 
-            // -- 
+            // print("nextState might be: " + stateNext);
             // check if no state change
             if (stateNext == stateCurr) {
                 return;
@@ -115,22 +125,37 @@ namespace GGJ2021
             statePrev = stateCurr;
             stateCurr = stateNext;
             print("stateCurr: " + stateCurr + " // statePrev: " + statePrev);
-
-            if (IsThinking()) {
-                UpdateTargetPos();
-            }
         }
         void WalkToTarget() {
             float step = config.MaxSpeed * Time.deltaTime;
 
-            float nextPosY = targetPos.y > config.flyingDistance ? transform.position.y : targetPos.y;
+            float nextPosY = targetPos.y;
+            if (Mathf.Abs(targetPos.y - transform.position.y) > config.flyingDistance) {
+                if (IsTargetBelow()) {
+                    nextPosY = transform.position.y - step;
+                } else {
+                    nextPosY = transform.position.y + step;
+                }
+            }
             Vector3 nextPosition = new Vector3(targetPos.x, nextPosY, 0);
 
             transform.position = Vector3.Lerp(transform.position, nextPosition, step);
+
+            if (IsNearTarget()) {
+                if (IsWalking()) {
+                    hasFinishedWandering = true;
+                } else {
+                    readyForNextTarget = true;
+                }
+            }
         }
         void FlyToTarget() {
-            float step = config.MaxSpeed * Time.deltaTime;
+            float step = config.flySpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, targetPos, step);
+
+            if (IsNearTarget()) {
+                readyForNextTarget = true;
+            }
         }
         void RefreshTargetPosition() {
             int firstIdx = positionRecorderScript.historyIdx;
@@ -169,12 +194,12 @@ namespace GGJ2021
                 return PlayerPosition();
             }
 
-            if (IsThinking() && !IsFalling()) {
+            if (!IsFalling() && !IsIdling()) {
                 return FindHangoutPosition();
             }
 
             // zero represents no target
-            return Vector3.zero;
+            return transform.position;
         }
         Vector3 FindHangoutPosition() {
             Vector3 pPos = PlayerPosition();
@@ -214,31 +239,28 @@ namespace GGJ2021
             return IsWalking() || IsChasing() || IsFlying();
         }
         public bool IsNearTarget() {
-            if (targetPos == Vector3.zero) {
-                return true;
-            }
-
-            if (Mathf.Abs(transform.position.x - targetPos.x) > config.nearbyDistance.x) {
-                return false;
-            }
-
-            if (Mathf.Abs(transform.position.y - targetPos.y) > config.nearbyDistance.y) {
-                return false;
-            }
-
-            return true;
+            if (targetPos == Vector3.zero) return true;
+            return IsNearTargetX() && IsNearTargetY();
+        }
+        public bool IsNearTargetX() {
+            return Mathf.Abs(transform.position.x - targetPos.x) <= config.nearbyDistance.x;
+        }
+        public bool IsNearTargetY() {
+            return Mathf.Abs(transform.position.y - targetPos.y) <= config.nearbyDistance.y;
+        }
+        public bool IsTargetBelow() {
+            if (targetPos == Vector3.zero) return true;
+            return transform.position.y > targetPos.y && 
+                (Mathf.Abs(transform.position.y - targetPos.y) > config.nearbyDistance.y);
         }
         public bool IsNearPlayer() {
             return Vector3.Distance(transform.position, PlayerPosition()) < config.followMinDistance;
         }
         public bool IsNearTargetButNeedToJump() {
-            if (targetPos == Vector3.zero) {
-                return true;
-            }
+            if (targetPos == Vector3.zero) return false;
 
-            bool isNearbyX = Mathf.Abs(transform.position.x - targetPos.x) > config.nearbyDistance.x;
             if ((targetPos.y - transform.position.y) > config.flyingDistance) {
-                return isNearbyX;
+                return IsNearTargetX();
             }
 
             return false;
@@ -248,6 +270,12 @@ namespace GGJ2021
         }
         public Vector3 PlayerPosition() {
             return playerObj.transform.position;
+        }
+        //--
+        void OnDrawGizmos() {
+            if (!IsMoving()) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(targetPos, 0.3f);
         }
     }
 }

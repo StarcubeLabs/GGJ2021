@@ -49,9 +49,5 @@
             else
                 historyIdx = 0;
         }
-
-        public bool IsNearTarget(float minDist) {
-            return Vector3.Distance(target.transform.position, transform.position) < minDist;
-        }
     }
 }
