@@ -31,7 +31,8 @@
 
             target = player.position + offset;
 
-            float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, target))) + trackSpeed);
+            float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, target))) 
+                + (PlayerController.instance.goingThroughPipe ? PlayerController.instance.currentPipeSpeed : trackSpeed));
             if (target.x > leftBound.transform.position.x && target.x < rightBound.position.x)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
                     new Vector3(target.x, this.transform.position.y, this.transform.position.z), speed);
