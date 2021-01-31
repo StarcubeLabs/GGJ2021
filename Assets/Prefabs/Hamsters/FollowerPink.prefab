@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4742994109066500884
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: playerObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: sourceObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.flySpeed
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.flyingDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.targetOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.nearbyDistance.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.nearbyDistance.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.followMinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774854, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_Name
+      value: FollowerPink
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172644835575630612, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 16de1ce9b597a1b48a25af1fd9d8a1bb,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 910bd4c72fea547328b8666a6bedc44a, type: 3}

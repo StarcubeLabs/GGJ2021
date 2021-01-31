@@ -19,6 +19,8 @@
         public Vector3[] history;
         public int historyIdx; // tracks when to loop over
 
+        private Vector3 previousRecord = Vector3.zero;
+
         private float nextActionTime = 0.0f;
 
         // Start is called before the first frame update
@@ -40,18 +42,20 @@
         // Fill array list with Player positions.
         public void AddRecord(float deltaTime)
         {
+            // don't record if not much has changed
+            if (Vector3.Distance(previousRecord, target.transform.position) < 1.0f) {
+                return;
+            }
+
             // record target data
             history[historyIdx] = target.transform.position;
+            previousRecord = target.transform.position;
 
             // set next record index
             if (historyIdx < history.Length - 1)
                 historyIdx++;
             else
                 historyIdx = 0;
-        }
-
-        public bool IsNearTarget(float minDist) {
-            return Vector3.Distance(target.transform.position, transform.position) < minDist;
         }
     }
 }

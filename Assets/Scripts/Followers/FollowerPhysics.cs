@@ -7,125 +7,163 @@ namespace GGJ2021
         [Tooltip("Use this if you're doing something different")]
         public bool isActive;
 
-        public GameObject playerObj;
+        public GameObject sourceObj;
 
         public GameObject animatorObj;
         private Animator animator;
 
         public FollowerConfig config;
 
-        public Vector2 velocity = Vector2.zero;
-
-        enum FollowerStates {Idling, Falling, Chasing, Walking, Thinking};
-        private FollowerStates stateCurr;
+        public enum FollowerStates {Idling, Falling, Flying, Chasing, Wandering, Thinking};
+        public FollowerStates stateCurr; // public just for the sake of debugging
         private FollowerStates statePrev;
 
-        public Vector3 targetPos = Vector3.zero;
+        private Vector3 _targetPos; // public just for the sake of debugging
+        private Vector3 targetPos {
+            get { 
+                if (_targetPos == Vector3.zero) return Vector3.zero;
+                return _targetPos + config.targetOffset; 
+            }
+            set { _targetPos = value; }
+        }
 
-        private PositionRecorder positionRecorderScript;
+        private string animName;
+        private bool readyForNextTarget = false;
+        private bool doesWantToWander = true;
+        private bool isFacingLeft = true;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
 
-            positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
             animator = animatorObj.GetComponent<Animator>();
-            playerObj = PlayerController.instance.gameObject;
+
+            animName = "JellyIdle";
         }
         void FixedUpdate() {
             if (!isActive) { return; }
 
             // state handler
             UpdateState();
-
-            // toggle recording state based on how close we are
-            positionRecorderScript.isRecording = !IsNearPlayer();
         }
         void Update() {
             switch (stateCurr) {
                 case FollowerStates.Chasing:
-                case FollowerStates.Walking:
-                    animator.Play("JellyWalk");
-                    MoveToTarget();
+                case FollowerStates.Wandering:
+                    MoveTowardsTarget();
                     break;
                 case FollowerStates.Falling:
-                    animator.Play("JellyFall");
                     ApplyGravity();
                     break;
-                case FollowerStates.Idling:
-                    animator.Play("JellyIdle");
+                case FollowerStates.Flying:
+                    FlyToTarget();
                     break;
+                case FollowerStates.Idling:
+                    // animator.Play("JellyIdle");
+                    break;
+                case FollowerStates.Thinking:
                 default:
                     break;
             }
+
+            animator.Play(animName);
         }
         void UpdateState() {
             FollowerStates stateNext = FollowerStates.Idling;
 
-            if (IsThinking() && !IsNearTarget()) {
-                stateNext = FollowerStates.Walking;
-            } else if (!IsNearPlayer() && !IsFalling()) {
-                // chase player 
-                stateNext = FollowerStates.Chasing;
-            } else if (!IsTouchingGround() && !IsChasing() && !IsWalking()) {
-                // gotta fall
-                stateNext = FollowerStates.Falling;
-            } else if (IsChasing() && IsNearPlayer()) {
-                // close enough, think about doing something else
-                stateNext = FollowerStates.Thinking;
-            } else if (IsWalking() && IsNearPlayer() && IsNearTarget()) {
-                stateNext = FollowerStates.Idling;
+            bool isNearTarget = IsNearTarget();
+            bool isNearPlayer = IsNearPlayer();
+            bool isTouchingGround = IsTouchingGround();
+            bool doesWantToChase = !isNearPlayer;
+            bool doesWantIdle = isNearTarget && isNearPlayer && !doesWantToWander;
 
-            // 
-            } else if (IsWalking()) {
+            // UGHH sorry this is undeciferable
+            if (!doesWantIdle && doesWantToChase) {
+                if (!isTouchingGround && !IsTargetBelow()) {
+                    stateNext = FollowerStates.Flying;
+                    animName = "JellyJump";
+                } else if (IsTargetBelow()) {
+                    stateNext = FollowerStates.Falling;
+                    animName = "JellyFall";
+                } else {
+                    stateNext = FollowerStates.Chasing;
+                    animName = "JellyWalk";
+                }
+
+                doesWantToWander = true;
+
+            } else if (!isTouchingGround && !IsMoving()) {
+                stateNext = FollowerStates.Falling;
+                animName = "JellyFall";
+
+            } else if (isTouchingGround && !doesWantToChase && doesWantToWander) {
+                stateNext = FollowerStates.Wandering;
+                animName = "JellyWalk";
+
+            } else if (doesWantIdle) {
+                stateNext = FollowerStates.Idling;
+                animName = "JellyIdle";
+
+            // maintain movement state
+            } else if (IsMoving()) {
                 stateNext = stateCurr;
             }
-        
-            // 
-            if (!IsNearPlayer() && IsChasing()) {
+            
+            if (readyForNextTarget) {
                 UpdateTargetPos();
+                readyForNextTarget = false;
             }
 
-            // -- 
             // check if no state change
             if (stateNext == stateCurr) {
+                // print("state keep: " + stateCurr);
                 return;
             }
 
             statePrev = stateCurr;
             stateCurr = stateNext;
-            print("stateCurr: " + stateCurr + "// statePrev: " + statePrev);
-
-            if (IsThinking()) {
-                UpdateTargetPos();
-            }
+            // print("stateCurr: " + stateCurr + " // statePrev: " + statePrev);
         }
-        void MoveToTarget() {
-            float step = config.MaxSpeed * Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, targetPos, step);
-        }
-        void RefreshTargetPosition() {
-            int firstIdx = positionRecorderScript.historyIdx;
-            int nextIdx = firstIdx + 1;
-            if (nextIdx >= positionRecorderScript.historySize) {
-                nextIdx = 0;
+        void MoveTowardsTarget() {
+            if (targetPos.x > transform.position.x && isFacingLeft) {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                isFacingLeft = false;
+            } else if (targetPos.x < transform.position.x && !isFacingLeft) {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                isFacingLeft = true;
             }
 
-            targetPos = positionRecorderScript.history[nextIdx];
+            float step = config.speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+
+            if (IsNearTarget()) {
+                if (IsWandering()) {
+                    doesWantToWander = false;
+                } else {
+                    readyForNextTarget = true;
+                }
+            }
+        }
+        void FlyToTarget() {
+            float step = config.flySpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+
+            if (IsNearTarget()) {
+                readyForNextTarget = true;
+            }
         }
         void ApplyGravity() {
-            bool isTouchingGround = IsTouchingGround();
-            if (!isTouchingGround) {
-                Vector3 currPosition = transform.position;
-                Vector3 nextPosition = transform.position - (config.Gravity * Time.deltaTime);
+            Vector3 currPosition = transform.position;
+            Vector3 nextPosition = transform.position - (config.Gravity * Time.deltaTime);
 
-                // check to prevent going below the ground
-                Vector2 nearestGroundPos = RaycastGround(config.Gravity.y * 1.1f).point;
-                if (nextPosition.y < nearestGroundPos.y) {
-                    nextPosition.y = nearestGroundPos.y;
-                }
-
-                transform.position = nextPosition;
+            // check to prevent going below the ground
+            Vector2 nearestGroundPos = RaycastGround(config.Gravity.y * 1.1f).point;
+            if (nextPosition.y < nearestGroundPos.y) {
+                nextPosition.y = nearestGroundPos.y;
             }
+
+            transform.position = nextPosition;
+
+            MoveTowardsTarget();
         }
         void UpdateTargetPos() {
             Vector3 nextTarget = ChooseTarget();
@@ -136,24 +174,21 @@ namespace GGJ2021
             targetPos = nextTarget;
         }
         Vector3 ChooseTarget() {
-            print("ChooseTarget()");
             if (!IsNearPlayer()) {
-                return PlayerPosition();
+                return SourcePosition();
             }
 
-            if (IsThinking() && !IsFalling()) {
-                return FindHangoutPosition();
+            if (doesWantToWander) {
+                return FindWanderPosition();
             }
 
-            // zero represents no target
-            return Vector3.zero;
+            return transform.position;
         }
-        Vector3 FindHangoutPosition() {
-            Vector3 pPos = PlayerPosition();
-            float xOffset = Random.Range(-2.0f, 2.0f);
+        Vector3 FindWanderPosition() {
+            Vector3 pPos = SourcePosition();
+            float xOffset = Random.Range(-config.wanderRange, config.wanderRange);
 
             Vector3 nextPos = new Vector3(pPos.x + xOffset, pPos.y, pPos.z);
-            print("FindHangoutPosition() " + nextPos);
             return nextPos;
         }
         public RaycastHit2D RaycastGround(float distance) {
@@ -170,30 +205,62 @@ namespace GGJ2021
         public bool IsFalling() {
             return stateCurr == FollowerStates.Falling;
         }
+        public bool IsFlying() {
+            return stateCurr == FollowerStates.Flying;
+        }
         public bool IsIdling() {
             return stateCurr == FollowerStates.Idling;
         }
         public bool IsThinking() {
             return stateCurr == FollowerStates.Thinking;
         }
-        public bool IsWalking() {
-            return stateCurr == FollowerStates.Walking;
+        public bool IsWandering() {
+            return stateCurr == FollowerStates.Wandering;
+        }
+        public bool IsMoving() {
+            return IsWandering() || IsChasing() || IsFlying();
         }
         public bool IsNearTarget() {
-            if (targetPos == Vector3.zero) {
-                return true;
-            }
-
-            return Vector3.Distance(transform.position, targetPos) < config.targetMinDistance;
+            if (targetPos == Vector3.zero) return true;
+            return IsNearTargetX() && IsNearTargetY();
+        }
+        public bool IsNearTargetX() {
+            return Mathf.Abs(transform.position.x - targetPos.x) <= config.nearbyDistance.x;
+        }
+        public bool IsNearTargetY() {
+            return Mathf.Abs(transform.position.y - targetPos.y) <= config.nearbyDistance.y;
+        }
+        public bool IsTargetBelow() {
+            if (targetPos == Vector3.zero) return true;
+            return transform.position.y > targetPos.y && 
+                (Mathf.Abs(transform.position.y - targetPos.y) > config.nearbyDistance.y);
         }
         public bool IsNearPlayer() {
-            return Vector3.Distance(transform.position, PlayerPosition()) < config.followMinDistance;
+            return Vector3.Distance(transform.position, SourcePosition()) < config.followMinDistance;
+        }
+        public bool IsNearTargetButNeedToJump() {
+            if (targetPos == Vector3.zero) return false;
+
+            if ((targetPos.y - transform.position.y) > config.flyingDistance) {
+                return IsNearTargetX();
+            }
+
+            return false;
         }
         public bool IsTouchingGround() {
             return RaycastGround(config.groundCheckRaycastDistance).collider != null;
         }
-        public Vector3 PlayerPosition() {
-            return playerObj.transform.position + config.targetOffset;
+        public bool IsFarFromGround() {
+            return RaycastGround(config.groundFarRaycastDistance).collider == null;
+        }
+        public Vector3 SourcePosition() {
+            return sourceObj.transform.position;
+        }
+        //--
+        void OnDrawGizmos() {
+            if (!IsMoving()) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(targetPos, 0.3f);
         }
     }
 }
