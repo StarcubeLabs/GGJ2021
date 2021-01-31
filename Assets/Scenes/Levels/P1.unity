@@ -234,6 +234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
+      propertyPath: doorIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
+        type: 3}
       propertyPath: levelToLoad
       value: P4
       objectReference: {fileID: 0}
@@ -390,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
       propertyPath: doorIndex
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
