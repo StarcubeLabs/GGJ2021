@@ -66,6 +66,7 @@
 
         public void Launch(Vector2 origin, Vector2 velocity)
         {
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_shoot");
             ResetHamster();
             transform.position = origin;
             velocity.y += PlayerController.instance.config.ProjectileInitUpwardsBurst;
@@ -88,6 +89,7 @@
 
         public void Explode()
         {
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("hamster_explosion_wet");
             canExplode = false;
             rb.velocity = Vector2.zero;
             collisionWrapper.SetActive(false);

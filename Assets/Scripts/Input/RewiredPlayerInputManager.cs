@@ -113,12 +113,12 @@
 
         public bool IsFiring()
         {
-            return R1Down();
+            return R1Down() || YDown();
         }
 
         public bool IsGrappling()
         {
-            return R2Down();
+            return R2Down() || XDown();
         }
 
         public bool IsDashing()

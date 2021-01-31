@@ -4,7 +4,10 @@
     {
         public PlayerStateDead(PlayerController controller) : base(controller) { stateName = "PlayerStateDead"; }
 
-        protected override void Enter(){ }
+        protected override void Enter()
+        {
+            FmodFacade.instance.CreateAndRunOneShotFmodEvent("player_death");
+        }
 
         public override void OnUpdate(float time)
         {
