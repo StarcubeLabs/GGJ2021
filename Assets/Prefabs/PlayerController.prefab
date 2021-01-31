@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 7479225426216672466}
-  sprites: []
+  cannonAnim: {fileID: 8792786565779357916}
 --- !u!1 &6370742557979563434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,6 +1159,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1812483264347201725}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &8792786565779357916 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7143125889605853281, guid: b25cebede8e8fe64294cc0c54c39def1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812483264347201725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &7940687504575201609 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8580983311916589556, guid: b25cebede8e8fe64294cc0c54c39def1,
@@ -1266,6 +1272,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1812483264894972038}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &7479225426216672466 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9145878505275354196, guid: dd25637a41c738f49b00733be65d3558,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812483264894972038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &4840914705267014768 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6487815331828993270, guid: dd25637a41c738f49b00733be65d3558,
@@ -1275,12 +1287,6 @@ SpriteRenderer:
 --- !u!212 &3782265774040454810 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3268053412627555868, guid: dd25637a41c738f49b00733be65d3558,
-    type: 3}
-  m_PrefabInstance: {fileID: 1812483264894972038}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7479225426216672466 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9145878505275354196, guid: dd25637a41c738f49b00733be65d3558,
     type: 3}
   m_PrefabInstance: {fileID: 1812483264894972038}
   m_PrefabAsset: {fileID: 0}
