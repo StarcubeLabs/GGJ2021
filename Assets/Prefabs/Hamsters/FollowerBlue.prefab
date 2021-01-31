@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2071000974931774851}
   - component: {fileID: 1623390634726267835}
   m_Layer: 2
-  m_Name: Follower
+  m_Name: FollowerBlue
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,22 +49,20 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   animatorObj: {fileID: 1514297097593138356}
   config:
-    MaxSpeed: 2
-    MaxAcceleration: 0
-    Gravity: {x: 0, y: 2, z: 0}
-    jumpSpeed: 0
-    jumpTime: 0
-    targetMinDistance: 0.4
+    speed: 4
+    Gravity: {x: 0, y: 6, z: 0}
+    flySpeed: 3.5
+    flyingDistance: 0.5
+    nearbyDistance: {x: 0.6, y: 0.6, z: 0}
+    targetOffset: {x: 0, y: -1.1, z: 0}
     followMinDistance: 1.5
-    targetOffset: {x: 0, y: -0.6, z: 0}
     snapToGroundRaycastDistance: 0
-    groundCheckRaycastDistance: 0.75
+    groundCheckRaycastDistance: 0.2
     groundCheckRaycastYOffset: 0
     groundLayerMask:
       serializedVersion: 2
       m_Bits: 1
   velocity: {x: 0, y: 0}
-  targetPos: {x: 1, y: 1, z: 1}
 --- !u!114 &1623390634726267835
 MonoBehaviour:
   m_ObjectHideFlags: 0

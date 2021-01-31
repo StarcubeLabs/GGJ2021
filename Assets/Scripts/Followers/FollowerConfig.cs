@@ -6,7 +6,7 @@
     public class FollowerConfig
     {
         [Header("Basic Movement")]
-        public float MaxSpeed;
+        public float speed;
         public Vector3 Gravity;
 
         [Header("Flying Settings")]
