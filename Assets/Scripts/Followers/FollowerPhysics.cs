@@ -29,7 +29,6 @@ namespace GGJ2021
             set { _targetPos = value; }
         }
 
-        private PositionRecorder positionRecorderScript;
         private int playIdx;
         private bool readyForNextTarget = false;
         private bool hasFinishedWandering = true;
@@ -37,7 +36,6 @@ namespace GGJ2021
         void Start() {
             stateCurr = FollowerStates.Idling;
 
-            positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
             animator = animatorObj.GetComponent<Animator>();
             playerObj = PlayerController.instance.gameObject;
         }
@@ -46,9 +44,6 @@ namespace GGJ2021
 
             // state handler
             UpdateState();
-
-            // toggle recording state based on how close we are
-            positionRecorderScript.isRecording = !IsNearPlayer();
         }
         void Update() {
             switch (stateCurr) {
@@ -148,15 +143,6 @@ namespace GGJ2021
         }
         void ShouldOverrideTarget() {
 
-        }
-        void _RefreshTargetPosition() {
-            int firstIdx = positionRecorderScript.historyIdx;
-            int nextIdx = firstIdx + 1;
-            if (nextIdx >= positionRecorderScript.historySize) {
-                nextIdx = 0;
-            }
-
-            targetPos = positionRecorderScript.history[nextIdx];
         }
         void ApplyGravity() {
             Vector3 currPosition = transform.position;

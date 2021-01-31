@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2071000974931774853}
   - component: {fileID: 2071000974931774851}
-  - component: {fileID: 1623390634726267835}
   m_Layer: 2
   m_Name: FollowerBlue
   m_TagString: Ally
@@ -49,38 +48,19 @@ MonoBehaviour:
   playerObj: {fileID: 0}
   animatorObj: {fileID: 1514297097593138356}
   config:
-    speed: 4
+    speed: 7
     Gravity: {x: 0, y: 6, z: 0}
     flySpeed: 3.5
     flyingDistance: 0.5
     nearbyDistance: {x: 0.6, y: 0.6, z: 0}
     targetOffset: {x: 0, y: -1.1, z: 0}
     followMinDistance: 1.5
-    snapToGroundRaycastDistance: 0
     groundCheckRaycastDistance: 0.2
-    groundCheckRaycastYOffset: 0
+    groundFarRaycastDistance: 0.5
     groundLayerMask:
       serializedVersion: 2
       m_Bits: 1
   velocity: {x: 0, y: 0}
---- !u!114 &1623390634726267835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071000974931774854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da24c4fff7bc4da4b013b29a348fdb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRecording: 0
-  target: {fileID: 0}
-  historySize: 10
-  interval: 0.1
-  history: []
-  historyIdx: 0
 --- !u!1001 &98045062711893888
 PrefabInstance:
   m_ObjectHideFlags: 0
