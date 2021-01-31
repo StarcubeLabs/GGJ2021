@@ -46,7 +46,7 @@ namespace GGJ2021
         private bool isFacingLeft = true;
 
         private bool readyForNextTarget = false;
-        private bool doesWantToWander = true;
+        private bool doesWantToWander = false;
         private bool isMoveAdjusting = false;
         private bool didJustAdjust = false;
 
@@ -232,7 +232,11 @@ namespace GGJ2021
                 return FindWanderPosition();
             }
 
-            return transform.position;
+            if (IsIdling()) {
+                return transform.position;
+            }
+
+            return SourcePosition();
         }
         Vector3 FindStablePosition() {
             float testDist = 3.0f;
