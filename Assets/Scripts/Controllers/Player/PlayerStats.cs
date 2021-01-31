@@ -43,6 +43,8 @@ namespace GGJ2021
         [SerializeField]
         private bool unlockAllAbilities;
 
+        public int spawnDoor = -1;
+
         private void Awake()
         {
             instance = this;
@@ -50,8 +52,14 @@ namespace GGJ2021
 
         private void Start()
         {
-            MaxHealth = startingMaxHealth;
-            CurHealth = startingMaxHealth;
+            if (MaxHealth <= 0)
+            {
+                MaxHealth = startingMaxHealth;
+            }
+            if (CurHealth <= 0)
+            {
+                CurHealth = MaxHealth;
+            }
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
-﻿namespace GGJ2021
+namespace GGJ2021
 {
     using System.Collections.Generic;
+    using GGJ2021.Management;
     using UnityEngine;
 
     public class PlayerController : FlippableCharacter
@@ -77,6 +78,8 @@
             playerGrappleManager = new PlayerGrappleManager(this, grapple);
 
             cannon.SetActive(PlayerStats.instance.HasAbility(Ability.Grenade));
+
+            Spawn();
         }
 
         // Update is called once per frame
@@ -177,6 +180,22 @@
         {
             jumpVFX = Instantiate(jumpVFXPrefab, bottom.transform.position, Quaternion.identity);
             Destroy(jumpVFX, 1f);
+        }
+
+        private void Spawn()
+        {
+            if (PlayerStats.instance.spawnDoor > -1)
+            {
+                SceneTransition[] transitions = FindObjectsOfType<SceneTransition>();
+                foreach (SceneTransition transition in transitions)
+                {
+                    if (transition.doorIndex == PlayerStats.instance.spawnDoor)
+                    {
+                        transform.position = transition.SpawnPoint;
+                        break;
+                    }
+                }
+            }
         }
     }
 }
