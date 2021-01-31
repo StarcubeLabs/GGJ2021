@@ -89,7 +89,11 @@ namespace GGJ2021
             bool doesWantIdle = isNearTarget && isNearPlayer && !doesWantToWander;
 
             // UGHH sorry this is undeciferable
-            if (!doesWantIdle && doesWantToChase) {
+            if (IsVeryFarFromSource()) {
+                stateNext = FollowerStates.Flying;
+                animName = "JellyJump";
+
+            } else if (!doesWantIdle && doesWantToChase) {
                 if (!isTouchingGround && !IsTargetBelow()) {
                     stateNext = FollowerStates.Flying;
                     animName = "JellyJump";
@@ -249,6 +253,9 @@ namespace GGJ2021
         }
         public bool IsNearPlayer() {
             return Vector3.Distance(transform.position, SourcePosition()) < config.followMinDistance;
+        }
+        public bool IsVeryFarFromSource() {
+            return Vector3.Distance(transform.position, SourcePosition()) > config.followMaxDistance;
         }
         public bool IsNearTargetButNeedToJump() {
             if (targetPos == Vector3.zero) return false;

@@ -22,6 +22,8 @@
         public Vector3 targetOffset = new Vector3(0, -1.1f, 0);
         [Tooltip("How far from player before starting to chase after it.")]
         public float followMinDistance = 1.5f;
+        [Tooltip("How far from source before it is TOO far and we just hack it over.")]
+        public float followMaxDistance = 5f;
         [Tooltip("Allow Wandering")]
         public bool isAllowedWandering = false;
         [Tooltip("Amount to Wander around")]
