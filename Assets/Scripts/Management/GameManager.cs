@@ -57,9 +57,9 @@
             DontDestroyOnLoad(fmod.gameObject);
             StartSong(Song, Volume);
 
+            VolatileInit();
             if (!StartingInMenu)
             {
-                VolatileInit();
                 ReInit();
             }
         }
