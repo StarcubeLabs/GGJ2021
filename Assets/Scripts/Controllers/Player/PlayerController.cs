@@ -137,8 +137,8 @@ namespace GGJ2021
             lookDirection = new Vector2(RewiredPlayerInputManager.instance.GetHorizontalMovement2(), RewiredPlayerInputManager.instance.GetVerticalMovement2());
 
             Vector3 cannonScreenPosition = Camera.main.WorldToScreenPoint(cannon.transform.position);
-            float mouseX = Input.mousePosition.x - cannonScreenPosition.x;
-            float mouseY = Input.mousePosition.y - cannonScreenPosition.y;
+            float mouseX = RewiredPlayerInputManager.instance.GetMousePosition().x - cannonScreenPosition.x;
+            float mouseY = RewiredPlayerInputManager.instance.GetMousePosition().y - cannonScreenPosition.y;
             lookDirection += new Vector2(mouseX, mouseY);
 
             if (playerHealth.dead)
