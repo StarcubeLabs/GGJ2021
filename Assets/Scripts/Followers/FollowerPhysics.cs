@@ -36,7 +36,6 @@ namespace GGJ2021
             stateCurr = FollowerStates.Idling;
 
             animator = animatorObj.GetComponent<Animator>();
-            playerObj = PlayerController.instance.gameObject;
 
             animName = "JellyIdle";
         }
