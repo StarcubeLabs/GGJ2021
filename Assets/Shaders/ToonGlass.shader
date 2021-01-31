@@ -85,7 +85,7 @@ Shader "GGJ2021/MinionsArt/Lit Glass" {
         // light dir specular
 		float specular= (smoothstep(_SpecSize, _SpecSize + _Offset2, lightDot)) * 10;
        
-        o.Emission += saturate(viewSpecLine + specular) * _SColor * 2;
+        o.Emission += saturate(saturate(viewSpecLine + specular) * _SColor * 2);
 		
         o.Alpha = saturate(_Color.a + (viewSpecLine + specular + outerrim + innerglow));
         o.Albedo = saturate(o.Albedo + _Color);

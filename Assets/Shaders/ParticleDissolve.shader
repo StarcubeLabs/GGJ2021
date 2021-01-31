@@ -74,7 +74,7 @@
                     float dissolve = i.color.a;
                     float2 InMinMax = float2(dissolve - .1, dissolve);
                     float2 OutMinMax = float2(0, col.a);
-                    col.a = Unity_Remap_float(col.a, InMinMax, OutMinMax) - _BaseTransparency;
+                    col.a = saturate(Unity_Remap_float(col.a, InMinMax, OutMinMax) - _BaseTransparency);
                     clip(dissolveTex.a - dissolve);
                     return col;
                 }
