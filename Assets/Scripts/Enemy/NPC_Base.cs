@@ -179,7 +179,7 @@ namespace GGJ2021.Enemy
             if (deathExplosion != null)
                 Instantiate(deathExplosion, this.transform.position, Quaternion.identity);
 
-            NPCPool_Base.Instance.RemoveFromNPCPool(NPCPoolID);
+            //NPCPool_Base.Instance.RemoveFromNPCPool(NPCPoolID);
 
             Destroy(this.gameObject);
         }
