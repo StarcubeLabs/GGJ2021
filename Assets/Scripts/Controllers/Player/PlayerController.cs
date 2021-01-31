@@ -53,6 +53,7 @@ namespace GGJ2021
         private GameObject jumpVFX;
 
         public bool goingThroughPipe = false;
+        public float currentPipeSpeed = 20f;
 
         private float screenH;
         private float screenW;
@@ -188,8 +189,9 @@ namespace GGJ2021
             if (playerPhysics.isDashing)
             {
                 goingThroughPipe = true;
+                currentPipeSpeed = 25f;
                 StateMachine.ForceNextState(new PlayerStatePipe(this));
-                pipe.MoveObjectThroughPipe(transform, 20f, () => goingThroughPipe = false, pipeType);
+                pipe.MoveObjectThroughPipe(transform, currentPipeSpeed, () => goingThroughPipe = false, pipeType);
             }
         }
 

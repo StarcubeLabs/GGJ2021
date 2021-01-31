@@ -223,6 +223,7 @@ namespace GGJ2021
 
         public void MoveObjectThroughPipe(Transform trans, float speed, System.Action onFinish, StartingPoint startingPointEnum = StartingPoint.Auto)
         {
+            Debug.Log($"MoveObjectThroughPipe({trans}, {speed}, {startingPointEnum})");
             StartCoroutine(MoveObjectThroughPipeRoutine(trans, speed, onFinish, startingPointEnum));
         }
 
