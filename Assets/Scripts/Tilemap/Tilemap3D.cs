@@ -34,6 +34,8 @@ namespace GGJ2021
         private SpriteIntDictionary prefabShadingMasks;
         private Tilemap tileMap;
 
+        private bool initiated;
+
         private bool ObjectsEnabled
         {
             get { return transform.childCount > 0; }
@@ -41,8 +43,9 @@ namespace GGJ2021
 
         private void Update()
         {
-            if (Application.isPlaying && !ObjectsEnabled)
+            if (!initiated && Application.isPlaying && !ObjectsEnabled)
             {
+                initiated = true;
                 CreateObjects();
             }
         }
