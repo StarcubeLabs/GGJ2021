@@ -8,14 +8,19 @@
         public Transform target;
         public InfiniteScroll[] layers;
         public float[] layersVelocityScales;
-        public float parallaxEffectMulitplyer;
+        public Vector2 parallaxEffectMulitplyer;
+
+        private Vector2 targetVector;
+        public Vector2 currentOffset;
 
         private void Start()
         {
-            Assert.IsNotNull(target);
             for (int i = 0; i < layers.Length; i++)
                 Assert.IsNotNull(layers[i]);
             Assert.AreEqual(layers.Length, layersVelocityScales.Length);
+
+            targetVector = Vector2.zero;
+            currentOffset = Vector2.zero;
         }
 
         private void Update()
@@ -28,7 +33,17 @@
                 target = PlayerController.instance.transform;
             }
 
-            Vector2 vel = (this.transform.position - target.position).normalized * parallaxEffectMulitplyer;
+            Vector2 temp = (this.transform.position - target.position).normalized;
+            temp = Vector2.Scale(temp, parallaxEffectMulitplyer);
+            float x = temp.x;
+            float y = temp.y;
+            targetVector = new Vector2(x > .2f ? x : targetVector.x, y > .2f ? y : targetVector.y);
+            if (currentOffset == Vector2.zero)
+                currentOffset = targetVector;
+            else
+                currentOffset = Vector2.MoveTowards(currentOffset, targetVector, Time.deltaTime);
+            
+            Vector2 vel = currentOffset;
             Vector2 foreground = vel * layersVelocityScales[0];
             Vector2 middleground = vel * layersVelocityScales[1];
             Vector2 background = vel * layersVelocityScales[2];
