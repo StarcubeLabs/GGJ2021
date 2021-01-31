@@ -36,6 +36,7 @@ namespace GGJ2021.Enemy
         [SerializeField]
         protected int maxhealth;     
         protected int health;        //current health of enemy
+        [SerializeField]
         protected ActorState EnemyState;    // controls the enemey state
         protected ActorState prePauseEnemyState;
 

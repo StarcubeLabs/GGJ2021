@@ -73,8 +73,19 @@ namespace GGJ2021.Enemy
                         break;
 
                     case EnemyTypes.FLYER:
-                        //tempEnemy.NPCID = AddToNPCPool(tempEnemy);
+                        if (enemyPrefabLibrary.prefabs.Length <= (int)eT)
+                        {
+                            tempEnemy = Instantiate<Enemy_NPC>(enemyPrefabLibrary.prefabs[0]);
+                            AddToPool<NPC_Base>(instance.npcPausePool, tempEnemy, tempID);
+                            tempEnemy.Spawn(v, tempID);
+                        }
+                        else
+                        {
+                            tempEnemy = Instantiate<Enemy_NPC>(enemyPrefabLibrary.prefabs[(int)eT]);
+                            AddToPool<NPC_Base>(instance.npcPausePool, tempEnemy, tempID);
 
+                            tempEnemy.Spawn(v, tempID);
+                        }
                         break;
                 }
 #if UNITY_EDITOR
