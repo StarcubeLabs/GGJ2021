@@ -9,7 +9,7 @@ namespace GGJ2021
     {
         [Tooltip("Unique ID of the health extension to track collection.")]
         [SerializeField]
-        private string id;
+        protected string id;
         public string Id
         {
             get { return id; }
@@ -32,9 +32,12 @@ namespace GGJ2021
 
         protected abstract void OnCollect();
 
-        public void InitFromTilemap(Tilemap3D tilemap)
+        public virtual void InitFromTilemap(Tilemap3D tilemap)
         {
-            id = tilemap.GetComponent<CollectibleIndexer>().GenerateId(this);
+            if (id == null)
+            {
+                id = tilemap.GetComponent<CollectibleIndexer>().GenerateId(this);
+            }
         }
     }
 }

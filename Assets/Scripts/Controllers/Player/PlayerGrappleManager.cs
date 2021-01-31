@@ -85,7 +85,7 @@
 
         public bool CanGrapple()
         {
-            return curGrappleFailTime <= 0f;
+            return curGrappleFailTime <= 0f && PlayerStats.instance.HasAbility(Ability.Grapple);
         }
 
         public Vector2 GetPlayerDesition()
