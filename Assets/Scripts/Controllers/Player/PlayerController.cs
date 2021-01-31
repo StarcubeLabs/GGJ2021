@@ -69,6 +69,8 @@
             playerCollision = new PlayerSurfaceCollision(this);
             playerHealth = new PlayerHealth(this, playerHurtboxColliderWrapper);
             playerGrappleManager = new PlayerGrappleManager(this, grapple);
+
+            cannon.SetActive(PlayerStats.instance.HasAbility(Ability.Grenade));
         }
 
         // Update is called once per frame

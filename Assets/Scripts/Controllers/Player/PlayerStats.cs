@@ -39,6 +39,10 @@ namespace GGJ2021
         /// </summary>
         private Dictionary<Type, HashSet<string>> collectedCollectibles = new Dictionary<Type, HashSet<string>>();
 
+        [Tooltip("Treat all abilities as unlocked, even without the required hamsters.")]
+        [SerializeField]
+        private bool unlockAllAbilities;
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -75,6 +79,20 @@ namespace GGJ2021
                 collectedCollectibles[collectibleType] = new HashSet<string>();
             }
             collectedCollectibles[collectibleType].Add(collectible.Id);
+        }
+
+        public bool HasAbility(Ability ability)
+        {
+            if (unlockAllAbilities)
+            {
+                return true;
+            }
+            Type collectibleType = typeof(AbilityHamster);
+            if (collectedCollectibles.ContainsKey(collectibleType))
+            {
+                return collectedCollectibles[collectibleType].Contains(ability.ToString());
+            }
+            return false;
         }
     }
 }
