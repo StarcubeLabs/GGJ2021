@@ -149,6 +149,16 @@ PrefabInstance:
       propertyPath: doorIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
+        type: 3}
+      propertyPath: levelToLoad
+      value: P8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398450105101327920, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
+        type: 3}
+      propertyPath: levelToLoadDoorIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5874937239812068412, guid: d4d2e367d6fc349dbb2ecd355c02aa03,
         type: 3}
       propertyPath: m_RootOrder
