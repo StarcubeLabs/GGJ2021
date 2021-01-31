@@ -95,7 +95,10 @@ namespace GGJ2021
             {
                 CheckInputs();
             }
-            AimReticule();
+            if (PlayerStats.instance.HasAbility(Ability.Grenade))
+            {
+                AimReticule();
+            }
             StateMachine.OnUpdate(Time.deltaTime);
             currentStateName = StateMachine.GetCurrentStateName();
         }
