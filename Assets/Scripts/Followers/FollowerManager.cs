@@ -1,5 +1,6 @@
 namespace GGJ2021
 {
+    using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>
@@ -10,11 +11,13 @@ namespace GGJ2021
         public static FollowerManager instance;
 
         [SerializeField]
-        private GameObject followerGrapple;
+        private FollowerPhysics followerGrapple;
         [SerializeField]
-        private GameObject followerGrenade;
+        private FollowerPhysics followerGrenade;
         [SerializeField]
-        private GameObject followerDash;
+        private FollowerPhysics followerDash;
+
+        private List<FollowerPhysics> activeFollowers = new List<FollowerPhysics>();
 
         private void Awake()
         {
@@ -37,7 +40,7 @@ namespace GGJ2021
 
         public void AddAbilityHamster(Ability ability)
         {
-            GameObject hamster = null;
+            FollowerPhysics hamster = null;
             switch(ability)
             {
                 case Ability.Grapple:
@@ -50,8 +53,25 @@ namespace GGJ2021
                     hamster = followerDash;
                     break;
             }
-            hamster.SetActive(true);
-            hamster.transform.position = PlayerController.instance.transform.position;
+
+            if (!hamster.gameObject.activeSelf)
+            {
+                hamster.gameObject.SetActive(true);
+                GameObject sourceObject;
+                if (activeFollowers.Count == 0)
+                {
+                    sourceObject = PlayerController.instance.gameObject;
+                    // Offset the first hamster to account for the player's height.
+                    hamster.config.targetOffset.y = -1f;
+                }
+                else
+                {
+                    sourceObject = activeFollowers[activeFollowers.Count - 1].gameObject;
+                }
+                hamster.sourceObj = sourceObject;
+                hamster.transform.position = PlayerController.instance.transform.position;
+                activeFollowers.Add(hamster);
+            }
         }
     }
 }
