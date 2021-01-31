@@ -142,5 +142,17 @@
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, rotatedVectorToTarget);
             cannon.transform.rotation = targetRotation;
         }
+
+        public Vector2 GetDirectionFacing()
+        {
+            if (facingRight)
+            {
+                return new Vector2(1f, 0f);
+            }
+            else
+            {
+                return new Vector2(-1f, 0f);
+            }
+        }
     }
 }
