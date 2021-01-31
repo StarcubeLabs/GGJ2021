@@ -5,6 +5,7 @@
     class CameraTracker : MonoBehaviour
     {
         public Transform player;
+        public float trackSpeed;
         public Transform upperBound;
         public Transform lowerBound;
         public Transform leftBound;
@@ -24,7 +25,7 @@
                 player = PlayerController.instance.transform;
             }
 
-            float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, player.position))) + 1f);
+            float speed = Time.deltaTime * ((Mathf.Ceil(Vector2.Distance(this.transform.position, player.position))) + trackSpeed);
             if (player.position.x > leftBound.transform.position.x && player.position.x < rightBound.position.x)
                 this.transform.position = Vector3.MoveTowards(this.transform.position,
                     new Vector3(player.position.x, this.transform.position.y, this.transform.position.z), speed);
