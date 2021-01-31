@@ -64,6 +64,7 @@ namespace GGJ2021
         public GameObject BakedObject;
 
         [Header("Debug Variables")]
+        public bool EnableDebugLogs = false;
         public Transform DebugObjectThroughPipe;
         public float DebugSpeedThroughPipe = 1f;
 
@@ -223,6 +224,8 @@ namespace GGJ2021
 
         public void MoveObjectThroughPipe(Transform trans, float speed, System.Action onFinish, StartingPoint startingPointEnum = StartingPoint.Auto)
         {
+            if(EnableDebugLogs)
+                Debug.Log($"MoveObjectThroughPipe({trans}, {speed}, {startingPointEnum})");
             StartCoroutine(MoveObjectThroughPipeRoutine(trans, speed, onFinish, startingPointEnum));
         }
 
