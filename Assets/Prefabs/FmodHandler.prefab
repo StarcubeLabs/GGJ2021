@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memoryDebug: 0
   isMusicPlaying: 0
-  playOnAwake: 1
+  playOnAwake: 0
   awakeSongName: level1
   awakeSongVolume: 1
 --- !u!114 &8240301726776153555

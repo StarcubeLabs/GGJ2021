@@ -39,7 +39,7 @@ namespace GGJ2021
             get { return transform.childCount > 0; }
         }
 
-        private void Start()
+        private void Update()
         {
             if (Application.isPlaying && !ObjectsEnabled)
             {

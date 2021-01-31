@@ -29,6 +29,7 @@ namespace GGJ2021
 
             positionRecorderScript = gameObject.GetComponent<PositionRecorder>();
             animator = animatorObj.GetComponent<Animator>();
+            playerObj = PlayerController.instance.gameObject;
         }
         void FixedUpdate() {
             if (!isActive) { return; }

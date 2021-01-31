@@ -45,7 +45,6 @@ namespace GGJ2021
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
             instance = this;
         }
 
