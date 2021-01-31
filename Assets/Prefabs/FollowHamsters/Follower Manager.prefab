@@ -79,8 +79,19 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
         type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 16de1ce9b597a1b48a25af1fd9d8a1bb,
+        type: 3}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
       propertyPath: config.targetOffset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.followMaxDistance
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
         type: 3}
@@ -228,8 +239,19 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
         type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10386cdcf66a8454d92d48ba09c7f598,
+        type: 3}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
       propertyPath: config.targetOffset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.followMaxDistance
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
         type: 3}
@@ -368,6 +390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: config.targetOffset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071000974931774851, guid: 910bd4c72fea547328b8666a6bedc44a,
+        type: 3}
+      propertyPath: config.followMaxDistance
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2071000974931774853, guid: 910bd4c72fea547328b8666a6bedc44a,
         type: 3}

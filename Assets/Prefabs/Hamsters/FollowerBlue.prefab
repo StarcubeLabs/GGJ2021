@@ -47,6 +47,7 @@ MonoBehaviour:
   isActive: 1
   sourceObj: {fileID: 0}
   animatorObj: {fileID: 1514297097593138356}
+  defaultSprite: {fileID: 21300000, guid: 2c2fe84d683ef8b4a8210ef41bd85f88, type: 3}
   jumpSprite: {fileID: 21300000, guid: 01230e64f7e514f7c8db3558f38683a7, type: 3}
   config:
     speed: 8
@@ -56,6 +57,8 @@ MonoBehaviour:
     nearbyDistance: {x: 0.6, y: 0.6, z: 0}
     targetOffset: {x: 0, y: -1.1, z: 0}
     followMinDistance: 1.5
+    followMaxDistance: 5
+    isAllowedWandering: 0
     wanderRange: 1.5
     groundCheckRaycastDistance: 0.2
     groundFarRaycastDistance: 0.5

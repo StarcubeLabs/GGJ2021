@@ -10,8 +10,8 @@ namespace GGJ2021
         public GameObject sourceObj;
 
         public GameObject animatorObj;
+        public Sprite defaultSprite;
         public Sprite jumpSprite;
-        private Sprite defaultSprite;
         private Animator animator;
         private SpriteRenderer spriter;
 
@@ -21,28 +21,40 @@ namespace GGJ2021
         public FollowerStates stateCurr; // public just for the sake of debugging
         private FollowerStates statePrev;
 
+        private Vector3 _prevTargetPos;
         private Vector3 _targetPos; // public just for the sake of debugging
         private Vector3 targetPos {
             get { 
                 if (_targetPos == Vector3.zero) return Vector3.zero;
                 return _targetPos + config.targetOffset; 
             }
-            set { _targetPos = value; }
+            set { 
+                _prevTargetPos = _targetPos;
+                _targetPos = value;
+            }
         }
 
-        private string animName;
+        private string _prevAnimName;
+        private string _animName;
+        private string animName {
+            get { return _animName; }
+            set {
+                _prevAnimName = _animName;
+                _animName = value;
+            }
+        }
         private bool isFacingLeft = true;
 
         private bool readyForNextTarget = false;
         private bool doesWantToWander = true;
+        private bool isMoveAdjusting = false;
+        private bool didJustAdjust = false;
 
         void Start() {
             stateCurr = FollowerStates.Idling;
 
             animator = animatorObj.GetComponent<Animator>();
             spriter = animatorObj.GetComponentInChildren<SpriteRenderer>();
-
-            defaultSprite = spriter.sprite;
 
             animName = "JellyIdle";
         }
@@ -77,19 +89,20 @@ namespace GGJ2021
             } else {
                 spriter.sprite = defaultSprite;
             }
+            // spriter.transform.rotation = Quaternion.identity;
             animator.Play(animName);
         }
         void UpdateState() {
             FollowerStates stateNext = FollowerStates.Idling;
 
             bool isNearTarget = IsNearTarget();
-            bool isNearPlayer = IsNearPlayer();
+            bool isNearSource = IsNearSource();
             bool isTouchingGround = IsTouchingGround();
-            bool doesWantToChase = !isNearPlayer;
-            bool doesWantIdle = isNearTarget && isNearPlayer && !doesWantToWander;
+            bool doesWantToChase = !isNearSource;
+            bool doesWantIdle = isNearTarget && (isNearSource || IsNearPlayer() || didJustAdjust) && !doesWantToWander && !isMoveAdjusting;
 
             // UGHH sorry this is undeciferable
-            if (IsVeryFarFromSource()) {
+            if (IsVeryFarFromPlayer()) {
                 stateNext = FollowerStates.Flying;
                 animName = "JellyJump";
 
@@ -107,7 +120,7 @@ namespace GGJ2021
 
                 doesWantToWander = config.isAllowedWandering;
 
-            } else if (!isTouchingGround && !IsMoving()) {
+            } else if (!isTouchingGround && !IsMoving() && !didJustAdjust) {
                 stateNext = FollowerStates.Falling;
                 animName = "JellyFall";
 
@@ -131,10 +144,10 @@ namespace GGJ2021
 
             // check if no state change
             if (stateNext == stateCurr) {
-                // print("state keep: " + stateCurr);
                 return;
             }
 
+            spriter.transform.rotation = Quaternion.identity;
             statePrev = stateCurr;
             stateCurr = stateNext;
             // print("stateCurr: " + stateCurr + " // statePrev: " + statePrev);
@@ -157,6 +170,13 @@ namespace GGJ2021
                 } else {
                     readyForNextTarget = true;
                 }
+
+                if (isMoveAdjusting) {
+                    didJustAdjust = true;
+                } else {
+                    didJustAdjust = false;
+                }
+                isMoveAdjusting = false;
             }
         }
         void FlyToTarget() {
@@ -165,6 +185,13 @@ namespace GGJ2021
 
             if (IsNearTarget()) {
                 readyForNextTarget = true;
+
+                if (isMoveAdjusting) {
+                    didJustAdjust = true;
+                } else {
+                    didJustAdjust = false;
+                }
+                isMoveAdjusting = false;
             }
         }
         void ApplyGravity() {
@@ -190,15 +217,36 @@ namespace GGJ2021
             targetPos = nextTarget;
         }
         Vector3 ChooseTarget() {
-            if (!IsNearPlayer()) {
+            // if source is stationary and we are falling,
+            // prob means we need to find somewhere to stand
+            if (IsFalling() && !isMoveAdjusting && !didJustAdjust) {
+                // isMoveAdjusting = true;
+                // return FindStablePosition();
+            }
+
+            if (!IsNearSource() && !didJustAdjust) {
                 return SourcePosition();
             }
 
-            if (doesWantToWander) {
+            if (doesWantToWander && !didJustAdjust) {
                 return FindWanderPosition();
             }
 
             return transform.position;
+        }
+        Vector3 FindStablePosition() {
+            float testDist = 3.0f;
+            Vector3 nextPos = new Vector3(PlayerPosition().x, PlayerPosition().y + 2.5f, 0);
+
+            RaycastHit2D hit = Physics2D.Raycast(nextPos, Vector2.down, testDist, config.groundLayerMask);
+            Debug.DrawRay(transform.position, Vector2.down * testDist, Color.yellow);
+
+            if (hit.collider == null) {
+                nextPos.y = PlayerPosition().y - 0.02f;
+                return nextPos;
+            }
+
+            return hit.point;
         }
         Vector3 FindWanderPosition() {
             Vector3 pPos = SourcePosition();
@@ -251,11 +299,17 @@ namespace GGJ2021
             return transform.position.y > targetPos.y && 
                 (Mathf.Abs(transform.position.y - targetPos.y) > config.nearbyDistance.y);
         }
-        public bool IsNearPlayer() {
+        public bool IsTargetSame() {
+            return targetPos == _prevTargetPos;
+        }
+        public bool IsNearSource() {
             return Vector3.Distance(transform.position, SourcePosition()) < config.followMinDistance;
         }
-        public bool IsVeryFarFromSource() {
-            return Vector3.Distance(transform.position, SourcePosition()) > config.followMaxDistance;
+        public bool IsNearPlayer() {
+            return Vector3.Distance(transform.position, PlayerPosition()) < config.followMinDistance;
+        }
+        public bool IsVeryFarFromPlayer() {
+            return Vector3.Distance(transform.position, PlayerPosition()) > config.followMaxDistance;
         }
         public bool IsNearTargetButNeedToJump() {
             if (targetPos == Vector3.zero) return false;
@@ -275,9 +329,12 @@ namespace GGJ2021
         public Vector3 SourcePosition() {
             return sourceObj.transform.position;
         }
+        public Vector3 PlayerPosition() {
+            return PlayerController.instance.transform.position;
+        }
         //--
         void OnDrawGizmos() {
-            if (!IsMoving()) return;
+            // if (!IsMoving() && !IsFalling()) return;
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(targetPos, 0.3f);
         }
