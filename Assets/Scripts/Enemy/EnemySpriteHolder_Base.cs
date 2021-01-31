@@ -10,13 +10,13 @@ namespace GGJ2021.Enemy
         bool paused;
 
         public Enemy_NPC[] prefabs;
-
+        public GameObject spawn;
         NPCPool_Base x;
 
         private void Start()
         {
             Vector3 playerLoc = FindObjectOfType<PlayerController>().transform.position;
-            NPCPool_Base.Instance.SpawnEnemy(playerLoc, EnemyTypes.GOOMBA);
+            NPCPool_Base.Instance.SpawnEnemy(spawn.transform.position, EnemyTypes.FLYER);
         }
 
         private void Update()
