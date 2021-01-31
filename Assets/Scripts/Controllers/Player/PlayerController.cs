@@ -171,8 +171,8 @@ namespace GGJ2021
             }
             reticules.ForEach(p =>
             {
-                p.transform.localPosition = lookDirection * p.maxDistance;
-                p.currentDistance = (lookDirection * p.maxDistance).magnitude;
+                p.transform.localPosition = lookDirection.normalized * p.maxDistance;
+                p.currentDistance = (lookDirection.normalized * p.maxDistance).magnitude;
             });
             if (lookDirection == Vector2.zero)
             {
