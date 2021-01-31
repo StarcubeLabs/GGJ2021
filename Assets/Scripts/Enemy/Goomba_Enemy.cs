@@ -7,10 +7,14 @@ namespace GGJ2021.Enemy
         [SerializeField]
         public static Sprite goombaSprite;
 
+        public bool randomDirection;
+
         enum Direction { LEFT, RIGHT}
-        Direction myDir;
 
         [SerializeField]
+        Direction myDir;
+
+        //[SerializeField]
         float angleOfFoundation;
 
         public override void Spawn(Vector3 v, int npcID)
@@ -75,7 +79,12 @@ namespace GGJ2021.Enemy
             base.Init(loc);
 
             // Goomba Specific Components
-            myDir = (Direction)Random.Range(1, 2);
+            if (randomDirection)
+            {
+                int temp = Random.Range(0, 2);
+                myDir = (Direction)temp;
+            }
+
 
             // TO DO: set desired speed on Enemy_NPC.speed
         }
@@ -91,20 +100,28 @@ namespace GGJ2021.Enemy
 
             DetectEdge();
 
-            switch (myDir)
+            if (!detect_Floor)
+                myRigidBody.velocity = Vector3.down * 1f;
+            else
             {
-                case Direction.LEFT:
-                    myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.left) * speed * Time.time;
-                    break;
+                switch (myDir)
+                {
+                    case Direction.LEFT:
+                        myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.left) * speed * Time.time;
+                        break;
 
-                case Direction.RIGHT:
-                    myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.right) * speed * Time.time;
-                    break;
+                    case Direction.RIGHT:
+                        myRigidBody.velocity = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector3.right) * speed * Time.time;
+                        break;
+                }
             }
         }
 
+        //[SerializeField]
         private bool detect_Wall;
+        //[SerializeField]
         private bool detect_WalkingCane;
+        //[SerializeField]
         private bool detect_Floor;
 
         void DetectEdge()
@@ -124,7 +141,6 @@ namespace GGJ2021.Enemy
                 if (r)
                     detect_Floor = true;
 
-                transform.position += Vector3.down * 0.01f;
             }
             else
             {
@@ -134,13 +150,13 @@ namespace GGJ2021.Enemy
                 {
                     dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * Vector2.down);
                     detect_Floor = false;
-                    r = Physics2D.Raycast(this.transform.position, dir, 0.5f, wallCollisionDetection);
+                    r = Physics2D.Raycast(this.transform.position, dir, 1f, wallCollisionDetection);
                     dir3 = dir;
-                    Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir3 * 0.5f), Color.red);
+                    //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir3 * 1f), Color.red);
                     if (r)
                     {
                         detect_Floor = true;
-                        angleOfFoundation = r.transform.rotation.z;
+                        angleOfFoundation = r.transform.rotation.eulerAngles.z;
                     }
                 }
 
@@ -150,9 +166,9 @@ namespace GGJ2021.Enemy
                     dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.down + Vector2.right));
                 else dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.down + Vector2.left));
                 dir2 = dir;
-                Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir2 * 5f), Color.green);
+                //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir2 * 5f), Color.green);
                 detect_WalkingCane = false;
-                r = Physics2D.Raycast(this.transform.position, dir, 0.5f * 2, wallCollisionDetection);
+                r = Physics2D.Raycast(this.transform.position, dir, 5f, wallCollisionDetection);
                 // Is it colliding
                 if (r)
                 {
@@ -166,7 +182,7 @@ namespace GGJ2021.Enemy
                 if (myDir == Direction.RIGHT)
                     dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.right));
                 else dir = (Vector2)(Quaternion.Euler(0, 0, angleOfFoundation) * (Vector2.left));
-                Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir * 0.5f), Color.blue);
+                //Debug.DrawLine(this.transform.position, (Vector2)this.transform.position + (dir * 0.5f), Color.blue);
                 detect_Wall = false;
                 r = Physics2D.Raycast(this.transform.position, dir, 0.5f, wallCollisionDetection);
 
@@ -180,14 +196,16 @@ namespace GGJ2021.Enemy
                             myDir = Direction.RIGHT;
                         else myDir = Direction.LEFT;
                     }
-                    else angleOfFoundation = r.transform.rotation.z;    // Set angle
+                    else angleOfFoundation = r.transform.rotation.eulerAngles.z;    // Set angle
                 }
             }
         }
 
         void Update()
         {
-
+            if (myDir == Direction.LEFT)
+                facingRight = false;
+            else facingRight = true;
         }
 
 
