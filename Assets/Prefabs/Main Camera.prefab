@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6277176927594888351}
   - component: {fileID: 6277176927594888348}
   - component: {fileID: 6277176927594888349}
-  - component: {fileID: 6277176927594888350}
   - component: {fileID: 2633660608682571635}
   - component: {fileID: 1661494643688277394}
+  - component: {fileID: 1575810270}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -87,19 +87,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6277176927594889058}
   m_Enabled: 1
---- !u!114 &6277176927594888350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6277176927594889058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb6bcfd7cbbd2a40a141aceff389190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 2, z: 0}
 --- !u!114 &2633660608682571635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +164,24 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1575810270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277176927594889058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1865d83a70dbe340b456dc962d79954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  trackSpeed: 20
+  upperBound: {fileID: 0}
+  lowerBound: {fileID: 0}
+  leftBound: {fileID: 0}
+  rightBound: {fileID: 0}
 --- !u!1001 &1717653260733849822
 PrefabInstance:
   m_ObjectHideFlags: 0
