@@ -12,5 +12,9 @@
     public void QuitGame() {
       Application.Quit();
     }
+
+    public void OpenStarcubeBlog() {
+      Application.OpenURL("https://starcubelabs.github.io/");
+    }
   }
 }
