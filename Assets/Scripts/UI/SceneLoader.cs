@@ -16,5 +16,13 @@
     public void OpenStarcubeBlog() {
       Application.OpenURL("https://starcubelabs.github.io/");
     }
+
+    public void ToggleFullscreen() {
+      Screen.fullScreen = !Screen.fullScreen;
+    }
+
+    public void ToggleAudio() {
+      AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;
+    }
   }
 }
