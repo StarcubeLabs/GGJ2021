@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 1275766850233499819, guid: 0f834e09087033b49bf8fdd04263555a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.38624287
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1275766850233499819, guid: 0f834e09087033b49bf8fdd04263555a,
         type: 3}
@@ -519,6 +519,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PipeController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228012987304402675, guid: 0f834e09087033b49bf8fdd04263555a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228012987304402675, guid: 0f834e09087033b49bf8fdd04263555a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3315
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052400651816629832, guid: 0f834e09087033b49bf8fdd04263555a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052400651816629832, guid: 0f834e09087033b49bf8fdd04263555a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3344
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f834e09087033b49bf8fdd04263555a, type: 3}
