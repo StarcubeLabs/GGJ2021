@@ -30,7 +30,9 @@
             if (blasterCooldown <= 0f && GetAvailableHamsters() > 0)
             {
                 blasterCooldown = maxBlasterCooldown;
-                hamsterPool.SpawnHamster(origin, direction + PlayerController.instance.playerPhysics.GetVelocity());
+                Vector2 velocityModifier = PlayerController.instance.playerPhysics.GetVelocity();
+                velocityModifier.y = 0f;
+                hamsterPool.SpawnHamster(origin, direction + velocityModifier);
                 FollowerManager.instance.RemoveAbilityHamster(Ability.Grenade);
             }
         }
