@@ -22159,12 +22159,12 @@ PrefabInstance:
     - target: {fileID: 5697630437173372866, guid: 69d648b8c381cfd4facf58b5d39e12de,
         type: 3}
       propertyPath: Types.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5697630437173372866, guid: 69d648b8c381cfd4facf58b5d39e12de,
         type: 3}
       propertyPath: SpawnPoints.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7699397582753236898, guid: 69d648b8c381cfd4facf58b5d39e12de,
         type: 3}

@@ -245,8 +245,15 @@ namespace GGJ2021.Enemy
         void Update()
         {
             if (myDir == Direction.LEFT)
+            {
                 facingRight = false;
-            else facingRight = true;
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                facingRight = true;
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
         }
 
 
